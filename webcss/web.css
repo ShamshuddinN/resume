@@ -25,4 +25,9 @@
     background-color: rgb(232, 255, 242);
     display: inline-block;
     border-radius: 40px;
+    color: rgb(91, 91, 93);
+}
+
+.namehead p{
+    padding: 10px;
 }
