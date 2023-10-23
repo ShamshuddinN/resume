@@ -1,8 +1,16 @@
 *{
+    margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
 }
 
-h1{
-    color: green;
+.navbar {
+    text-align: center;
+    background-color: rgb(214, 210, 210);
+}
+
+.navbar h1{
+    font-family: sans-serif;
+    color: rgb(87, 87, 86);
+    padding: 5px;
 }
