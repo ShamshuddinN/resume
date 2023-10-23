@@ -12,5 +12,17 @@
 .navbar h1{
     font-family: sans-serif;
     color: rgb(87, 87, 86);
-    padding: 5px;
+    padding: 15px;
+}
+
+.namehead{
+    margin-top:1%;
+    text-align: center;
+}
+
+.namehead h1{
+    padding: 20px;
+    background-color: rgb(232, 255, 242);
+    display: inline-block;
+    border-radius: 40px;
 }
