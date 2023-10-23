@@ -1,9 +1,14 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+body{
+    height: 100vh;
+    background-color: white;
+    display: inline-flexbox;
+}
 .navbar {
     text-align: center;
     background-color: rgb(214, 210, 210);
@@ -29,5 +34,18 @@
 }
 
 .namehead p{
+    background-color: aquamarine;
     padding: 10px;
+}
+
+.myimg {
+    background-color: bisque;
+    display: inline-block;
+    margin-left: 5%;
+    padding: 10px;
+}
+
+.myimg img{
+    width: 250px;
+    border-radius: 150px;
 }
