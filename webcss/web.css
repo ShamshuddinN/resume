@@ -22,7 +22,7 @@ body{
 
 .navbar ul li a{
     color: black;
-    padding: 15px;
+    padding: 12px;
     background-color: rgb(211, 212, 254);
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,7 +40,7 @@ body{
     transition: all .25s ease;
 }
 .navbar ul #wlc{
-    width: 57%;
+    width: 60%;
 }
 
 .navbar h1{
