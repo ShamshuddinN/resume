@@ -70,11 +70,10 @@ body{
 }
 
 .myimg {
-    margin-top: 2%;
-    display: flex;
-    width: 80%;
+    margin-top: 1%;
+    display: inline-block;
+    vertical-align: top;
     padding: 10px;
-    align-items: flex-start;
     text-align: left;
     
 }
@@ -82,14 +81,11 @@ body{
 .myimg img{
     width: 225px;
     border-radius: 150px;
-    display: inline-block;
     margin-left: 3%;
 }
 
-.myimg p{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
-    margin-left: 15%;
-    color: rgb(0, 0, 0);
+.resumebody{
     display: inline-block;
+    margin-left: 5%;
+    margin-top: 3%;
 }
