@@ -1,91 +1,37 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@media screen and (max-width: 830px)
+{
+    #topbuttons {
+        display: none;
+    }
+
 }
-body{
-    background-color: white;
-    
-    padding: 0;
+@media screen and (max-width: 900px)
+{
+    #topbuttons {
+        font-size: smaller;
+    }
 }
-.navbar {
-    background-color: rgb(231, 231, 231);
+@media screen and (max-width: 600px)
+{
+    #profilepic {
+        width: 150px;
+    }
 }
 
-.navbar ul{
-    margin-left: 2%;
-    align-items: center;
-    display: flex;
-    list-style: none;
+@media screen and (min-width: 600px)
+{
+    #profilepic {
+        width: 200px;
+    }
 }
 
-.navbar ul li a{
-    color: black;
-    padding: 12px;
-    background-color: rgb(211, 212, 254);
-    text-decoration: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 700;
-    border: 1px solid rgb(231, 231, 231);
-    border-radius: 25px;
-    transition: all .15s ease;
-    margin-left: 10px;
-}
-.navbar ul li a:hover{
-    background-color: rgb(176, 210, 255);
-    color: rgb(20, 20, 20);
-    box-shadow: 1px 1px 3px rgba(114, 114, 114, 0.2);
-    border: 1px solid rgb(179, 179, 180);
-    transition: all .25s ease;
-}
-.navbar ul #wlc{
-    width: 60%;
-}
+@media screen and (max-width: 818px)
+{
+    #headname {
+        text-align: center;
+    }
 
-.navbar h1{
-    text-align: center;
-    font-family: sans-serif;
-    color: rgb(87, 87, 86);
-    padding: 15px;
-}
-
-.namehead{
-    margin-top:1%;
-    text-align: center;
-}
-
-.namehead h1{
-    padding: 20px;
-    background-color: rgb(232, 255, 242);
-    display: inline-block;
-    border-radius: 40px;
-    color: rgb(79, 79, 81);
-}
-
-.namehead p{
-    
-    padding: 10px;
-    font-weight: 500;
-}
-
-.myimg {
-    margin-top: 1%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 10px;
-    text-align: left;
-    
-}
-
-.myimg img{
-    width: 225px;
-    border-radius: 150px;
-    margin-left: 3%;
-}
-
-.resumebody{
-    display: inline-block;
-    margin-left: 5%;
-    margin-top: 3%;
+    #subhead{
+        text-align: inherit;
+    }
 }
