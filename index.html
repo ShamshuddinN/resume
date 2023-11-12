@@ -11,9 +11,39 @@
 </head>
 <body>
 
+<!-- Hamburger Menu -->
+<div class="offcanvas offcanvas-start offcanvas-md" id="hamburgermenu">
+  <div class="offcanvas-header bg-dark bg-opacity-10">
+    <img class="rounded-circle" id="hamlogo" src="staticfiles/media/sd download.jfif" alt="logohr">
+    <h4 class="offcanvas-title">Shamshuddin Nadaf</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  
+  
+  <div class="offcanvas-body">
+    <div class="row">
+      <button type="button" class="btn btn-light p-2"> <a href="https://github.com/ShamshuddinN/resume" class="text-decoration-none text-reset">Github Repo</a> </button>
+    </div>
+    
+    <div class="row mt-1">
+      <button type="button" class="btn btn-light p-2"> <a href="https://ttttt.me/thisizboss" class="text-decoration-none text-reset">Contact</a> </button>
+    </div>
+    
+    <div class="row mt-1">
+      <button type="button" class="btn btn-light p-2"> <a href="#" class="text-decoration-none text-reset">Get My Page</a> </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- End of Hamburger Menu -->
+
+
+
 <!-- Navigation Bar -->
 <div class="row p-2 ms-1 mt-1 align-items-center bg-dark rounded-top bg-opacity-10">
   <div class="col">
+    <button type="button" class="d-md-none" data-bs-toggle="offcanvas" data-bs-target="#hamburgermenu"> <i class="bi bi-list"></i> </button>
     <a class="btn  p-3 btn-light rounded-pill text-dark fw-bold " id="topbuttons" href="https://github.com/ShamshuddinN/resume" role="button"> <i class=" me-2 bi bi-github"></i> Github Repo</a>
   </div>
   <div class="col-sm-3">
@@ -44,11 +74,14 @@
     <p class="ms-5 mt-0"> <strong>Languages:</strong> Kannada, English, Hindi, Urdu, Arabic, Tamil, Telugu, Marathi, Bangali </p>
     <p class="ms-5 mt-0"> <strong>Hobbies:</strong> Playing Cricket, Playing Chess </p>
     <p class="ms-5 mt-0"> <strong>Disclaimer:</strong> All given Personal Information is for representaton purposes not real. </p>
-
   </div>
+  <!-- End of Pic Division -->
+
+
   
-  <div class="col-sm-9 me-3">
-    <h5 class="ms-1 bg-primary bg-opacity-25 p-3 rounded-pill d-inline-block" >Profile Summary<i class="bi bi-arrow-right-short"> </i></h5>
+  <!-- Profile Summary division -->
+  <div id="profsumsection" class="col-lg-9 col-md ms-2 d-block">
+    <h5  class="ms-1 bg-primary bg-opacity-25 p-3 rounded-pill d-inline-block" >Profile Summary<i class="bi bi-arrow-right-short"> </i></h5>
     <p class="ms-2">Lorem ipsum dolor sit, Lorem ipsum dolor sit Haegl amet consectetur adipisicing elit. Animi, ad. Harum non suscipit ipsum magni possimus neque maxime! Qui doloremque aut quam quidem? Eum, quo! amet consectetur adipisicing elit. Iusto delectus vero cumque mollitia, ducimus sequi omnis, culpa obcaecati sunt praesentium a sapiente quas cum aut.</p>
     <h5 class="mt-3 ms-1 bg-primary bg-opacity-25 p-3 rounded-pill d-inline-block"> <i class="bi bi-tools me-2"></i> Skills <i class="bi bi-arrow-right-short"></i></h5>
     <h6 class="mt-2 ms-2">Software, Web Developement, Python, Bootstrap, Django, Data Entry</h6>
@@ -108,7 +141,7 @@
 
 <!-- Education -->
   <h4 class="mt-5 ms-2 p-3 bg-primary bg-opacity-25 text-center rounded-pill d-block"> <i class= " me-1 bi bi-book-half"></i> Education </h4>
-<table class="table mt-4 table-light ">
+<table id="edutable" class="table mt-4 table-light ">
   <thead class="table-success">
     <tr>
       <th scope="col">Sl. No.</th>
