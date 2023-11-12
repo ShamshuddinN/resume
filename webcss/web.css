@@ -1,16 +1,37 @@
-@media screen and (max-width: 767px)
+@media screen and (max-width: 769px)
 {
     #topbuttons {
         display: none;
     }
 
 }
-@media screen and (max-width: 900px)
+@media screen and (max-width: 1300px)
 {
     #topbuttons {
         font-size: smaller;
     }
+    #headname {
+        font-size: 30px;
+    }
+
+    #subhead{
+        font-size: 17px;
+    }
 }
+
+@media screen and (max-width: 926px){
+    #headname {
+        font-size: 24px;
+    }
+
+    #subhead{
+        font-size: 15px;
+    }
+
+
+}
+
+
 @media screen and (max-width: 600px)
 {
     #profilepic {
@@ -25,16 +46,6 @@
     }
 }
 
-@media screen and (max-width: 818px)
-{
-    #headname {
-        text-align: center;
-    }
-
-    #subhead{
-        text-align: inherit;
-    }
-}
 
 #hamlogo {
     width: 35px;
@@ -49,4 +60,14 @@
     #edutable{
         margin-left: 10px;
     }
+}
+
+#hambutton{
+    border: none;
+    box-shadow: 1px 1px 3px rgb(54, 119, 63);
+}
+
+#hambutton:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgb(45, 45, 249);
 }
