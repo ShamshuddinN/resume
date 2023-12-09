@@ -78,6 +78,7 @@ function addHobbie() {
 
 
 function saveData() {
+  disableEdit()
   let bodyhml = document.body.innerHTML;
   localStorage.setItem('htmltext', JSON.stringify(bodyhml));
 }
@@ -115,6 +116,7 @@ if (localStorage.getItem('htmltext')) {
 }
 
 function retriveData() {
+  disableEdit()
   let userData = localStorage.getItem('htmltext');
   document.body.innerHTML = JSON.parse(userData);
 }
