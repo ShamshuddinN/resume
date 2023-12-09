@@ -4,19 +4,267 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="staticfiles/bootstrap-5.3.2-dist/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <title>Format 1</title>
+  <link rel="stylesheet" href="webcss/res1.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <title>format1</title>
 </head>
 <body>
-<form action="">
-  <label for="example">Input</label>
-  <input type="text" id="any">
-</form>
 
-<script>
-  if (FormData) {
-    document.getElementById
-  }
-</script>
+  <div  class="row justify-content-center mt-3 lastContentHide ms-2 ">
+    <div class="col align-items-center text-center" id="enableEditBtn">
+      <button  class="btn btn-light border border-2 border-secondary rounded rounded-2 " onclick="editDocument()" > <strong>Enable</strong> Edting</button>
+    </div>
+    
+    <div class="col align-items-center text-center " id="disableEditBtn" >
+      <button  class="btn btn-light border border-2 border-secondary rounded rounded-2  " onclick="disableEdit()" > <strong>Disble</strong> Edting</button>
+    </div>
+
+    <div class="col align-items-center text-center ">
+      <button class="btn btn-light border border-2 border-secondary ms-2" onclick="saveData()" > <i class="bi bi-floppy-fill text-success"></i> Save Data </button>
+    </div>
+
+    <div class="col align-items-center text-center " id="loadPreviousDataBtn">
+      <button class="btn btn-light border border-2 border-secondary ms-2" onclick="retriveData()" > <i class="bi bi-database-down text-success "></i> Retrive Data </button>
+    </div>
+
+
+    <div class="col align-items-center text-center ">
+      <button class="btn btn-light border border-2 border-secondary rounded rounded-2 " onclick="readyPrint()" >Ready To Print</button>
+    </div>
+
+  </div>
+
+    <!-- Head Section -->
+  
+  <div class="container-fluid p-1 border-bottom border-info border-4">
+    <div class="row justify-content-center align-items-center mb-2">
+      <div class="col">
+        <img id="profileImg" src="staticfiles/media/defaultprofile.png" class="rounded rounded-circle" width="120" alt="profilepic">
+         <div class="bg-secondary p-2 bg-opacity-50 rounded rounded-2 " id="hideUploadBtns" >
+           <input type="file" id="profilepic" class="d-inline-block" > <button class="btn btn-light d-inline-block mt-2" onclick="picLoadCheck()" >Upload</button> 
+         </div>
+      </div>
+
+      <div class="col">
+        <h4 class="text-center text-primary fs-5" id="candidateName" >Candidate Name</h4>
+        <p class="text-center" >Desgnation</p>
+      </div>
+
+      <div class="col mytextsize" >
+        <p class="text-end"><i class="bi bi-envelope"></i> user@mail.com </p>
+        <p class="text-end"><i class="bi bi-telephone"></i> +91 9965821475 </p>
+        <p class="text-end"> <i class="bi bi-linkedin"></i> LinkedIn </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- End of Head Section -->
+
+
+  <!-- Body Section -->
+
+  <!-- Summary -->
+  <div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col">
+        <h6 class="text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6>
+        <p class="mytextsize" >Enter Your Summary Here</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- End of Summary -->
+
+
+  <!-- Skills -->
+
+  <div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col">
+        <h6 class="text-primary fs-6" > Skills  <i class="bi bi-arrow-right-short"></i> </h6>
+        <div class="skillstext mt-3">
+          <div id="skillsBlock" >
+            <p class="border rounded-pill p-2 border-success border-2 ms-2 d-inline-block">Skill</p>
+          </div>
+          <button class="btn btn-light border border ms-2 contentToHide " onclick="addSkill()" > <i class="bi bi-plus-circle"></i> </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- End of Skills -->
+
+
+    <!-- Work Experience -->
+  <div class="container-fluid" id="experienceBlock" >
+    <div class="row mt-4">
+      <div class="col">
+        <h6 class="text-primary fs-6" > Work Experience  <i class="bi bi-arrow-right-short"></i> </h6>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <h6 class="insidehead"> <strong>Company name</strong> </h6>
+      <p class="mytextsize">Designation</p>
+    </div>
+
+    <div class="row d-flex justify-content-between">
+      <div class="col">
+        <p class="mytextsize"> Jan/2020 - Present</p>
+        <h6 class="mytextsize" >Description</h6>
+      </div>
+      
+      <div class="col">
+        <p class="mytextsize text-end"> <i class="bi bi-geo-alt "></i> Karnataka, India </p>
+      </div>
+    </div>
+
+    <div class="row mytextsize ms-3 me-1">
+      <ul>
+        <li>Write your Experience Summary/Responsibilities Here</li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="btn btn-light border border ms-2 contentToHide " onclick="addExperience()" > Experience <i class="bi bi-plus-circle ms-2"></i> </button>
+  <!-- End of Work Experience -->
+
+  <!-- Projects Section -->
+  <div class="container-fluid" id="projectBlock" >
+    <div class="row mt-4">
+      <h6 class="text-primary fs-6" > Projects  <i class="bi bi-arrow-right-short"></i> </h6>
+    </div>
+
+    <div class="row mt-2 mytextsize justify-content-between">
+      <div class="col">
+        <p class="insidehead" > <strong>Project Name</strong> </p>
+        <p class="mytextsize"> <strong>Client: </strong> xyz </p>
+        <h6 class="mytextsize" >Description</h6>
+      </div>
+      
+      <div class="col">
+        <p class="insidehead text-end" > Employer </p>
+        <p class="insidehead text-end" > Additional Field ex: Period </p>
+      </div>
+    </div>
+
+    <div class="row mytextsize ms-3">
+      
+      <ul>
+        <li>Describe yout Project Work</li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="btn btn-light border border ms-2 contentToHide " onclick="addProject()" > Project <i class="bi bi-plus-circle ms-2"></i> </button>
+
+  <!-- End of Projects Section -->
+
+  <!-- Education Table -->
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <h6 class="text-primary fs-6" > Education  <i class="bi bi-arrow-right-short"></i> </h6>
+
+      <table class="table mt-2 table-bordered border-dark ">
+        <thead class="table-bordered">
+          <tr>
+            <th scope="col">Sl. No.</th>
+            <th scope="col">Course</th>
+            <th scope="col">Institution</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody id="edurow" >
+          <tr>
+            <th scope="row">1.</th>
+            <td>Secondary School</td>
+            <td>Indian Institute</td>
+            <td>2016 - 2018</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <button class="btn btn-light border border ms-2 contentToHide " onclick="addEDRow()" > Education <i class="bi bi-plus-circle ms-2"></i> </button>
+
+  <!-- End of Education Table -->
+
+  <!-- Achievements -->
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6>
+      <div class="mt-2 mytextsize">
+        <ol>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li>
+          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- End of Achievements -->
+
+  <!-- Last Section -->
+  <div class="container-fluid">
+    <div class="row mt-4 justify-content-center">
+      <div class="col">
+        <h6 class="text-primary fs-6" > Languages </h6>
+        <div class="mt-3" id="langBlock" >
+          <p class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block">Kannada</p>
+        </div>
+        <button class="btn btn-light border border ms-2 contentToHide " onclick="addLang()" > Language <i class="bi bi-plus-circle ms-2"></i> </button>
+
+        <div class="mt-4">
+          <h6 class="text-primary fs-6" > Interests/Hobbies </h6>
+          <div class="mt-3" id="hobbiesBlock" >
+            <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block">Playing Chess</p>
+          </div>
+        </div>
+        <button class="btn btn-light border border ms-2 contentToHide " onclick="addHobbie()" > Hobbie/Interest <i class="bi bi-plus-circle ms-2"></i> </button>
+      </div>
+
+      <div class="col ms-2">
+
+        <div class="mt-4">
+          <h6 class="text-primary fs-6" > <i class="bi bi-person-square me-2"></i> Personal Details </h6>
+          <div class="ms-2 mt-3">
+            <p class="mytextsize" >Nationality: Indian</p>
+            <p class="mytextsize" >Passport: Available</p>
+            <p class="mytextsize" >Driving License: Available</p>
+            
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h6 class="text-primary fs-6" > Current Address <i class="bi bi-geo-alt-fill"></i> </h6>
+          <p class="mytextsize">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex laudantium totam, dignissimos voluptate ducimus amet?</p>
+        </div>
+        
+        <div class="mt-4">
+          <h6 class="text-primary fs-6" > Permanent Address <i class="bi bi-geo-alt-fill"></i> </h6>
+          <p class="mytextsize">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex laudantium totam, dignissimos voluptate ducimus amet?</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-fluid contentToHide ">
+    <div class="row justify-content-center mt-4 ">
+      <div class="col-lg-5 col-md-8 col-sm-10 bg-primary bg-opacity-25 rounded rounded-2 p-2 mb-4">
+        <h2 class="text-center" >Information:</h2>
+
+        <ul>
+          <li> More resume templates will be released soon </li>
+          <li> Soon I will Release a video How to use this application </li>
+          <li> Though it is very simple to use you can try Exploring yourself! </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/resume1.js" ></script>
 </body>
 </html>
