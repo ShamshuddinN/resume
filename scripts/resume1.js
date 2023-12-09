@@ -38,7 +38,7 @@ skillBlock = '';
 
 function addSkill() {
   skillBlock = document.getElementById('skillsBlock').innerHTML;
-  document.getElementById('skillsBlock').innerHTML = skillBlock + `<p class="border rounded-pill p-2 border-success border-2 ms-2 d-inline-block">Skill</p>`;
+  document.getElementById('skillsBlock').innerHTML = skillBlock + ` <p class="border rounded-pill p-2 border-success border-2 ms-2 d-inline-block" > Skill  </p> `;
 
 }
 
@@ -46,34 +46,34 @@ let experienceBlock = '';
 
 function addExperience() {
   experienceBlock = document.getElementById('experienceBlock').innerHTML;
-  document.getElementById('experienceBlock').innerHTML = experienceBlock + `<div class="row mt-4"> <div class="row mt-2"> <h6 class="insidehead"> <strong>Company name</strong> </h6> <p class="mytextsize">Designation</p> </div> <div class="row d-flex justify-content-between"> <div class="col"> <p class="mytextsize"> Jan/2020 - Present</p> <h6 class="mytextsize" >Description</h6> </div> <div class="col"> <p class="mytextsize text-end"> <i class="bi bi-geo-alt "></i> Karnataka, India </p> </div> </div> <div class="row mytextsize ms-3 me-1"> <ul> <li>Write your Experience Summary/Responsibilities Here</li> </ul> </div>`;
+  document.getElementById('experienceBlock').innerHTML = experienceBlock + ` <div class="row mt-4" > <div class="row mt-2" > <h6 class="insidehead" > <strong>Company name </strong>  </h6> <p class="mytextsize" >Designation </p>  </div> <div class="row d-flex justify-content-between" > <div class="col" > <p class="mytextsize" > Jan/2020 - Present </p> <h6 class="mytextsize" >Description </h6>  </div> <div class="col" > <p class="mytextsize text-end" > <i class="bi bi-geo-alt " > </i> Karnataka, India  </p>  </div>  </div> <div class="row mytextsize ms-3 me-1" > <ul> <li>Write your Experience Summary/Responsibilities Here  </li>  </ul>  </div> `;
 }
 
 projectBlock = '';
 
 function addProject() {
   projectBlock = document.getElementById('projectBlock').innerHTML;
-  document.getElementById('projectBlock').innerHTML = projectBlock + `<div class="row mt-3 mytextsize justify-content-between"> <div class="col"> <p class="insidehead" > <strong>Project Name</strong> </p> <p class="mytextsize"> <strong>Client: </strong> xyz </p> <h6 class="mytextsize" >Description</h6> </div> <div class="col"> <p class="insidehead text-end" > Employer </p> <p class="insidehead text-end" > Additional Field ex: Period </p> </div> </div> <div class="row mytextsize ms-3"> <ul> <li>Describe yout Project Work</li> </ul> </div>`;
+  document.getElementById('projectBlock').innerHTML = projectBlock + ` <div class="row mt-3 mytextsize justify-content-between" > <div class="col" > <p class="insidehead" > <strong>Project Name </strong>  </p> <p class="mytextsize" > <strong>Client:  </strong> xyz  </p> <h6 class="mytextsize" >Description </h6>  </div> <div class="col" > <p class="insidehead text-end" > Employer  </p> <p class="insidehead text-end" > Additional Field ex: Period  </p>  </div>  </div> <div class="row mytextsize ms-3" > <ul> <li>Describe yout Project Work </li>  </ul>  </div> `;
 }
 
 eduRow = '';
 ednum = 2;
 function addEDRow() {
   eduRow = document.getElementById('edurow').innerHTML;
-  document.getElementById('edurow').innerHTML = eduRow + `<tr> <th scope="row"> ${ednum} .</th> <td>Course</td> <td>Institute</td> <td>Year from - Year to</td> </tr>`;
+  document.getElementById('edurow').innerHTML = eduRow + ` <tr> <th scope="row" > ${ednum} . </th> <td>Course </td> <td>Institute </td> <td>Year from - Year to </td>  </tr> `;
   ednum += 1;
 }
 
 var addLangn = '';
 function addLang() {
   addLangn = document.getElementById('langBlock').innerHTML;
-  document.getElementById('langBlock').innerHTML = addLangn + `<p class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block">Language</p>`;
+  document.getElementById('langBlock').innerHTML = addLangn + ` <p class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block" >Language </p> `;
 }
 
 var addHobbien = '';
 function addHobbie() {
   addHobbien = document.getElementById('hobbiesBlock').innerHTML;
-  document.getElementById('hobbiesBlock').innerHTML = addHobbien + `<p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block"> Hobbie </p>`;
+  document.getElementById('hobbiesBlock').innerHTML = addHobbien + ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block" > Hobbie  </p> `;
 }
 
 
