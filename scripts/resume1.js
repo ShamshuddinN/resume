@@ -17,13 +17,19 @@ function picLoadCheck() {
       img.src = e.target.result;
 
       document.querySelector('#profileImg').style = 'display: block;';
+      document.querySelector('#ulWarnBtn').style = 'display: none;';
     }
 
   } else {
-    console.log('Unsuccessful');
+    document.querySelector('#ulWarnBtn').style = 'display: block;';
   }
 }
 
+document.querySelector('#ulWarnBtn').style = 'display: none;';
+
+function btnClose() {
+  document.querySelector('#ulWarnBtn').style = 'display: none;';
+}
 
 
 let skills = [];

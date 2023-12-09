@@ -42,6 +42,12 @@
         <img id="profileImg" src="staticfiles/media/defaultprofile.png" class="rounded rounded-circle" width="120" alt="profilepic">
          <div class="bg-secondary p-2 bg-opacity-50 rounded rounded-2 " id="hideUploadBtns" >
            <input type="file" id="profilepic" class="d-inline-block" > <button class="btn btn-light d-inline-block mt-2" onclick="picLoadCheck()" >Upload</button> 
+
+           <div class="alert alert-warning alert-dismissible fade show mt-2 " id="ulWarnBtn" role="alert">
+            <strong>Hold on!</strong> First Choose image file, then Click Upload.
+            <button onclick="btnClose()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
          </div>
       </div>
 
