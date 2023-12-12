@@ -40,7 +40,9 @@
     <div class="row justify-content-center align-items-center mb-2">
       <div class="col">
         <img id="profileImg" src="staticfiles/media/defaultprofile.png" class="rounded rounded-circle" width="120" alt="profilepic">
+        
          <div class="bg-secondary p-2 bg-opacity-50 rounded rounded-2 " id="hideUploadBtns" >
+          <p class="contentToHide" >Set Profile Picture</p>
            <input type="file" id="profilepic" class="d-inline-block" > <button class="btn btn-light d-inline-block mt-2" onclick="picLoadCheck()" >Upload</button> 
 
            <div class="alert alert-warning alert-dismissible fade show mt-2 " id="ulWarnBtn" role="alert">
@@ -88,10 +90,23 @@
     <div class="row mt-3">
       <div class="col">
         <h6 class="text-primary fs-6" > Skills  <i class="bi bi-arrow-right-short"></i> </h6>
+
+        <div class="position-relative " id="skillsAddDialog" >
+          <div class="position-absolute top-0 start-50 translate-middle p-2 rounded rounded-2 bg-dark bg-opacity-25 ">
+            <h6>Enter Skills</h6>
+            <input type="text" class="form-control" placeholder="Ex: MS Excel, Ms Office" id="skilWords" >
+            <button type="button" class="btn btn-primary fw-bold fs-6 mt-2" onclick="addSkills()" > Add </button>
+            <button type="button" class="btn btn-danger mt-2 ms-2 bg-danger " onclick="closeSDialog()" > Close </button>    
+          </div>
+        </div>
+
         <div class="skillstext mt-3">
           <div id="skillsBlock" >
-            <p class="border rounded-pill p-2 border-success border-2 ms-2 d-inline-block">Skill</p>
+            <p name="skillPill" class=" border rounded-pill p-2 border-success border-2 ms-2 d-inline-block">Skill</p>
           </div>
+
+
+
           <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addSkill()" >  <i class="bi bi-plus-circle"></i> Skill </button>
         </div>
         
@@ -172,7 +187,7 @@
     <div class="row mt-4">
       <h6 class="text-primary fs-6" > Education  <i class="bi bi-arrow-right-short"></i> </h6>
 
-      <table class="table mt-2 table-bordered border-dark ">
+      <table class="table mt-2 table-bordered border-dark text-center ">
         <thead class="table-bordered">
           <tr>
             <th scope="col">Sl. No.</th>
@@ -182,11 +197,12 @@
           </tr>
         </thead>
         <tbody id="edurow" >
-          <tr>
+          <tr id="0">
             <th scope="row">1.</th>
             <td>Secondary School</td>
             <td>Indian Institute</td>
-            <td>2016 - 2018</td>
+            <td>2016 - 2018 </td>
+            <td name="delEdrowBtn" class=" text-center" > <button class="btn btn-danger fw-bold " onclick="deleteEdRow(0)" >Delete</button> </td>
           </tr>
         </tbody>
       </table>
@@ -218,17 +234,35 @@
       <div class="col">
         <h6 class="text-primary fs-6" > Languages </h6>
         <div class="mt-3" id="langBlock" >
-          <p class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block">Kannada</p>
+          <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block">Language</p>
         </div>
+
+        <div id="addLangDialog" class="mb-3 p-3 bg-primary rounded bg-opacity-25">
+          <label class="form-label fs-6"> <strong>Enter Languages</strong> </label>
+          <textarea id="enteredLanguages" class="form-control" placeholder="Ex: Kannada, English, Hindi " rows="2"></textarea>
+          <button class="btn btn-primary ms-2 mt-3" type="button" onclick="addLanguages()" >Add</button>
+          <button class="btn btn-danger ms-2 mt-3  " onclick="closeLangDialog()" > Close </button>
+        </div>
+
         <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addLang()" > Language <i class="bi bi-plus-circle ms-2"></i> </button>
+
 
         <div class="mt-4">
           <h6 class="text-primary fs-6" > Interests/Hobbies </h6>
           <div class="mt-3" id="hobbiesBlock" >
-            <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block">Playing Chess</p>
+            <p name="existingHobbies" class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block">Hobbie</p>
           </div>
         </div>
         <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addHobbie()" > Hobbie/Interest <i class="bi bi-plus-circle ms-2"></i> </button>
+
+        <div id="hobbieDialog" class="mb-3 mt-3 p-3 bg-secondary bg-opacity-25  rounded">
+          <label  class="form-label"><strong>Enter Hobbies/Interests</strong></label>
+          <textarea class="form-control" id="hobbiesTextarea" placeholder="Ex: Driving, Reading, Vlogging" rows="3"></textarea>
+          <button class="btn ms-2 mt-3 btn-primary" onclick="addHobbies()" >Add</button>
+          <button class="btn ms-2 mt-3 btn-danger" onclick="closeHobbieDialog()" >Close</button>
+        </div>
+
+
       </div>
 
       <div class="col ms-2">

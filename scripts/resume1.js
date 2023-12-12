@@ -1,6 +1,9 @@
 document.querySelector('#disableEditBtn').style = 'display: none;';
 document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
 document.querySelector('#profileImg').style = 'display: none;';
+document.querySelector('#skillsAddDialog').style = 'display: none;';
+document.querySelector('#addLangDialog').style.display = 'none';
+document.querySelector('#hobbieDialog').style.display = 'none';
 
 var profileImgCh = document.querySelector('#profilepic').files[0];
 
@@ -32,15 +35,48 @@ function btnClose() {
 }
 
 
-let skills = [];
-
 skillBlock = '';
 
 function addSkill() {
- skillBlock = document.getElementById('skillsBlock').innerHTML;
- document.getElementById('skillsBlock').innerHTML = skillBlock + ` <p class="border rounded-pill p-2 border-success border-2 ms-2 d-inline-block" > Skill </p> `;
+ document.querySelector('#skillsAddDialog').style = 'display: block;';
+ 
+}
+
+
+function addSkills() {
+  let inpSkills = document.querySelector('#skilWords').value.split(',');
+
+  let skillCheck = document.getElementsByName('skillPill');
+  let skillPills = document.querySelector('#skillsBlock');
+
+  
+  if (skillCheck.length == 1 && skillCheck[0].innerText === 'Skill') {
+    
+
+    let htmlInside = '';
+    for (let i = 0; i < inpSkills.length; i++) {
+      htmlInside += ` <p name="skillPill" class=" border rounded-pill p-2 border-success border-2 ms-2 d-inline-block"> ${inpSkills[i].trim()} </p> `;
+    }
+
+    skillPills.innerHTML = htmlInside;
+
+    document.querySelector('#skillsAddDialog').style = 'display: none;';
+
+  } else {
+    let htmlInside = skillPills.innerHTML;
+
+    for (let j = 0; j < inpSkills.length; j++) {
+      htmlInside += ` <p name="skillPill" class=" border rounded-pill p-2 border-success border-2 ms-2 d-inline-block"> ${inpSkills[j].trim()} </p> `;
+    }
+    skillPills.innerHTML = htmlInside;
+  }
 
 }
+
+function closeSDialog() {
+  document.querySelector('#skillsAddDialog').style = 'display: none;';
+}
+
 
 let experienceBlock = '';
 
@@ -58,22 +94,114 @@ function addProject() {
 
 eduRow = '';
 ednum = 2;
+delEdId = 1;
+delrowId = 501;
+
 function addEDRow() {
  eduRow = document.getElementById('edurow').innerHTML;
- document.getElementById('edurow').innerHTML = eduRow + ` <tr> <th scope="row" > ${ednum} . </th> <td> Course </td> <td> Institute </td> <td> Year from - Year to </td> </tr> `;
+ eduRow += ` <tr id="${delEdId}" > <th scope="row"> ${ednum}.</th> <td> Secondary School </td> <td> Indian Institute </td> <td>2016 - 2018 </td> <td name="delEdrowBtn" class="text-center" > <button class="btn btn-danger fw-bold " onclick="deleteEdRow(${delEdId})" > Delete </button> </td> </tr> `;
+
+ document.getElementById('edurow').innerHTML = eduRow;
+ delEdId += 1;
  ednum += 1;
 }
 
-var addLangn = '';
-function addLang() {
- addLangn = document.getElementById('langBlock').innerHTML;
- document.getElementById('langBlock').innerHTML = addLangn + ` <p class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block" > Language </p> `;
+function deleteEdRow(id) {
+  document.getElementById(id).innerHTML = '';
 }
 
-var addHobbien = '';
+
+
+var addLangn = '';
+function addLang() {
+ document.querySelector('#addLangDialog').style.display = 'block';
+ 
+}
+
+function closeLangDialog() {
+  document.querySelector('#addLangDialog').style.display = 'none';
+}
+
+
+
+function addLanguages() {
+  
+  let addLangn = '';
+
+  avlLangs = document.getElementsByName('languages');
+
+  languageArray = document.querySelector('#enteredLanguages').value.split(',');
+  if (avlLangs.length == 1 && avlLangs[0].innerText === 'Language') {
+    
+    for (let o = 0; o < languageArray.length; o++) {
+      
+      addLangn += ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[o].trim()} </p> `
+      
+    }
+
+    document.getElementById('langBlock').innerHTML = addLangn;
+    document.querySelector('#addLangDialog').style.display = 'none';
+    document.querySelector('#enteredLanguages').value = '';
+
+  } else {
+    addLangn = document.getElementById('langBlock').innerHTML;
+
+    for (let t = 0; t < languageArray.length; t++) {
+      
+      addLangn +=  ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[t].trim()} </p> `
+      
+    }
+    document.getElementById('langBlock').innerHTML = addLangn;
+    document.querySelector('#addLangDialog').style.display = 'none';
+    document.querySelector('#enteredLanguages').value = '';
+
+  }
+}
+
+
+
+
+
 function addHobbie() {
- addHobbien = document.getElementById('hobbiesBlock').innerHTML;
- document.getElementById('hobbiesBlock').innerHTML = addHobbien + ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block" > Hobbie </p> `;
+
+  document.querySelector('#hobbieDialog').style.display = 'block';
+
+  }
+
+
+  //  addHobbien = document.getElementById('hobbiesBlock').innerHTML;
+//  document.getElementById('hobbiesBlock').innerHTML = addHobbien + ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block" > Hobbie </p> `;
+
+function addHobbies() {
+  
+  enteredHobbies = document.querySelector('#hobbiesTextarea').value.split(',');
+  let addHobbiehtml = '';
+  let existingHbs = document.getElementsByName('existingHobbies');
+
+  if (existingHbs.length == 1 && existingHbs[0].innerText === 'Hobbie') {
+    for (let z = 0; z < enteredHobbies.length; z++) {
+      addHobbiehtml += ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block"> ${enteredHobbies[z].trim()} </p> `;
+      
+    }
+    document.getElementById('hobbiesBlock').innerHTML = addHobbiehtml;
+    document.querySelector('#hobbieDialog').style.display = 'none';
+    document.querySelector('#hobbiesTextarea').value = '';
+
+  } else {
+    addHobbiehtml = document.getElementById('hobbiesBlock').innerHTML;
+
+    for (let x = 0; x < enteredHobbies.length; x++) {
+      
+      addHobbiehtml += ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block" > ${enteredHobbies[x].trim()} </p> `;
+    }
+
+    document.getElementById('hobbiesBlock').innerHTML = addHobbiehtml;
+    document.querySelector('#hobbieDialog').style.display = 'none';
+    document.querySelector('#hobbiesTextarea').value = '';
+
+  }
+
+
 }
 
 
@@ -107,16 +235,34 @@ function readyPrint() {
  for (let i = 0; i < contentsToHide.length; i++) {
  contentsToHide[i].style = 'display: none';
  }
-
  document.querySelector('.lastContentHide').style = 'display: none';
+
+ let edDelbtns = document.getElementsByName('delEdrowBtn');
+
+
+ for (let l = 0; l < edDelbtns.length; l++) {
+  
+  edDelbtns[l].style.display = 'none';
+  
+ }
+
+
 }
+
+
+
+
 
 if (localStorage.getItem('htmltext')) {
  document.querySelector('#loadPreviousDataBtn').style = 'display: block;';
 }
 
+
+
+
 function retriveData() {
  disableEdit()
  let userData = localStorage.getItem('htmltext');
  document.body.innerHTML = JSON.parse(userData);
+
 }
