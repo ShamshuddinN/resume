@@ -172,9 +172,6 @@ function closeHobbieDialog() {
   document.querySelector('#hobbieDialog').style.display = 'none';
 }
 
-  //  addHobbien = document.getElementById('hobbiesBlock').innerHTML;
-//  document.getElementById('hobbiesBlock').innerHTML = addHobbien + ` <p class="border rounded-2 p-2 border-primary border-1 ms-2 d-inline-block" > Hobbie </p> `;
-
 function addHobbies() {
   
   enteredHobbies = document.querySelector('#hobbiesTextarea').value.split(',');
