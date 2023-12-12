@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="staticfiles/bootstrap-5.3.2-dist/css/bootstrap.css">
   <link rel="stylesheet" href="webcss/res1.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <link  href = "staticfiles/media/_7376d742-13da-458b-80f4-aab2ff3c0ab0.jfif" rel="icon" type="image/gif">
   <title>format1</title>
 </head>
 <body>
@@ -91,7 +92,7 @@
       <div class="col">
         <h6 class="text-primary fs-6" > Skills  <i class="bi bi-arrow-right-short"></i> </h6>
 
-        <div class="position-relative " id="skillsAddDialog" >
+        <div class="position-relative contentToHide " id="skillsAddDialog" >
           <div class="position-absolute top-0 start-50 translate-middle p-2 rounded rounded-2 bg-dark bg-opacity-25 ">
             <h6>Enter Skills</h6>
             <input type="text" class="form-control" placeholder="Ex: MS Excel, Ms Office" id="skilWords" >
@@ -237,7 +238,7 @@
           <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block">Language</p>
         </div>
 
-        <div id="addLangDialog" class="mb-3 p-3 bg-primary rounded bg-opacity-25">
+        <div id="addLangDialog" class=" contentToHide mb-3 p-3 bg-primary rounded bg-opacity-25">
           <label class="form-label fs-6"> <strong>Enter Languages</strong> </label>
           <textarea id="enteredLanguages" class="form-control" placeholder="Ex: Kannada, English, Hindi " rows="2"></textarea>
           <button class="btn btn-primary ms-2 mt-3" type="button" onclick="addLanguages()" >Add</button>
@@ -255,7 +256,7 @@
         </div>
         <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addHobbie()" > Hobbie/Interest <i class="bi bi-plus-circle ms-2"></i> </button>
 
-        <div id="hobbieDialog" class="mb-3 mt-3 p-3 bg-secondary bg-opacity-25  rounded">
+        <div id="hobbieDialog" class="mb-3 mt-3 p-3 bg-secondary bg-opacity-25 contentToHide rounded">
           <label  class="form-label"><strong>Enter Hobbies/Interests</strong></label>
           <textarea class="form-control" id="hobbiesTextarea" placeholder="Ex: Driving, Reading, Vlogging" rows="3"></textarea>
           <button class="btn ms-2 mt-3 btn-primary" onclick="addHobbies()" >Add</button>
