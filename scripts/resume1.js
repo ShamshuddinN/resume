@@ -111,6 +111,22 @@ function deleteEdRow(id) {
 }
 
 
+function addSectionNum() {
+  let ach = document.querySelector('#achievementsSec').innerHTML;
+
+  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ol> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ol> </div> </div> `
+
+  document.querySelector('#achievementsSec').innerHTML = ach;
+}
+
+function addSectionBullet() {
+  let ach = document.querySelector('#achievementsSec').innerHTML;
+
+  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ul> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ul> </div> </div> `
+
+  document.querySelector('#achievementsSec').innerHTML = ach;
+}
+
 
 var addLangn = '';
 function addLang() {
