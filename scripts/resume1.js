@@ -49,13 +49,24 @@ function addSummarybtn() {
 
 }
 
-let ulid = 250;
+let ulid = 110;
+let expPts = 322;
+let projPts = 550;
+
+if (localStorage.getItem('ptIds')) {
+  let parsedIds = JSON.parse(localStorage.getItem('ptIds'));
+  ulid = parsedIds.summaryID;
+  expPts = parsedIds.expID;
+  projPts = parsedIds.projectID;
+ }
+
 let tulid = ``;
 
 function summaryBullet() {
   existingBlk = document.querySelector('#summaryBlock').innerHTML;
-  ulid += 1
-  tulid = `t${ulid}`
+  ulid += 1;
+  updateValues();
+  tulid = `t${ulid}`;
   existingBlk += ` <h6 class=" text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6> <ul id="${tulid}" > <li> Point 1 </li> </ul> <button onclick="summaryPoints()" class= "btn btn-light ms-1 mt-2 mb-2 border border-secondary contentToHide " > Add Points text <i class="bi bi-plus-circle ms-2"></i> </button>  `
 
   document.querySelector('#summaryBlock').innerHTML = existingBlk
@@ -72,7 +83,7 @@ function closeSummaryPoints() {
 
 function addSummaryPoints() {
   let summaryPts = document.querySelector('#summaryPoints').value;
-  let sep = summaryPts[0]
+  let sep = summaryPts[0];
 
   let spoints = summaryPts.split(sep);
 
@@ -137,12 +148,13 @@ function closeSDialog() {
 
 let experienceBlock = '';
 
-let expPts = 322;
+// let expPts = 322;
+
 let expPtsID = ``;
 
 function addExperience() {
   expPts += 1;
-  console.log(expPts);
+  updateValues();
   expPtsID = `txt${expPts}`;
   experienceBlock = document.getElementById('experienceBlock').innerHTML;
   document.getElementById('experienceBlock').innerHTML = experienceBlock + ` <div class="row mt-4" > <div class="row mt-2" > <h6 class="insidehead" > <strong> Company name </strong> </h6> <p class="mytextsize" > Designation </p> </div> <div class="row d-flex justify-content-between" > <div class="col" > <p class="mytextsize" > Jan/2020 - Present </p> <h6 class="mytextsize" > Description </h6> </div> <div class="col" > <p class="mytextsize text-end" > <i class="bi bi-geo-alt " > </i> Karnataka, India </p> </div> </div> <div class="row mytextsize ms-3 me-1" > <ul id = "${expPtsID}" > <li> Write your Experience Summary/Responsibilities Here </li> </ul> </div> `;
@@ -166,7 +178,7 @@ function addExpPoints() {
   let ptsArray = enteredExpPoints.split(esep);
 
   for (let k = 1; k < ptsArray.length; k++) {
-    exhtml += ` <li> ${ptsArray[k]} </li> `
+    exhtml += ` <li> ${ptsArray[k]} </li> `;
   }
 
   
@@ -182,7 +194,7 @@ function addExpPoints() {
 
 
 
-let projPts = 322;
+// let projPts = 550;
 let projPtsID = ``;
 
 
@@ -190,6 +202,7 @@ projectBlock = '';
 
 function addProject() {
   projPts += 1;
+  updateValues();
   projPtsID = `tx${projPts}`;
 
 
@@ -207,6 +220,12 @@ function closeProjPoints() {
   document.querySelector('#projDalog').style.display = 'none';
 }
 
+function updateValues() {
+  ids = {summaryID: ulid, expID : expPts, projectID : projPts};
+  localStorage.setItem('ptIds', JSON.stringify(ids));
+}
+
+
 
 function addProjPoints() {
   let pjhtml = ``;
@@ -216,7 +235,7 @@ function addProjPoints() {
   let ptsArray = enteredProjPoints.split(psep);
 
   for (let k = 1; k < ptsArray.length; k++) {
-    pjhtml += ` <li> ${ptsArray[k]} </li> `
+    pjhtml += ` <li> ${ptsArray[k]} </li> `;
   }
 
   
@@ -254,7 +273,7 @@ function deleteEdRow(id) {
 function addSectionNum() {
   let ach = document.querySelector('#achievementsSec').innerHTML;
 
-  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ol> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ol> </div> </div> `
+  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ol> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ol> </div> </div> `;
 
   document.querySelector('#achievementsSec').innerHTML = ach;
 }
@@ -262,7 +281,7 @@ function addSectionNum() {
 function addSectionBullet() {
   let ach = document.querySelector('#achievementsSec').innerHTML;
 
-  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ul> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ul> </div> </div> `
+  ach += ` <div class="row mt-2"> <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6> <div class="mt-2 mytextsize"> <ul> <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li> <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li> </ul> </div> </div> `;
 
   document.querySelector('#achievementsSec').innerHTML = ach;
 }
@@ -291,7 +310,7 @@ function addLanguages() {
     
     for (let o = 0; o < languageArray.length; o++) {
       
-      addLangn += ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[o].trim()} </p> `
+      addLangn += ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[o].trim()} </p> `;
       
     }
 
@@ -304,7 +323,7 @@ function addLanguages() {
 
     for (let t = 0; t < languageArray.length; t++) {
       
-      addLangn +=  ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[t].trim()} </p> `
+      addLangn +=  ` <p name="languages" class="border rounded-2 p-1 border-success border-1 ms-2 d-inline-block"> ${languageArray[t].trim()} </p> `;
       
     }
     document.getElementById('langBlock').innerHTML = addLangn;
