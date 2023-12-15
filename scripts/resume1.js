@@ -6,6 +6,8 @@ document.querySelector('#skillsAddDialog').style = 'display: none;';
 document.querySelector('#addLangDialog').style.display = 'none';
 document.querySelector('#hobbieDialog').style.display = 'none';
 document.querySelector('#summaryPointsDialog').style.display = 'none';
+document.querySelector('#expPointsDialog').style.display = 'none';
+document.querySelector('#projDalog').style.display = 'none';
 
 var profileImgCh = document.querySelector('#profilepic').files[0];
 
@@ -54,7 +56,7 @@ function summaryBullet() {
   existingBlk = document.querySelector('#summaryBlock').innerHTML;
   ulid += 1
   tulid = `t${ulid}`
-  existingBlk += ` <h6 class=" text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6> <ul id="${tulid}" > <li> Point 1 </li> </ul> <button onclick="summaryPoints()" class= "btn btn-light ms-3 mt-2 mb-2 border border-secondary contentToHide " > Add Points text <i class="bi bi-plus-circle ms-2"></i> </button>  `
+  existingBlk += ` <h6 class=" text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6> <ul id="${tulid}" > <li> Point 1 </li> </ul> <button onclick="summaryPoints()" class= "btn btn-light ms-1 mt-2 mb-2 border border-secondary contentToHide " > Add Points text <i class="bi bi-plus-circle ms-2"></i> </button>  `
 
   document.querySelector('#summaryBlock').innerHTML = existingBlk
 
@@ -135,17 +137,100 @@ function closeSDialog() {
 
 let experienceBlock = '';
 
+let expPts = 322;
+let expPtsID = ``;
+
 function addExperience() {
- experienceBlock = document.getElementById('experienceBlock').innerHTML;
- document.getElementById('experienceBlock').innerHTML = experienceBlock + ` <div class="row mt-4" > <div class="row mt-2" > <h6 class="insidehead" > <strong> Company name </strong> </h6> <p class="mytextsize" > Designation </p> </div> <div class="row d-flex justify-content-between" > <div class="col" > <p class="mytextsize" > Jan/2020 - Present </p> <h6 class="mytextsize" > Description </h6> </div> <div class="col" > <p class="mytextsize text-end" > <i class="bi bi-geo-alt " > </i> Karnataka, India </p> </div> </div> <div class="row mytextsize ms-3 me-1" > <ul> <li> Write your Experience Summary/Responsibilities Here </li> </ul> </div> `;
+  expPts += 1;
+  console.log(expPts);
+  expPtsID = `txt${expPts}`;
+  experienceBlock = document.getElementById('experienceBlock').innerHTML;
+  document.getElementById('experienceBlock').innerHTML = experienceBlock + ` <div class="row mt-4" > <div class="row mt-2" > <h6 class="insidehead" > <strong> Company name </strong> </h6> <p class="mytextsize" > Designation </p> </div> <div class="row d-flex justify-content-between" > <div class="col" > <p class="mytextsize" > Jan/2020 - Present </p> <h6 class="mytextsize" > Description </h6> </div> <div class="col" > <p class="mytextsize text-end" > <i class="bi bi-geo-alt " > </i> Karnataka, India </p> </div> </div> <div class="row mytextsize ms-3 me-1" > <ul id = "${expPtsID}" > <li> Write your Experience Summary/Responsibilities Here </li> </ul> </div> `;
 }
+
+
+function addExpPointsBtn() {
+  document.querySelector('#expPointsDialog').style.display = 'block';
+}
+
+function closeExpPoints() {
+  document.querySelector('#expPointsDialog').style.display = 'none';
+}
+
+
+function addExpPoints() {
+  let exhtml = ``;
+
+  let enteredExpPoints = document.querySelector('#expePoints').value;
+  let esep = enteredExpPoints[0];
+  let ptsArray = enteredExpPoints.split(esep);
+
+  for (let k = 1; k < ptsArray.length; k++) {
+    exhtml += ` <li> ${ptsArray[k]} </li> `
+  }
+
+  
+  if (expPtsID == '') {
+    document.querySelector(`#initialExpPoints`).innerHTML = exhtml;
+  } else {
+    document.querySelector(`#${expPtsID}`).innerHTML = exhtml;
+  }
+
+
+  document.querySelector('#expPointsDialog').style.display = 'none';
+}
+
+
+
+let projPts = 322;
+let projPtsID = ``;
+
 
 projectBlock = '';
 
 function addProject() {
+  projPts += 1;
+  projPtsID = `tx${projPts}`;
+
+
  projectBlock = document.getElementById('projectBlock').innerHTML;
- document.getElementById('projectBlock').innerHTML = projectBlock + ` <div class="row mt-3 mytextsize justify-content-between" > <div class="col" > <p class="insidehead" > <strong> Project Name </strong> </p> <p class="mytextsize" > <strong> Client: </strong> xyz </p> <h6 class="mytextsize" > Description </h6> </div> <div class="col" > <p class="insidehead text-end" > Employer </p> <p class="insidehead text-end" > Additional Field ex: Period </p> </div> </div> <div class="row mytextsize ms-3" > <ul> <li> Describe yout Project Work </li> </ul> </div> `;
+ document.getElementById('projectBlock').innerHTML = projectBlock + ` <div class="row mt-3 mytextsize justify-content-between" > <div class="col" > <p class="insidehead" > <strong> Project Name </strong> </p> <p class="mytextsize" > <strong> Client: </strong> xyz </p> <h6 class="mytextsize" > Description </h6> </div> <div class="col" > <p class="insidehead text-end" > Employer </p> <p class="insidehead text-end" > Additional Field ex: Period </p> </div> </div> <div class="row mytextsize ms-3" > <ul id = "${projPtsID}" > <li> Describe yout Project Work </li> </ul> </div> `;
 }
+
+
+
+function addProjPointsBtn() {
+  document.querySelector('#projDalog').style.display = 'block';
+}
+
+function closeProjPoints() {
+  document.querySelector('#projDalog').style.display = 'none';
+}
+
+
+function addProjPoints() {
+  let pjhtml = ``;
+
+  let enteredProjPoints = document.querySelector('#proj11Points').value;
+  let psep = enteredProjPoints[0];
+  let ptsArray = enteredProjPoints.split(psep);
+
+  for (let k = 1; k < ptsArray.length; k++) {
+    pjhtml += ` <li> ${ptsArray[k]} </li> `
+  }
+
+  
+  if (projPtsID == '') {
+    document.querySelector(`#initialProjD`).innerHTML = pjhtml;
+  } else {
+    document.querySelector(`#${projPtsID}`).innerHTML = pjhtml;
+  }
+
+
+  document.querySelector('#projDalog').style.display = 'none';
+}
+
+
 
 eduRow = '';
 ednum = 2;

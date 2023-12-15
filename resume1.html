@@ -91,10 +91,10 @@
   <button onclick="summaryBullet()" class="btn btn-light ms-3 border border-secondary contentToHide " > Bullet Points <i class="bi bi-list-ul text-dark "></i> </button>
 
   <div class="row justify-content-center" id="summaryPointsDialog" >
-    <div class="col-lg-4 col-md-6 col-sm-10 p-3 bg-primary-subtle rounded ">
+    <div class="col-lg-4 col-md-8 col-sm-12 p-3 ms-5 mt-4 bg-primary-subtle rounded ">
       <h6>Enter Summary Points</h6>
 
-      <textarea class="form-control mt-2" id="summaryPoints" cols="40" rows="5"></textarea>
+      <textarea class="form-control mt-2" placeholder="Ex: * First Point * Second Point ... (Enter points with a seperator here for example the seperator is *) " id="summaryPoints" cols="40" rows="5"></textarea>
 
       <button class="btn btn-primary fw-bold p-2 mt-3 ms-2 " onclick="addSummaryPoints()" >Add</button>
       <button class="btn btn-danger fw-bold p-2 mt-3 ms-2 " onclick="closeSummaryPoints()"  >Close</button>
@@ -163,14 +163,31 @@
     </div>
 
     <div class="row mytextsize ms-3 me-1">
-      <ul>
+      <ul id="initialExpPoints" >
         <li>Write your Experience Summary/Responsibilities Here</li>
       </ul>
     </div>
   </div>
 
   <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addExperience()" > Experience <i class="bi bi-plus-circle ms-2"></i> </button>
+  
+  <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addExpPointsBtn()" > Points <i class="bi bi-plus-circle ms-2"></i> </button>
+
   <!-- End of Work Experience -->
+
+  <div class="row justify-content-center" id="expPointsDialog" >
+    <div class="col-lg-4 col-md-8 col-sm-12 p-3 mt-4 bg-primary-subtle rounded ">
+      <h6>Enter Summary Points</h6>
+
+      <textarea class="form-control mt-2" id="expePoints" placeholder="Ex: * First Point * Second Point ... (Enter points with a seperator here for example the seperator is *) " cols="40" rows="5"></textarea>
+
+      <button class="btn btn-primary fw-bold p-2 mt-3 ms-2 " onclick="addExpPoints()" >Add</button>
+      <button class="btn btn-danger fw-bold p-2 mt-3 ms-2 " onclick="closeExpPoints()"  >Close</button>
+
+    </div>
+  </div>
+
+
 
   <!-- Projects Section -->
   <div class="container-fluid" id="projectBlock" >
@@ -193,8 +210,8 @@
 
     <div class="row mytextsize ms-3">
       
-      <ul>
-        <li>Describe yout Project Work</li>
+      <ul id="initialProjD" >
+        <li>Describe your Project Work</li>
       </ul>
     </div>
   </div>
@@ -202,6 +219,24 @@
   <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addProject()" > Project <i class="bi bi-plus-circle ms-2"></i> </button>
 
   <!-- End of Projects Section -->
+
+  <button class="btn btn-light border border-2 border-secondary ms-2 contentToHide " onclick="addProjPointsBtn()" > Points <i class="bi bi-plus-circle ms-2"></i> </button>
+
+  <!-- End of Work Experience -->
+
+  <div class="row justify-content-center" id="projDalog" >
+    <div class="col-lg-4 col-md-8 col-sm-12 p-3 mt-4 bg-primary-subtle rounded ">
+      <h6>Enter Summary Points</h6>
+
+      <textarea class="form-control mt-2" id="proj11Points" placeholder="Ex: * First Point * Second Point ... (Enter points with a seperator here for example the seperator is *) " cols="40" rows="5"></textarea>
+
+      <button class="btn btn-primary fw-bold p-2 mt-3 ms-2 " onclick="addProjPoints()" >Add</button>
+      <button class="btn btn-danger fw-bold p-2 mt-3 ms-2 " onclick="closeProjPoints()"  >Close</button>
+
+    </div>
+  </div>
+
+
 
   <!-- Education Table -->
   <div class="container-fluid">
@@ -240,8 +275,8 @@
       <h6 class="text-primary fs-6" > Achievements <i class="bi bi-arrow-right-short"></i> </h6>
       <div class="mt-2 mytextsize">
         <ol>
-          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla officiis doloribus vitae omnis. Fugit, est quisquam.</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, consequatur.</li>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </li>
+          <li>Lorem ipsum dolor sit Iure, consequatur.</li>
         </ol>
       </div>
     </div>
