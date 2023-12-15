@@ -1,9 +1,11 @@
 document.querySelector('#disableEditBtn').style = 'display: none;';
 document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
+document.querySelector('#deletePreviousData').style = 'display: none;';
 document.querySelector('#profileImg').style = 'display: none;';
 document.querySelector('#skillsAddDialog').style = 'display: none;';
 document.querySelector('#addLangDialog').style.display = 'none';
 document.querySelector('#hobbieDialog').style.display = 'none';
+document.querySelector('#summaryPointsDialog').style.display = 'none';
 
 var profileImgCh = document.querySelector('#profilepic').files[0];
 
@@ -32,6 +34,59 @@ document.querySelector('#ulWarnBtn').style = 'display: none;';
 
 function btnClose() {
  document.querySelector('#ulWarnBtn').style = 'display: none;';
+}
+
+
+function addSummarybtn() {
+  
+  existingBlk = document.querySelector('#summaryBlock').innerHTML;
+
+  existingBlk += ` <h6 class="text-primary fs-6  " > Summary  <i class="bi bi-arrow-right-short"></i> </h6> <p class="mytextsize" > Enter Your Summary Here </p> `
+
+  document.querySelector('#summaryBlock').innerHTML = existingBlk
+
+}
+
+let ulid = 250;
+let tulid = ``;
+
+function summaryBullet() {
+  existingBlk = document.querySelector('#summaryBlock').innerHTML;
+  ulid += 1
+  tulid = `t${ulid}`
+  existingBlk += ` <h6 class=" text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6> <ul id="${tulid}" > <li> Point 1 </li> </ul> <button onclick="summaryPoints()" class= "btn btn-light ms-3 mt-2 mb-2 border border-secondary contentToHide " > Add Points text <i class="bi bi-plus-circle ms-2"></i> </button>  `
+
+  document.querySelector('#summaryBlock').innerHTML = existingBlk
+
+}
+
+function summaryPoints() {
+  document.querySelector('#summaryPointsDialog').style.display = 'block';
+}
+
+function closeSummaryPoints() {
+  document.querySelector('#summaryPointsDialog').style.display = 'none';
+}
+
+function addSummaryPoints() {
+  let summaryPts = document.querySelector('#summaryPoints').value;
+  let sep = summaryPts[0]
+
+  let spoints = summaryPts.split(sep);
+
+  let innerHml = '';
+
+  for (let m = 1; m < spoints.length ; m++) {
+    
+    innerHml += `<li> ${spoints[m]} </li>`;
+    
+  }
+
+  
+  document.querySelector(`#${tulid}`).innerHTML = innerHml;
+  document.querySelector('#summaryPointsDialog').style.display = 'none';
+
+  
 }
 
 
@@ -225,6 +280,7 @@ function saveData() {
  disableEdit()
  let bodyhml = document.body.innerHTML;
  localStorage.setItem('htmltext', JSON.stringify(bodyhml));
+ document.querySelector('#deletePreviousData').style = 'display: block;';
 }
 
 function editDocument() {
@@ -271,14 +327,21 @@ function readyPrint() {
 
 if (localStorage.getItem('htmltext')) {
  document.querySelector('#loadPreviousDataBtn').style = 'display: block;';
+ document.querySelector('#deletePreviousData').style = 'display: block;';
 }
-
-
 
 
 function retriveData() {
  disableEdit()
  let userData = localStorage.getItem('htmltext');
  document.body.innerHTML = JSON.parse(userData);
+ document.querySelector('#deletePreviousData').style = 'display: block;';
 
 }
+
+function deleteData() {
+  localStorage.removeItem('htmltext');
+  document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
+  document.querySelector('#deletePreviousData').style = 'display: none;';
+}
+

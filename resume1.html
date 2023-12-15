@@ -28,6 +28,10 @@
       <button class="btn btn-light border border-2 border-secondary ms-2" onclick="retriveData()" > <i class="bi bi-database-down text-success "></i> Retrive Data </button>
     </div>
 
+    <div class="col align-items-center text-center " id="deletePreviousData">
+      <button class="btn btn-light border border-2 border-secondary ms-2" onclick="deleteData()" > <i class="bi bi-trash3-fill text-danger "></i> Delete Data </button>
+    </div>
+
 
     <div class="col align-items-center text-center ">
       <button class="btn btn-light border border-2 border-secondary rounded rounded-2 " onclick="readyPrint()" >Ready To Print</button>
@@ -38,7 +42,7 @@
     <!-- Head Section --> 
   
   <div class="container-fluid p-1 border-bottom border-info border-4">
-    <div class="row justify-content-center align-items-center mb-2">
+    <div class="row justify-content-center align-items-center mb-2 bg-info-subtle p-2 ">
       <div class="col">
         <img id="profileImg" src="staticfiles/media/defaultprofile.png" class="rounded rounded-circle" width="120" alt="profilepic">
         
@@ -75,10 +79,26 @@
   <!-- Summary -->
   <div class="container-fluid">
     <div class="row mt-3">
-      <div class="col">
+      <div id="summaryBlock" class="col">
         <h6 class="text-primary fs-6" > Summary  <i class="bi bi-arrow-right-short"></i> </h6>
-        <p class="mytextsize" >Enter Your Summary Here</p>
+        <p class="mytextsize" >Enter Your Summary Here</p>      
       </div>
+    </div>
+  </div>
+
+  <button onclick="addSummarybtn()" class="btn btn-light ms-3 border border-secondary contentToHide " >Add Another <i class="bi bi-plus-circle ms-2"></i> </button>
+  
+  <button onclick="summaryBullet()" class="btn btn-light ms-3 border border-secondary contentToHide " > Bullet Points <i class="bi bi-list-ul text-dark "></i> </button>
+
+  <div class="row justify-content-center" id="summaryPointsDialog" >
+    <div class="col-lg-4 col-md-6 col-sm-10 p-3 bg-primary-subtle rounded ">
+      <h6>Enter Summary Points</h6>
+
+      <textarea class="form-control mt-2" id="summaryPoints" cols="40" rows="5"></textarea>
+
+      <button class="btn btn-primary fw-bold p-2 mt-3 ms-2 " onclick="addSummaryPoints()" >Add</button>
+      <button class="btn btn-danger fw-bold p-2 mt-3 ms-2 " onclick="closeSummaryPoints()"  >Close</button>
+
     </div>
   </div>
 
@@ -234,7 +254,7 @@
 
   <!-- Last Section -->
   <div class="container-fluid">
-    <div class="row mt-4 justify-content-center">
+    <div class="row mt-4 justify-content-center bg-warning-subtle p-2 rounded rounded-2">
       <div class="col">
         <h6 class="text-primary fs-6" > Languages </h6>
         <div class="mt-3" id="langBlock" >
