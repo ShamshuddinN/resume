@@ -448,4 +448,3 @@ function deleteData() {
   document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
   document.querySelector('#deletePreviousData').style = 'display: none;';
 }
-
