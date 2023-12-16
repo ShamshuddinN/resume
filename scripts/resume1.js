@@ -1,13 +1,13 @@
-document.querySelector('#disableEditBtn').style = 'display: none;';
-document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
-document.querySelector('#deletePreviousData').style = 'display: none;';
-document.querySelector('#profileImg').style = 'display: none;';
-document.querySelector('#skillsAddDialog').style = 'display: none;';
-document.querySelector('#addLangDialog').style.display = 'none';
-document.querySelector('#hobbieDialog').style.display = 'none';
-document.querySelector('#summaryPointsDialog').style.display = 'none';
-document.querySelector('#expPointsDialog').style.display = 'none';
-document.querySelector('#projDalog').style.display = 'none';
+document.querySelector('#disableEditBtn').classList.add('d-none');
+document.querySelector('#loadPreviousDataBtn').classList.add('d-none');
+document.querySelector('#deletePreviousData').classList.add('d-none');
+document.querySelector('#profileImg').classList.add('d-none');
+document.querySelector('#skillsAddDialog').classList.add('d-none');
+document.querySelector('#addLangDialog').classList.add('d-none');
+document.querySelector('#hobbieDialog').classList.add('d-none');
+document.querySelector('#summaryPointsDialog').classList.add('d-none');
+document.querySelector('#expPointsDialog').classList.add('d-none');
+document.querySelector('#projDalog').classList.add('d-none');
 
 var profileImgCh = document.querySelector('#profilepic').files[0];
 
@@ -19,23 +19,23 @@ function picLoadCheck() {
  reader.readAsDataURL(fileInput);
 
  reader.onload = function(e) {
-  document.getElementById('hideUploadBtns').style = 'display: none;';
+  document.getElementById('hideUploadBtns').classList.add('d-none');
   var img = document.getElementById('profileImg');
   img.src = e.target.result;
 
-  document.querySelector('#profileImg').style = 'display: block;';
-  document.querySelector('#ulWarnBtn').style = 'display: none;';
+  document.querySelector('#profileImg').classList.remove('d-none');
+  document.querySelector('#ulWarnBtn').classList.add('d-none');
  }
 
  } else {
- document.querySelector('#ulWarnBtn').style = 'display: block;';
+ document.querySelector('#ulWarnBtn').classList.remove('d-none');
  }
 }
 
-document.querySelector('#ulWarnBtn').style = 'display: none;';
+document.querySelector('#ulWarnBtn').classList.add('d-none');
 
 function btnClose() {
- document.querySelector('#ulWarnBtn').style = 'display: none;';
+ document.querySelector('#ulWarnBtn').classList.add('d-none');
 }
 
 
@@ -74,11 +74,11 @@ function summaryBullet() {
 }
 
 function summaryPoints() {
-  document.querySelector('#summaryPointsDialog').style.display = 'block';
+  document.querySelector('#summaryPointsDialog').classList.remove('d-none');
 }
 
 function closeSummaryPoints() {
-  document.querySelector('#summaryPointsDialog').style.display = 'none';
+  document.querySelector('#summaryPointsDialog').classList.add('d-none');
 }
 
 function addSummaryPoints() {
@@ -97,7 +97,7 @@ function addSummaryPoints() {
 
   
   document.querySelector(`#${tulid}`).innerHTML = innerHml;
-  document.querySelector('#summaryPointsDialog').style.display = 'none';
+  document.querySelector('#summaryPointsDialog').classList.add('d-none');
 
   
 }
@@ -106,7 +106,7 @@ function addSummaryPoints() {
 skillBlock = '';
 
 function addSkill() {
- document.querySelector('#skillsAddDialog').style = 'display: block;';
+ document.querySelector('#skillsAddDialog').classList.remove('d-none');
  
 }
 
@@ -128,7 +128,7 @@ function addSkills() {
 
     skillPills.innerHTML = htmlInside;
 
-    document.querySelector('#skillsAddDialog').style = 'display: none;';
+    document.querySelector('#skillsAddDialog').classList.add('d-none');
 
   } else {
     let htmlInside = skillPills.innerHTML;
@@ -142,7 +142,7 @@ function addSkills() {
 }
 
 function closeSDialog() {
-  document.querySelector('#skillsAddDialog').style = 'display: none;';
+  document.querySelector('#skillsAddDialog').classList.add('d-none');
 }
 
 
@@ -162,11 +162,11 @@ function addExperience() {
 
 
 function addExpPointsBtn() {
-  document.querySelector('#expPointsDialog').style.display = 'block';
+  document.querySelector('#expPointsDialog').classList.remove('d-none');
 }
 
 function closeExpPoints() {
-  document.querySelector('#expPointsDialog').style.display = 'none';
+  document.querySelector('#expPointsDialog').classList.add('d-none');
 }
 
 
@@ -189,7 +189,7 @@ function addExpPoints() {
   }
 
 
-  document.querySelector('#expPointsDialog').style.display = 'none';
+  document.querySelector('#expPointsDialog').classList.add('d-none');
 }
 
 
@@ -213,11 +213,11 @@ function addProject() {
 
 
 function addProjPointsBtn() {
-  document.querySelector('#projDalog').style.display = 'block';
+  document.querySelector('#projDalog').classList.remove('d-none');
 }
 
 function closeProjPoints() {
-  document.querySelector('#projDalog').style.display = 'none';
+  document.querySelector('#projDalog').classList.add('d-none');
 }
 
 function updateValues() {
@@ -246,7 +246,7 @@ function addProjPoints() {
   }
 
 
-  document.querySelector('#projDalog').style.display = 'none';
+  document.querySelector('#projDalog').classList.add('d-none');
 }
 
 
@@ -289,12 +289,12 @@ function addSectionBullet() {
 
 var addLangn = '';
 function addLang() {
- document.querySelector('#addLangDialog').style.display = 'block';
+ document.querySelector('#addLangDialog').classList.remove('d-none');
  
 }
 
 function closeLangDialog() {
-  document.querySelector('#addLangDialog').style.display = 'none';
+  document.querySelector('#addLangDialog').classList.add('d-none');
 }
 
 
@@ -315,7 +315,7 @@ function addLanguages() {
     }
 
     document.getElementById('langBlock').innerHTML = addLangn;
-    document.querySelector('#addLangDialog').style.display = 'none';
+    document.querySelector('#addLangDialog').classList.add('d-none');
     document.querySelector('#enteredLanguages').value = '';
 
   } else {
@@ -327,7 +327,7 @@ function addLanguages() {
       
     }
     document.getElementById('langBlock').innerHTML = addLangn;
-    document.querySelector('#addLangDialog').style.display = 'none';
+    document.querySelector('#addLangDialog').classList.add('d-none');
     document.querySelector('#enteredLanguages').value = '';
 
   }
@@ -339,12 +339,12 @@ function addLanguages() {
 
 function addHobbie() {
 
-  document.querySelector('#hobbieDialog').style.display = 'block';
+  document.querySelector('#hobbieDialog').classList.remove('d-none');
 
   }
 
 function closeHobbieDialog() {
-  document.querySelector('#hobbieDialog').style.display = 'none';
+  document.querySelector('#hobbieDialog').classList.add('d-none');
 }
 
 function addHobbies() {
@@ -359,7 +359,7 @@ function addHobbies() {
       
     }
     document.getElementById('hobbiesBlock').innerHTML = addHobbiehtml;
-    document.querySelector('#hobbieDialog').style.display = 'none';
+    document.querySelector('#hobbieDialog').classList.add('d-none');
     document.querySelector('#hobbiesTextarea').value = '';
 
   } else {
@@ -371,7 +371,7 @@ function addHobbies() {
     }
 
     document.getElementById('hobbiesBlock').innerHTML = addHobbiehtml;
-    document.querySelector('#hobbieDialog').style.display = 'none';
+    document.querySelector('#hobbieDialog').classList.add('d-none');
     document.querySelector('#hobbiesTextarea').value = '';
 
   }
@@ -384,26 +384,26 @@ function saveData() {
  disableEdit()
  let bodyhml = document.body.innerHTML;
  localStorage.setItem('htmltext', JSON.stringify(bodyhml));
- document.querySelector('#deletePreviousData').style = 'display: block;';
+ document.querySelector('#deletePreviousData').classList.remove('d-none');
 }
 
 function editDocument() {
  document.body.contentEditable = true;
- document.querySelector('#enableEditBtn').style = 'display: none;';
- document.querySelector('#disableEditBtn').style = 'display: block;';
+ document.querySelector('#enableEditBtn').classList.add('d-none');
+ document.querySelector('#disableEditBtn').classList.remove('d-none');
 
 }
 function disableEdit() {
  document.body.contentEditable = false;
- document.querySelector('#enableEditBtn').style = 'display: block;';
- document.querySelector('#disableEditBtn').style = 'display: none;';
+ document.querySelector('#enableEditBtn').classList.remove('d-none');
+ document.querySelector('#disableEditBtn').classList.add('d-none');
  
 }
 
 function readyPrint() {
  if (profileImgCh == undefined) {
- document.querySelector('#profileImg').style = 'display: block;';
- document.getElementById('hideUploadBtns').style = 'display: none;';
+ document.querySelector('#profileImg').classList.remove('d-none');
+ document.getElementById('hideUploadBtns').classList.add('d-none');
  }
 
  contentsToHide = document.querySelectorAll('.contentToHide');
@@ -418,7 +418,7 @@ function readyPrint() {
 
  for (let l = 0; l < edDelbtns.length; l++) {
   
-  edDelbtns[l].style.display = 'none';
+  edDelbtns[l].classList.add('d-none');
   
  }
 
@@ -430,8 +430,8 @@ function readyPrint() {
 
 
 if (localStorage.getItem('htmltext')) {
- document.querySelector('#loadPreviousDataBtn').style = 'display: block;';
- document.querySelector('#deletePreviousData').style = 'display: block;';
+ document.querySelector('#loadPreviousDataBtn').classList.remove('d-none');
+ document.querySelector('#deletePreviousData').classList.remove('d-none');
 }
 
 
@@ -439,12 +439,12 @@ function retriveData() {
  disableEdit()
  let userData = localStorage.getItem('htmltext');
  document.body.innerHTML = JSON.parse(userData);
- document.querySelector('#deletePreviousData').style = 'display: block;';
+ document.querySelector('#deletePreviousData').classList.remove('d-none');
 
 }
 
 function deleteData() {
   localStorage.removeItem('htmltext');
-  document.querySelector('#loadPreviousDataBtn').style = 'display: none;';
-  document.querySelector('#deletePreviousData').style = 'display: none;';
+  document.querySelector('#loadPreviousDataBtn').classList.add('d-none');
+  document.querySelector('#deletePreviousData').classList.add('d-none');
 }
