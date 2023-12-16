@@ -60,6 +60,13 @@ if (localStorage.getItem('ptIds')) {
   projPts = parsedIds.projectID;
  }
 
+
+function deleteProjectSection() {
+  document.querySelector('#projectBlock').classList.add('d-none');
+  document.querySelector('#projectDel').classList.add('d-none');
+}
+
+
 let tulid = ``;
 
 function summaryBullet() {
