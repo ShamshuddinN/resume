@@ -48,9 +48,5 @@ function inputSubmit() {
   
 }
 
-// const str = "Mr Red has a red house and a red car";
-// const newText = str.replace(/red/g, "blue");
-// console.log(newText); // Mr Blue has a blue house and a blue car
-
 
 
