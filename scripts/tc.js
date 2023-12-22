@@ -27,7 +27,11 @@ function inputSubmit() {
     let outText = ''
 
     for (let i = 1; i < out.length; i++) {
-      outText += '• ' + out[i].trim()+ '\n';
+      if (i < out.length - 1) {
+        outText += '• ' + out[i].trim()+ '\n';
+      } else {
+        outText += '• ' + out[i].trim()
+      }
     }
     document.querySelector('#textOutput').disabled = false;
 
