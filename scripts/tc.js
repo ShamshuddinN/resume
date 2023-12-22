@@ -21,7 +21,7 @@ function inputSubmit() {
     document.querySelector('#textOutput').placeholder = 'Please Enter Text in Input Text Box with a Line seperator.';
     
     document.querySelector('#textOutput').disabled = true;
-  } else if (isAlpha(incomingText[0])) {
+  } else if (isAlpha(incomingText[0]) ||incomingText[0] === ' ') {
     document.querySelector('#textOutput').placeholder = 'Error: No Line Seperator Found!';
     document.querySelector('#textOutput').disabled = true;
   } else if (mystr.includes(incomingText[0])) {
