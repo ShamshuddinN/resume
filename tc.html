@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="staticfiles/bootstrap-5.3.2-dist/css/bootstrap.css">
+  <title>Text Correction</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row p-3 text-center align-items-center ">
+      <h3>Text Correction</h3>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center  ">
+      <div class="col-lg-5 col-md-7 col-sm-10 bg-primary bg-opacity-25 p-3 rounded  ">
+        <textarea class="form-control" id="textInput" cols="30" placeholder="Input Text" rows="5"></textarea>
+        <button class="btn btn-light p-2 mt-3 border border-secondary" onclick="inputSubmit()" >Submit</button>
+
+
+        <h6 class="mt-4 mb-2 p-2" >Output</h6>
+        <textarea class="form-control" id="textOutput" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="scripts/tc.js" ></script>
+</body>
+</html>
