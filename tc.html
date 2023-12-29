@@ -7,19 +7,19 @@
   <link href = "staticfiles/media/txtlogo.jfif" rel="icon" type="image/gif">
   <title>Text Correction</title>
 </head>
-<body>
+<body class="bg-dark">
   <div class="container-fluid">
-    <div class="row p-3 text-center align-items-center ">
+    <div class="row p-3 text-center text-light align-items-center ">
       <h3>Text Correction</h3>
     </div>
   </div>
 
   <div class="container-fluid">
     <div class="row justify-content-center  ">
-      <div class="col-lg-5 col-md-8 col-sm-8 col-11 bg-success bg-opacity-25 p-4 rounded rounded-4  shadow ">
+      <div class="col-lg-5 col-md-8 col-sm-8 col-11 bg-light bg-opacity-50 p-4 rounded rounded-4  shadow ">
         <textarea class="form-control" id="textInput" cols="30" onkeydown="inputHandle(event)" placeholder="Shift+Enter = Bullet Points, Ctrl+Enter = Capitalize Each Word" rows="5"></textarea>
 
-        <h6 class="mt-4 mb-2 p-2" >Output</h6>
+        <h6 class="mt-4 mb-2 text-light p-2" >Output</h6>
         <textarea class="form-control" id="textOutput" cols="30" rows="10"></textarea>
       </div>
     </div>
