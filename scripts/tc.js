@@ -96,6 +96,10 @@ function inputSubmit(txtIn) {
 
 
 function inputHandle(event) {
+
+  chars = event.target.value
+
+  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length + 1}`;
   
   let PlainString = RefineString(event.target.value);
   let trimmed = PlainString.trim()
