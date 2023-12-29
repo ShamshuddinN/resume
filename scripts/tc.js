@@ -34,7 +34,7 @@ function RefineString(rawStr) {
     let refinedStr = '';
     let incomingText = '';
       if (rawStr.includes('\n')) {
-        incomingText = rawStr.replace(/\n/g, '');
+        incomingText = rawStr.replace(/\n/g, ' ');
       } else {
         incomingText = rawStr;
       }
