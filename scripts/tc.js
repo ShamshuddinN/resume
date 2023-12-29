@@ -88,6 +88,7 @@ function inputSubmit(txtIn) {
     }
     document.querySelector('#textOutput').disabled = false;
 
+
     document.querySelector('#textOutput').value = outText;
   }
   
@@ -102,6 +103,7 @@ function inputHandle(event) {
 
   if (event.shiftKey && event.key === 'Enter') {
     document.querySelector('#textOutput').value = '';
+    event.target.value = '';
     inputSubmit(PlainString);
 
   } else if (event.ctrlKey && event.key === 'Enter') {
