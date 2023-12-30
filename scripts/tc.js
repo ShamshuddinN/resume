@@ -113,11 +113,14 @@ function inputHandle(event) {
   if (insertCount === 2) {
     document.querySelector('#textOutput').value = '';
     event.target.value = '';
+    document.querySelector('#characterCount').innerText = `Character Count: 0`;
     inputSubmit(PlainString);
 
   } else if (event.ctrlKey && event.key === 'Enter') {
     document.querySelector('#textOutput').value = '';
     let cOutput = capitalizeWords(trimmed);
+    event.target.value = '';
+    document.querySelector('#characterCount').innerText = `Character Count: 0`;
     
     if (cOutput === 'Text Too Short Or No Words Found') {
       document.querySelector('#textOutput').value = 'Text Too Short Or No Words Found';
@@ -133,5 +136,5 @@ function inputHandle(event) {
 
 function updateCount(event) {
   let chars = event.target.value;
-  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;  
+  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`; 
 };
