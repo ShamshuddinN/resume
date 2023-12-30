@@ -94,15 +94,23 @@ function inputSubmit(txtIn) {
   
 }
 
+let insertCount = 0;
 
 function inputHandle(event) {
-
   
   let PlainString = RefineString(event.target.value);
   let trimmed = PlainString.trim()
 
+  
+  if (event.key === 'Insert') {
+    insertCount += 1;
+    
+  } else {
+    insertCount = 0;
+  }
 
-  if (event.shiftKey && event.key === 'Enter') {
+  
+  if (insertCount === 2) {
     document.querySelector('#textOutput').value = '';
     event.target.value = '';
     inputSubmit(PlainString);
@@ -125,7 +133,5 @@ function inputHandle(event) {
 
 function updateCount(event) {
   let chars = event.target.value;
-
-  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;
-  
+  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;  
 };
