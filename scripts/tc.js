@@ -142,3 +142,67 @@ function updateCount(event) {
   let chars = event.target.value;
   document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`; 
 };
+
+
+function SpecialCase() {
+  let inputValue = document.querySelector('#textInput').value;
+  
+  let mysep = '\n'+inputValue[0];
+
+  let plainVal = REnRP(inputValue);
+
+  plainVal = '\n' + plainVal;
+
+  let outList = plainVal.split(mysep);
+
+  let outVal = '';
+
+  for (let j = 0; j < outList.length; j++) {
+    if (outList[j] !== '') {
+      outVal += '&%$!' + outList[j].trim() + '\n';
+    }
+    
+  }
+  
+  outVal = outVal.replace(/\n/g, ' ');
+
+  outVal = outVal.split('&%$!')
+
+  let finalVal = ''
+
+  
+  for (let z = 1; z < outVal.length; z++) {
+    
+    if (z !== outVal.length - 1) {
+      finalVal += ` - ${outVal[z]}\n`;
+    } else {
+      finalVal += ` - ${outVal[z]}`;
+    }
+  }
+
+  document.querySelector('#textOutput').disabled = false;
+  document.querySelector('#textOutput').value = finalVal;
+  
+}
+
+
+function REnRP(text) {
+  let final = text;
+
+  if (final.includes('')) {
+    final = final.replace(//g, '-');
+  }
+
+  let tspaces = final.split(' ');
+
+  let wspace = '';
+
+  for (let i = 0; i < tspaces.length; i++) {
+    if (tspaces[i] !== '') {
+      wspace += tspaces[i] + ' ';
+    }
+    
+  }
+
+  return wspace;
+}
