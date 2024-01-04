@@ -39,6 +39,10 @@ function RefineString(rawStr) {
         incomingText = rawStr;
       }
 
+      if (incomingText.includes('')) {
+        incomingText = incomingText.replace(//g, '-');
+      }
+
     let raw = incomingText.split(' ');
 
     for (let i = 0; i < raw.length; i++) {
