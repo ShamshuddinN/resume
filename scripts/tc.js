@@ -42,6 +42,11 @@ function RefineString(rawStr) {
       if (incomingText.includes('')) {
         incomingText = incomingText.replace(//g, '-');
       }
+      
+      if (incomingText.includes('	')) {
+        incomingText = incomingText.replace(/	/g, ' ');
+      }
+
 
     let raw = incomingText.split(' ');
 
@@ -174,9 +179,9 @@ function SpecialCase() {
   for (let z = 1; z < outVal.length; z++) {
     
     if (z !== outVal.length - 1) {
-      finalVal += ` - ${outVal[z]}\n`;
+      finalVal += `- ${outVal[z]}\n`;
     } else {
-      finalVal += ` - ${outVal[z]}`;
+      finalVal += `- ${outVal[z]}`;
     }
   }
 
@@ -192,6 +197,17 @@ function REnRP(text) {
   if (final.includes('')) {
     final = final.replace(//g, '-');
   }
+  
+  if (final.includes('	')) {
+    final = final.replace(/	/g, '');
+    console.log('Done replacement');
+  }
+  
+  if (final.includes('  ')) {
+    final = final.replace(/  /g, ' ');
+    console.log('Done space replacement');
+  }
+
 
   let tspaces = final.split(' ');
 
