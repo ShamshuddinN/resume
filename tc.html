@@ -20,14 +20,22 @@
         <textarea class="form-control" id="textInput" cols="30" oninput="updateCount(event)" onkeydown="inputHandle(event)" placeholder="Double Click 'Insert' = Bullet Points, Ctrl+Enter = Capitalize Each Word" rows="5"></textarea>
         <div class="row">
           <div class="col">
-            <button onclick="SpecialCase()" class="btn btn-light mt-2">Special Case</button>
+            <button onclick="SpecialCase()" class="btn btn-dark mt-2">Special Case</button>
+            <!-- <butto onclick="handleNLines()" class="btn btn-dark mt-2">Numbered Lines</button>  -->
           </div>
           <div class="col">
             <p id="characterCount" class="text-end text-light mt-1">Character Count: 0</p>
           </div>
 
         </div>
-        <h6 class="mt-3 mb-2 text-light p-2" >Output</h6>
+        <div class="row mt-3">
+          <div class="col  ">
+            <p class="text-white align-text-bottom fw-medium mb-0" >Output</p>
+          </div>
+          <div class="col text-end">
+            <button id="copyButton" class="btn btn-primary mb-1" onclick="copyText()" >Copy</button>
+          </div>
+        </div>
         <textarea class="form-control" id="textOutput" cols="30" rows="10"></textarea>
       </div>
     </div>

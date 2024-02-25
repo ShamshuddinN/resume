@@ -145,7 +145,10 @@ function inputHandle(event) {
 
 function updateCount(event) {
   let chars = event.target.value;
-  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`; 
+  document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;
+  document.querySelector('#copyButton').innerText = 'Copy'
+  document.querySelector('#copyButton').classList.remove('btn-success')
+  document.querySelector('#copyButton').classList.add('btn-primary')
 };
 
 
@@ -191,6 +194,40 @@ function SpecialCase() {
 }
 
 
+// function handleNLines() {
+//   let textIn = document.querySelector('#textInput').value;
+//   let refinedTxt = '\n' + REnRP(textIn)
+
+//   let dsep = ''
+
+//   if (areAllNumbers(refinedTxt.slice(1, 3))) {
+    
+
+//   } else if (areAllNumbers(refinedTxt.slice(1, 2))) {
+//     console.log('That is a Number')
+//   }
+  
+// }
+
+// function areAllNumbers(str) {
+//   return /^\d+$/.test(str);
+// }
+
+
+function copyText() {
+  // navigator.clipboard.writeText('Hello Mars!')
+  let boxVal = document.querySelector('#textOutput').value
+  
+  if (boxVal.length !== 0) {
+    navigator.clipboard.writeText(boxVal)
+    document.querySelector('#textOutput').value = ''
+    document.querySelector('#copyButton').innerText = 'Copied'
+    document.querySelector('#copyButton').classList.remove('btn-primary')
+    document.querySelector('#copyButton').classList.add('btn-success')
+  } 
+}
+
+
 function REnRP(text) {
   let final = text;
 
@@ -200,12 +237,12 @@ function REnRP(text) {
   
   if (final.includes('	')) {
     final = final.replace(/	/g, '');
-    console.log('Done replacement');
+    
   }
   
   if (final.includes('  ')) {
     final = final.replace(/  /g, ' ');
-    console.log('Done space replacement');
+    
   }
 
 
