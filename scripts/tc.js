@@ -200,7 +200,6 @@ function handleNLines() {
   let refinedTxt = '\n' + REnRP(textIn)
   refinedTxt = refinedTxt.split('\n')
   alterText = ''
-  console.log(refinedTxt)
 
   for (let j = 1; j < refinedTxt.length; j++) {
     if (refinedTxt[j].trim() !== '' && refinedTxt[j] !== ''){
