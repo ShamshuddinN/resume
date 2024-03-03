@@ -20,8 +20,9 @@
         <textarea class="form-control" id="textInput" cols="30" oninput="updateCount(event)" onkeydown="inputHandle(event)" placeholder="Double Click 'Insert' = Bullet Points, Ctrl+Enter = Capitalize Each Word" rows="5"></textarea>
         <div class="row">
           <div class="col">
-            <button onclick="SpecialCase()" class="btn btn-dark mt-2">Special Case</button>
-            <butto onclick="handleNLines()" class="btn btn-dark mt-2">Numbered Lines</button> 
+            <button onclick="SpecialCase('-')" class="btn btn-dark mt-2">Sc -</button>
+            <button onclick="SpecialCase('•')" class="btn btn-dark mt-2">Sc •</button>
+            <butto onclick="handleNLines()" class="btn btn-dark mt-2">Num Ln</button> 
           </div>
           <div class="col">
             <p id="characterCount" class="text-end text-light mt-1">Character Count: 0</p>

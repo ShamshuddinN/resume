@@ -152,7 +152,7 @@ function updateCount(event) {
 };
 
 
-function SpecialCase() {
+function SpecialCase(seperator) {
   let inputValue = document.querySelector('#textInput').value;
   
   let mysep = '\n'+inputValue[0];
@@ -179,12 +179,23 @@ function SpecialCase() {
   let finalVal = ''
 
   
-  for (let z = 1; z < outVal.length; z++) {
+  if (seperator === '-') {
+    for (let z = 1; z < outVal.length; z++) {
     
-    if (z !== outVal.length - 1) {
-      finalVal += `- ${outVal[z]}\n`;
-    } else {
-      finalVal += `- ${outVal[z]}`;
+      if (z !== outVal.length - 1) {
+        finalVal += `- ${outVal[z]}\n`;
+      } else {
+        finalVal += `- ${outVal[z]}`;
+      }
+    }
+  } else {
+    for (let z = 1; z < outVal.length; z++) {
+    
+      if (z !== outVal.length - 1) {
+        finalVal += `• ${outVal[z]}\n`;
+      } else {
+        finalVal += `• ${outVal[z]}`;
+      }
     }
   }
 
