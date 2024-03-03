@@ -190,28 +190,66 @@ function SpecialCase() {
 
   document.querySelector('#textOutput').disabled = false;
   document.querySelector('#textOutput').value = finalVal;
+  document.querySelector('#textInput').value = ''
   
 }
 
 
-// function handleNLines() {
-//   let textIn = document.querySelector('#textInput').value;
-//   let refinedTxt = '\n' + REnRP(textIn)
+function handleNLines() {
+  let textIn = document.querySelector('#textInput').value;
+  let refinedTxt = '\n' + REnRP(textIn)
+  refinedTxt = refinedTxt.split('\n')
+  alterText = ''
+  console.log(refinedTxt)
 
-//   let dsep = ''
+  for (let j = 1; j < refinedTxt.length; j++) {
+    if (refinedTxt[j].trim() !== '' && refinedTxt[j] !== ''){
+      alterText += `\n${refinedTxt[j].trim()}`
+    }
+  }
 
-//   if (areAllNumbers(refinedTxt.slice(1, 3))) {
+
+  let plainTxt = ''
+  let gSlen = alterText.slice(0, 3).match(/[0-9]/g).length
+  let gNChar = alterText[gSlen+1]
+
+
+  alterText = alterText.split('\n')
+
+  for (let i = 0; i < alterText.length; i++) {
+
+    let slen = 0
+
+    if (alterText[i].slice(0, 3).match(/[0-9]/g)) {
+      slen = alterText[i].slice(0, 3).match(/[0-9]/g).length
+    }
     
-
-//   } else if (areAllNumbers(refinedTxt.slice(1, 2))) {
-//     console.log('That is a Number')
-//   }
+    let localNChar = alterText[i][slen]
   
-// }
+    if (slen !== 0 && gNChar === localNChar) {
+      let tempTxt = `&*#${alterText[i]}`
+      plainTxt += tempTxt
+    } else {
+      plainTxt += alterText[i]
+    }
+    
+  }
+  plainTxt = plainTxt.split('&*#')
+  let outputTxt = ''
 
-// function areAllNumbers(str) {
-//   return /^\d+$/.test(str);
-// }
+  for (let o = 1; o < plainTxt.length; o++) {
+    if (o === 1) {
+      outputTxt += plainTxt[o]
+    } else {
+      outputTxt += '\n' + plainTxt[o]
+    }
+  }
+
+  document.querySelector('#textOutput').disabled = false;
+  document.querySelector('#textOutput').value = outputTxt;
+  document.querySelector('#textInput').value = ''
+  
+}
 
 
 function copyText() {
