@@ -229,7 +229,7 @@ function handleNLines() {
       let tempTxt = `&*#${alterText[i]}`
       plainTxt += tempTxt
     } else {
-      plainTxt += alterText[i]
+      plainTxt += ' ' + alterText[i]
     }
     
   }
