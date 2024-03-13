@@ -172,7 +172,7 @@ function SpecialCase(seperator) {
     
   }
   
-  outVal = outVal.replace(/\n/g, ' ');
+  outVal = outVal.replace(/\n/g, '');
 
   outVal = outVal.split('&%$!')
 
@@ -188,7 +188,7 @@ function SpecialCase(seperator) {
         finalVal += `- ${outVal[z]}`;
       }
     }
-  } else {
+  } else if (seperator === '•') {
     for (let z = 1; z < outVal.length; z++) {
     
       if (z !== outVal.length - 1) {
