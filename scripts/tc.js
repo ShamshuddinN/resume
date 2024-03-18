@@ -73,13 +73,14 @@ function inputSubmit(txtIn) {
   if (inpTextHere === '') {
     document.querySelector('#textOutput').value = '';
     document.querySelector('#textOutput').placeholder = 'Please Enter Text in Input Text Box with a Line seperator.';
-    
     document.querySelector('#textOutput').disabled = true;
+
   } else if (isAlpha(inpTextHere[0]) ||inpTextHere[0] === ' ') {
     document.querySelector('#textOutput').placeholder = 'Error: No Line Seperator Found!';
     document.querySelector('#textOutput').disabled = true;
+
   } else if (mystr.includes(inpTextHere[0])) {
-    document.querySelector('#textOutput').placeholder = 'Error: Numbered Line Seperators are not Supported yet.';
+    document.querySelector('#textOutput').placeholder = 'Error: For Numbered Line Seperators Use "Num Ln" button.';
     document.querySelector('#textOutput').disabled = true;
 
   } else {
@@ -160,44 +161,37 @@ function SpecialCase(seperator) {
   let plainVal = REnRP(inputValue);
 
   plainVal = '\n' + plainVal;
+  let regx = new RegExp(mysep, 'g');
+  plainVal = plainVal.replace(regx, '&$*')
+  plainVal = RefineString(plainVal)
 
-  let outList = plainVal.split(mysep);
-
-  let outVal = '';
-
-  for (let j = 0; j < outList.length; j++) {
-    if (outList[j] !== '') {
-      outVal += '&%$!' + outList[j].trim() + '\n';
-    }
-    
-  }
+  let outList = plainVal.split('&$*');
   
-  outVal = outVal.replace(/\n/g, '');
-
-  outVal = outVal.split('&%$!')
-
   let finalVal = ''
 
-  
   if (seperator === '-') {
-    for (let z = 1; z < outVal.length; z++) {
-    
-      if (z !== outVal.length - 1) {
-        finalVal += `- ${outVal[z]}\n`;
-      } else {
-        finalVal += `- ${outVal[z]}`;
+    console.log('Entered in - sep')
+    for (let k = 1; k < outList.length; k++) {
+      if (k < outList.length - 1 && outList[k] != '') {
+        finalVal += '- ' + outList[k].trim() + '\n'
+      }
+      else {
+        finalVal += '- ' + outList[k].trim()
       }
     }
+
   } else if (seperator === '•') {
-    for (let z = 1; z < outVal.length; z++) {
-    
-      if (z !== outVal.length - 1) {
-        finalVal += `• ${outVal[z]}\n`;
-      } else {
-        finalVal += `• ${outVal[z]}`;
+    for (let m = 1; m < outList.length; m++) {
+      if (m < outList.length - 1 && outList[m] != '') {
+        finalVal += '• ' + outList[m].trim() + '\n'
       }
+      else {
+        finalVal += '• ' + outList[m].trim()
+      }
+      
     }
   }
+  
 
   document.querySelector('#textOutput').disabled = false;
   document.querySelector('#textOutput').value = finalVal;
