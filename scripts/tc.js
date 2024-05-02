@@ -278,7 +278,7 @@ function REnRP(text) {
   }
   
   if (final.includes('	')) {
-    final = final.replace(/	/g, '');
+    final = final.replace(/	/g, ' ');
     
   }
   
