@@ -65,6 +65,47 @@ var isAlpha = function(ch){
 }
 
 
+function ProjectPromptF() {
+  let PPtxt = `Below is a python dictionary with comments as instructions explaining how to extract project information:
+  projects =   [ {
+          "Project Name": "Example name", # This should not exceed beyond 60 characters, if project name is too long use a short meaningful suitable name. If you cannot find a suitable name at all, then default it to 'Project'.
+          "Role": "Engineer", # this should not exceed 35 characters, if so choose a short suitable role, if role not provided, default it to 'Engineer'.
+          "Duration (Months)": 0, # a number, if written as period, example: [Nov 2021 to dec 2022] convert it into months. if no duration is provided, you can leave this as an empty string like: ''.
+          "Client": "", # this should not exceed 60 characters. If not provided, leave it as an empty string.
+          "Location": "", # this should not exceed 60 characters. If not provided, leave it as an empty string.
+          "Description": [
+              "first point",
+              "second point",
+              "third point"
+          ] # if possible make description an array of points. Any other information other then required for fields, can be filled here in Description.
+      } ]
+      # for multiple projects make it an array of dictionaries. Like: projects = [{project 1 info}, {project 2 info}, {..and so on)]
+      # Wherever necessary make text corrections.
+  
+Extract Project information For Below Projects:
+[Default Role to '' for all below projects]
+`
+  navigator.clipboard.writeText(PPtxt)
+  console.log('pr copy success')
+
+  let ppbtn = document.getElementById('ppcopy')
+  ppbtn.innerText = 'pp Copied'
+  ppbtn.classList.remove('btn-light')
+  ppbtn.classList.add('btn-success')
+  
+}
+
+function DefaultTxtF() {
+  let dtxt = `[Default Role to '' for all below projects]`
+  navigator.clipboard.writeText(dtxt)
+
+  let dtxtbtn = document.getElementById('DefTxtCopy')
+  dtxtbtn.innerText = 'DT Copied'
+  dtxtbtn.classList.remove('btn-light')
+  dtxtbtn.classList.add('btn-success')
+}
+
+
 function inputSubmit(txtIn) {
   let mystr = '1 2 3 4 5 6 7 8 9 0'
   let inpTextHere = txtIn;
@@ -262,6 +303,7 @@ function copyText() {
   
   if (boxVal.length !== 0) {
     navigator.clipboard.writeText(boxVal)
+
     document.querySelector('#textOutput').value = ''
     document.querySelector('#copyButton').innerText = 'Copied'
     document.querySelector('#copyButton').classList.remove('btn-primary')
