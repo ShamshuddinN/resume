@@ -106,6 +106,16 @@ function DefaultTxtF() {
 }
 
 
+function BulletPointsPropmpt() {
+  let pointspr = `correct below text wherever necessary and make bullet points:`
+  navigator.clipboard.writeText(pointspr)
+
+  let ptscpybtn = document.getElementById('PointsPrpt')
+  ptscpybtn.innerText = 'Copied!'
+  ptscpybtn.classList.remove('btn-light')
+  ptscpybtn.classList.add('btn-success')
+}
+
 function inputSubmit(txtIn) {
   let mystr = '1 2 3 4 5 6 7 8 9 0'
   let inpTextHere = txtIn;
