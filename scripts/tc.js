@@ -86,7 +86,6 @@ Extract Project information For Below Projects:
 [Default Role to '' for all below projects]
 `
   navigator.clipboard.writeText(PPtxt)
-  console.log('pr copy success')
 
   let ppbtn = document.getElementById('ppcopy')
   ppbtn.innerText = 'pp Copied'
@@ -221,7 +220,7 @@ function SpecialCase(seperator) {
   let finalVal = ''
 
   if (seperator === '-') {
-    console.log('Entered in - sep')
+    
     for (let k = 1; k < outList.length; k++) {
       if (k < outList.length - 1 && outList[k] != '') {
         finalVal += '- ' + outList[k].trim() + '\n'
@@ -253,6 +252,9 @@ function SpecialCase(seperator) {
 
 function handleNLines() {
   let textIn = document.querySelector('#textInput').value;
+  if (textIn == '') {
+    return 0
+  }
   let refinedTxt = '\n' + REnRP(textIn)
   refinedTxt = refinedTxt.split('\n')
   alterText = ''
@@ -318,6 +320,28 @@ function copyText() {
     document.querySelector('#copyButton').innerText = 'Copied'
     document.querySelector('#copyButton').classList.remove('btn-primary')
     document.querySelector('#copyButton').classList.add('btn-success')
+
+    let ppClasses = document.getElementById('ppcopy')
+    let dtClasses = document.getElementById('DefTxtCopy')
+    let poiClasses = document.getElementById('PointsPrpt')
+    let BtnElements = [ppClasses, dtClasses, poiClasses]
+
+    for (let x = 0; x < BtnElements.length; x++) {
+      if (BtnElements[x].classList[1] == 'btn-success') {
+        console.log('entered in  condition')
+        BtnElements[x].classList.remove('btn-success')
+        BtnElements[x].classList.add('btn-light')
+        if (x == 0) {
+          BtnElements[x].innerText = 'Project Prompt'
+        }
+        else if (x == 1) {
+          BtnElements[x].innerText = 'Default Txt'
+        }
+        else{
+          BtnElements[x].innerText = 'Points Prompt'
+        }
+      }
+    }
   } 
 }
 
