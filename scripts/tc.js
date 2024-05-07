@@ -100,7 +100,7 @@ function DefaultTxtF() {
   navigator.clipboard.writeText(dtxt)
 
   let dtxtbtn = document.getElementById('DefTxtCopy')
-  dtxtbtn.innerText = 'DT Copied'
+  dtxtbtn.innerText = 'PP Copied'
   dtxtbtn.classList.remove('btn-light')
   dtxtbtn.classList.add('btn-success')
 }
