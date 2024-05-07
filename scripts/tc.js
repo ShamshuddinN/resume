@@ -95,7 +95,8 @@ Extract Project information For Below Projects:
 }
 
 function DefaultTxtF() {
-  let dtxt = `[Default Role to '' for all below projects]`
+  let dtxt = `Previous prompt:
+  `
   navigator.clipboard.writeText(dtxt)
 
   let dtxtbtn = document.getElementById('DefTxtCopy')
