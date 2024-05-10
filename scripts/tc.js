@@ -309,6 +309,17 @@ function handleNLines() {
   
 }
 
+function planeText() {
+  let textIn = document.querySelector('#textInput').value;
+  if (textIn == '') {
+    return 0
+  }
+ let planeTxt = REnRP(textIn)
+ document.querySelector('#textOutput').disabled = false;
+ document.querySelector('#textOutput').value = planeTxt;
+ document.querySelector('#textInput').value = '';
+}
+
 
 function copyText() {
   // navigator.clipboard.writeText('Hello Mars!')
@@ -325,6 +336,8 @@ function copyText() {
     let ppClasses = document.getElementById('ppcopy')
     let dtClasses = document.getElementById('DefTxtCopy')
     let poiClasses = document.getElementById('PointsPrpt')
+    document.querySelector('#textOutput').placeholder = ':)'
+
     let BtnElements = [ppClasses, dtClasses, poiClasses]
 
     for (let x = 0; x < BtnElements.length; x++) {
@@ -336,7 +349,7 @@ function copyText() {
           BtnElements[x].innerText = 'Project Prompt'
         }
         else if (x == 1) {
-          BtnElements[x].innerText = 'Default Txt'
+          BtnElements[x].innerText = 'PP Txt'
         }
         else{
           BtnElements[x].innerText = 'Points Prompt'
@@ -350,17 +363,34 @@ function copyText() {
 function REnRP(text) {
   let final = text;
 
+  final = final.replace(/([,&]|and(?=[A-Z]))/g, "$1 ");
+
   if (final.includes('')) {
     final = final.replace(//g, '-');
   }
   
-  if (final.includes('	')) {
-    final = final.replace(/	/g, ' ');
+  if (final.includes('  ')) {
+    final = final.replace(/ /g, ' ');
     
   }
   
   if (final.includes('  ')) {
     final = final.replace(/  /g, ' ');
+    
+  }
+
+  if (final.includes('india')) {
+    final = final.replace(/india/g, 'India');
+  }
+
+
+  unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
+
+  for (let p = 0; p < unusualTxt.length; p++) {
+    if (final.includes(unusualTxt[p])) {
+      let regx = new RegExp(unusualTxt[p], 'g');
+      final = final.replace(regx, 'Abu Dhabi')
+    }
     
   }
 
@@ -376,5 +406,5 @@ function REnRP(text) {
     
   }
 
-  return wspace;
+  return wspace.trim();
 }
