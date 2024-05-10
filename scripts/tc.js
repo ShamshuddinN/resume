@@ -188,6 +188,10 @@ function inputHandle(event) {
     let cOutput = capitalizeWords(trimmed);
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
+
+    cOutput = cOutput.replace(/ and /g, ' & ')
+    cOutput = cOutput.replace(/ And /g, ' & ')
+    cOutput = cOutput.replace(/ AND /g, ' & ')  
     
     if (cOutput === 'Text Too Short Or No Words Found') {
       document.querySelector('#textOutput').value = 'Text Too Short Or No Words Found';
@@ -391,6 +395,9 @@ function REnRP(text) {
     final = final.replace(/dubai/g, 'Dubai');
   }
 
+  final = final.replace(/ and /g, ' & ')
+  final = final.replace(/ And /g, ' & ')
+  final = final.replace(/ AND /g, ' & ')
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
 
