@@ -189,9 +189,22 @@ function inputHandle(event) {
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
 
-    cOutput = cOutput.replace(/ and /g, ' & ')
+    cOutput = cOutput.replace(/ Hvac /g, ' HVAC ')
+    cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
+    cOutput = cOutput.replace(/Hvac /g, 'HVAC ')
+    cOutput = cOutput.replace(/ Mep /g, ' MEP ')
+    cOutput = cOutput.replace(/ Mep/g, ' MEP')
+    cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
-    cOutput = cOutput.replace(/ AND /g, ' & ')  
+    
+    let sc1 = 'Qa/qc'
+    let sc2 = 'Qa/ Qc'
+    let regx1 = new RegExp(sc1, 'g');
+    let regx2 = new RegExp(sc2, 'g');
+    cOutput = cOutput.replace(regx1, 'QA/QC')
+    cOutput = cOutput.replace(regx2, 'QA/QC')
+
+    
     
     if (cOutput === 'Text Too Short Or No Words Found') {
       document.querySelector('#textOutput').value = 'Text Too Short Or No Words Found';
