@@ -411,6 +411,8 @@ function REnRP(text) {
   final = final.replace(/ and /g, ' & ')
   final = final.replace(/ And /g, ' & ')
   final = final.replace(/ AND /g, ' & ')
+  final = final.replace(/ qatar /g, ' Qatar ')
+  final = final.replace(/ QATAR /g, ' Qatar ')
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
 
