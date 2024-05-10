@@ -39,14 +39,6 @@ function RefineString(rawStr) {
         incomingText = rawStr;
       }
 
-      if (incomingText.includes('')) {
-        incomingText = incomingText.replace(//g, '-');
-      }
-      
-      if (incomingText.includes('	')) {
-        incomingText = incomingText.replace(/	/g, ' ');
-      }
-
 
     let raw = incomingText.split(' ');
 
@@ -55,6 +47,7 @@ function RefineString(rawStr) {
         refinedStr += raw[i] + ' ';
       }
     }
+    refinedStr = REnRP(refinedStr);
     return refinedStr;
   }
   
@@ -166,6 +159,7 @@ let insertCount = 0;
 function inputHandle(event) {
   
   let PlainString = RefineString(event.target.value);
+
   let trimmed = PlainString.trim()
 
   
@@ -190,9 +184,11 @@ function inputHandle(event) {
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
 
     cOutput = cOutput.replace(/ Hvac /g, ' HVAC ')
+    cOutput = cOutput.replace(/-hvac/g, '- HVAC')
     cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
     cOutput = cOutput.replace(/Hvac /g, 'HVAC ')
     cOutput = cOutput.replace(/ Mep /g, ' MEP ')
+    cOutput = cOutput.replace(/-mep/g, '- MEP')
     cOutput = cOutput.replace(/ Mep/g, ' MEP')
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
@@ -236,10 +232,11 @@ function SpecialCase(seperator) {
 
   plainVal = '\n' + plainVal;
   let regx = new RegExp(mysep, 'g');
-  plainVal = plainVal.replace(regx, '&$*')
+  plainVal = plainVal.replace(regx, '$@')
   plainVal = RefineString(plainVal)
 
-  let outList = plainVal.split('&$*');
+  let outList = plainVal.split('$@');
+  console.log(outList)
   
   let finalVal = ''
 
@@ -408,11 +405,23 @@ function REnRP(text) {
     final = final.replace(/dubai/g, 'Dubai');
   }
 
-  final = final.replace(/ and /g, ' & ')
-  final = final.replace(/ And /g, ' & ')
-  final = final.replace(/ AND /g, ' & ')
   final = final.replace(/ qatar /g, ' Qatar ')
   final = final.replace(/ QATAR /g, ' Qatar ')
+  final = final.replace(/ etc /g, ' etc. ')
+  final = final.replace(/ Hvac /g, ' HVAC ')
+  final = final.replace(/-hvac/g, '- HVAC')
+  final = final.replace(/ Hvac/g, ' HVAC')
+  final = final.replace(/ hvac/g, ' HVAC')
+  final = final.replace(/Hvac /g, 'HVAC ')
+  final = final.replace(/hvac /g, 'HVAC ')
+  final = final.replace(/ Mep /g, ' MEP ')
+  final = final.replace(/ mep /g, ' MEP ')
+  final = final.replace(/-mep/g, '- MEP')
+  final = final.replace(/ Mep/g, ' MEP')
+  final = final.replace(/Mep /g, 'MEP ')
+  final = final.replace(/equipments/g, 'equipment')
+  final = final.replace(/Equipments/g, 'equipment')
+
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
 
