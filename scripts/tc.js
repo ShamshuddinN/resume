@@ -65,6 +65,23 @@ var isAlpha = function(ch){
 }
 
 
+function formatText() {
+  let inputText = document.querySelector('#textInput').value;
+  inputText = inputText.split('\n')
+  
+  let outputText = ''
+  
+  for (let v = 0; v < inputText.length; v++) {
+    if (inputText[v] != '') {
+      outputText += '%$@' + inputText[v];
+    }
+  }
+
+  document.querySelector('#textOutput').value = outputText;
+  document.querySelector('#textInput').value = '';
+
+}
+
 function ProjectPromptF() {
   let PPtxt = `Below is a python dictionary with comments as instructions explaining how to extract project information:
   projects =   [ {
@@ -92,17 +109,6 @@ Extract Project information For Below Projects:
   ppbtn.classList.remove('btn-light')
   ppbtn.classList.add('btn-success')
   
-}
-
-function DefaultTxtF() {
-  let dtxt = `Previous prompt:
-  `
-  navigator.clipboard.writeText(dtxt)
-
-  let dtxtbtn = document.getElementById('DefTxtCopy')
-  dtxtbtn.innerText = 'PP Copied'
-  dtxtbtn.classList.remove('btn-light')
-  dtxtbtn.classList.add('btn-success')
 }
 
 
