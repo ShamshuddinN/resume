@@ -371,16 +371,18 @@ function REnRP(text) {
   
   if (final.includes('  ')) {
     final = final.replace(/ /g, ' ');
-    
   }
   
   if (final.includes('  ')) {
     final = final.replace(/  /g, ' ');
-    
   }
 
   if (final.includes('india')) {
     final = final.replace(/india/g, 'India');
+  }
+  
+  if (final.includes('dubai')) {
+    final = final.replace(/dubai/g, 'Dubai');
   }
 
 
@@ -392,6 +394,10 @@ function REnRP(text) {
       final = final.replace(regx, 'Abu Dhabi')
     }
     
+  }
+
+  if (final.includes(' , ')) {
+    final = final.replace(/ , /g, ', ');
   }
 
 
