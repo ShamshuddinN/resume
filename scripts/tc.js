@@ -354,11 +354,10 @@ function copyText() {
     document.querySelector('#copyButton').classList.add('btn-success')
 
     let ppClasses = document.getElementById('ppcopy')
-    let dtClasses = document.getElementById('DefTxtCopy')
     let poiClasses = document.getElementById('PointsPrpt')
     document.querySelector('#textOutput').placeholder = ':)'
 
-    let BtnElements = [ppClasses, dtClasses, poiClasses]
+    let BtnElements = [ppClasses, poiClasses]
 
     for (let x = 0; x < BtnElements.length; x++) {
       if (BtnElements[x].classList[1] == 'btn-success') {
@@ -367,9 +366,6 @@ function copyText() {
         BtnElements[x].classList.add('btn-light')
         if (x == 0) {
           BtnElements[x].innerText = 'Project Prompt'
-        }
-        else if (x == 1) {
-          BtnElements[x].innerText = 'PP Txt'
         }
         else{
           BtnElements[x].innerText = 'Points Prompt'
