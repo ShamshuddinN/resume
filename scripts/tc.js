@@ -192,6 +192,7 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ Mep/g, ' MEP')
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
+    cOutput = cOutput.replace(/ Of /g, ' of ')
     
     let sc1 = 'Qa/qc'
     let sc2 = 'Qa/ Qc'
