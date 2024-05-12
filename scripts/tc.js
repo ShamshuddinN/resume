@@ -1,20 +1,13 @@
 document.querySelector('#textOutput').disabled = true;
 
 function capitalizeWords(str) {
-  // convert the string to lowercase
   str = str.toLowerCase();
-  // split the string into an array of words
   let words = str.split(" ");
-  // loop through each word
   for (let i = 0; i < words.length; i++) {
-    // get the first letter of the word
     let firstLetter = words[i][0];
-    // capitalize the first letter
     firstLetter = firstLetter.toUpperCase();
-    // replace the first letter of the word with the capitalized one
     words[i] = firstLetter + words[i].slice(1);
   }
-  // join the words back into a string
   return words.join(" ");
 }
 
@@ -74,6 +67,37 @@ function formatText() {
   document.querySelector('#textInput').value = '';
 
 }
+
+
+function CertificationsFormat() {
+  let inText = document.querySelector('#textInput').value
+  inText = inText.split('\n')
+
+  let certificatesArray = []
+  let caughtMail = ''
+  let omitted = []
+  for (let g = 0; g < inText.length; g++) {
+    if (inText[g].includes('@')) {
+      caughtMail += inText[g].trim()
+    } 
+    else if (inText[g].length > 3 && inText[g].length <= 100) {
+      certificatesArray.push(REnRP(inText[g].trim()))
+    }
+    else if (inText[g].length > 3) {
+      omitted.push(REnRP(inText[g].trim()))
+    }
+
+    const arrAsString = JSON.stringify(certificatesArray);
+    let finalOutput = ''
+    finalOutput += `certifications = ${arrAsString}` + '\n' + `mail = '${caughtMail}'\n`;
+
+    document.querySelector('#textOutput').value = finalOutput;
+    document.querySelector('#textOutput').disabled = false
+    document.querySelector('#textInput').value = '';
+  }
+  
+}
+
 
 function ProjectPromptF() {
   let PPtxt = `Below is a python dictionary with comments as instructions explaining how to extract project information:
@@ -202,6 +226,7 @@ function inputHandle(event) {
     let regx2 = new RegExp(sc2, 'g');
     cOutput = cOutput.replace(regx1, 'QA/QC')
     cOutput = cOutput.replace(regx2, 'QA/QC')
+    cOutput = cOutput.replace(/Qa-qc/, 'QA/QC')
 
     
     
@@ -235,7 +260,10 @@ function SpecialCase(seperator) {
 
   mysep = mysep.replace(/\*/, '\\*')
   
-  if ('|' in mysep) {
+
+// errorrrrrrr
+
+  if (mysep.includes('|')) {
     mysep = mysep.replace(/\|/, '\\|')
   }
 
@@ -428,6 +456,8 @@ function REnRP(text) {
   final = final.replace(/equipments/g, 'equipment')
   final = final.replace(/Equipments/g, 'equipment')
   final = final.replace(/ P& ID /g, 'P&ID')
+  final = final.replace(/ qhse /g, ' QHSE ')
+  final = final.replace(/ Qhse /g, ' QHSE ')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
