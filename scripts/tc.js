@@ -177,6 +177,8 @@ function inputHandle(event) {
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
     inputSubmit(PlainString);
 
+// Capitalize Each Word Replacements: 
+
   } else if (event.ctrlKey && event.key === 'Enter') {
     document.querySelector('#textOutput').value = '';
     let cOutput = capitalizeWords(trimmed);
@@ -376,6 +378,7 @@ function copyText() {
   } 
 }
 
+// General Replacements: 
 
 function REnRP(text) {
   let final = text;
@@ -418,6 +421,7 @@ function REnRP(text) {
   final = final.replace(/Mep /g, 'MEP ')
   final = final.replace(/equipments/g, 'equipment')
   final = final.replace(/Equipments/g, 'equipment')
+  final = final.replace(/ P& ID /g, 'P&ID')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
