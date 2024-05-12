@@ -233,6 +233,12 @@ function SpecialCase(seperator) {
 
   let plainVal = REnRP(inputValue);
 
+  mysep = mysep.replace(/\*/, '\\*')
+  
+  if ('|' in mysep) {
+    mysep = mysep.replace(/\|/, '\\|')
+  }
+
   plainVal = '\n' + plainVal;
   let regx = new RegExp(mysep, 'g');
   plainVal = plainVal.replace(regx, '$@')
