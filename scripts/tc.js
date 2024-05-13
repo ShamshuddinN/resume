@@ -219,6 +219,7 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
     cOutput = cOutput.replace(/ Of /g, ' of ')
+    cOutput = cOutput.replace(/ Qc /g, ' QC ')
     
     let sc1 = 'Qa/qc'
     let sc2 = 'Qa/ Qc'
@@ -463,6 +464,8 @@ function REnRP(text) {
   final = final.replace(/ Qhse /g, ' QHSE ')
   final = final.replace(/,)/g, '),')
   final = final.replace(/, )/g, ')')
+  final = final.replace(/ qc /g, ' QC ')
+  final = final.replace(/ Qc /g, ' QC ')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
