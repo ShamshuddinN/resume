@@ -220,6 +220,13 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ And /g, ' & ')
     cOutput = cOutput.replace(/ Of /g, ' of ')
     cOutput = cOutput.replace(/ Qc /g, ' QC ')
+    cOutput = cOutput.replace(/ Csu /g, ' CSU ')
+    cOutput = cOutput.replace(/ Csu/g, ' CSU')
+    cOutput = cOutput.replace(/ Pmc/g, ' PMC')
+    cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
+    cOutput = cOutput.replace(/piping\/welding/g, 'Piping/Welding')
+    cOutput = cOutput.replace(/Piping\/welding/g, 'Piping/Welding')
+    cOutput = cOutput.replace(/ Qc\//g, ' QC/')
     
     let sc1 = 'Qa/qc'
     let sc2 = 'Qa/ Qc'
