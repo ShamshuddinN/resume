@@ -460,6 +460,8 @@ function REnRP(text) {
   final = final.replace(/ P& ID /g, 'P&ID')
   final = final.replace(/ qhse /g, ' QHSE ')
   final = final.replace(/ Qhse /g, ' QHSE ')
+  final = final.replace(/,)/g, '),')
+  final = final.replace(/, )/g, ')')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
