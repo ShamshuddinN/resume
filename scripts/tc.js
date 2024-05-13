@@ -80,10 +80,10 @@ function CertificationsFormat() {
     if (inText[g].includes('@')) {
       caughtMail += inText[g].trim()
     } 
-    else if (inText[g].length > 3 && inText[g].length <= 100) {
+    else if (inText[g].length > 2 && inText[g].length <= 100) {
       certificatesArray.push(REnRP(inText[g].trim()))
     }
-    else if (inText[g].length > 3) {
+    else if (inText[g].length > 2) {
       omitted.push(REnRP(inText[g].trim()))
     }
 
