@@ -458,6 +458,7 @@ function REnRP(text) {
   final = final.replace(/Equipments/g, 'equipment')
   final = final.replace(/Equipment's/g, 'equipment')
   final = final.replace(/ P& ID /g, 'P&ID')
+  final = final.replace(/ O& M /g, 'O&M')
   final = final.replace(/ qhse /g, ' QHSE ')
   final = final.replace(/ Qhse /g, ' QHSE ')
   final = final.replace(/,)/g, '),')
