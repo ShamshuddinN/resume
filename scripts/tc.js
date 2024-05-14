@@ -205,28 +205,46 @@ function inputHandle(event) {
 
   } else if (event.ctrlKey && event.key === 'Enter') {
     document.querySelector('#textOutput').value = '';
+
+    let regex11 = /\([a-zA-Z]/;
+    let regex22 = /\/[a-zA-Z]/;
+    if (regex11.test(trimmed)) {
+      trimmed = trimmed.replace(/\(([^)]+)/g, '( $1');
+    }
+
+    if (regex22.test(trimmed)) {
+      trimmed = trimmed.replace(/\/([^)]+)/g, '/ $1');
+    }
+    
+    
+    trimmed = trimmed.replace(/([A-Za-z0-9])-/g, '$1 -');
+    trimmed = trimmed.replace(/-([A-Za-z0-9])/g, '- $1');
+    trimmed = trimmed.replace(/’/g, "'")
+
+    
+    // final = final.replace(/([,&]|and(?=[A-Z]))/g, "$1 ");
     let cOutput = capitalizeWords(trimmed);
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
 
-    cOutput = cOutput.replace(/ Hvac /g, ' HVAC ')
-    cOutput = cOutput.replace(/-hvac/g, '- HVAC')
-    cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
     cOutput = cOutput.replace(/Hvac /g, 'HVAC ')
-    cOutput = cOutput.replace(/ Mep /g, ' MEP ')
-    cOutput = cOutput.replace(/-mep/g, '- MEP')
+    cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
     cOutput = cOutput.replace(/ Mep/g, ' MEP')
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
     cOutput = cOutput.replace(/ Of /g, ' of ')
     cOutput = cOutput.replace(/ Qc /g, ' QC ')
     cOutput = cOutput.replace(/ Csu /g, ' CSU ')
+    cOutput = cOutput.replace(/Equipments/g, 'Equipment')
+    cOutput = cOutput.replace(/Equipment's/g, 'Equipment')
     cOutput = cOutput.replace(/ Csu/g, ' CSU')
     cOutput = cOutput.replace(/ Pmc/g, ' PMC')
     cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
-    cOutput = cOutput.replace(/piping\/welding/g, 'Piping/Welding')
-    cOutput = cOutput.replace(/Piping\/welding/g, 'Piping/Welding')
-    cOutput = cOutput.replace(/ Qc\//g, ' QC/')
+    cOutput = cOutput.replace(/Qc\//g, ' QC/')
+    cOutput = cOutput.replace(/\( /g, '(')
+    cOutput = cOutput.replace(/ \)/g, ')')
+    cOutput = cOutput.replace(/\/ /g, '/')
+
     
     let sc1 = 'Qa/qc'
     let sc2 = 'Qa/ Qc'
@@ -269,7 +287,6 @@ function SpecialCase(seperator) {
   mysep = mysep.replace(/\*/, '\\*')
   
 
-// errorrrrrrr
 
   if (mysep.includes('|')) {
     mysep = mysep.replace(/\|/, '\\|')
@@ -447,18 +464,18 @@ function REnRP(text) {
     final = final.replace(/dubai/g, 'Dubai');
   }
 
+  final = final.replace(/([A-Za-z0-9])-/g, '$1 -');
+  final = final.replace(/-([A-Za-z0-9])/g, '- $1');
   final = final.replace(/ qatar /g, ' Qatar ')
   final = final.replace(/ QATAR /g, ' Qatar ')
   final = final.replace(/ etc /g, ' etc. ')
-  final = final.replace(/ Hvac /g, ' HVAC ')
-  final = final.replace(/-hvac/g, '- HVAC')
-  final = final.replace(/ Hvac/g, ' HVAC')
+  final = final.replace(/ etc/g, ' etc.')
   final = final.replace(/ hvac/g, ' HVAC')
-  final = final.replace(/Hvac /g, 'HVAC ')
   final = final.replace(/hvac /g, 'HVAC ')
-  final = final.replace(/ Mep /g, ' MEP ')
-  final = final.replace(/ mep /g, ' MEP ')
-  final = final.replace(/-mep/g, '- MEP')
+  final = final.replace(/ Hvac/g, ' HVAC')
+  final = final.replace(/Hvac /g, 'HVAC ')
+  final = final.replace(/mep /g, 'MEP ')
+  final = final.replace(/ mep/g, ' MEP')
   final = final.replace(/ Mep/g, ' MEP')
   final = final.replace(/Mep /g, 'MEP ')
   final = final.replace(/equipments/g, 'equipment')
@@ -469,8 +486,8 @@ function REnRP(text) {
   final = final.replace(/ O& M /g, 'O&M')
   final = final.replace(/ qhse /g, ' QHSE ')
   final = final.replace(/ Qhse /g, ' QHSE ')
-  final = final.replace(/,)/g, '),')
-  final = final.replace(/, )/g, ')')
+  final = final.replace(/,\)/g, '),')
+  final = final.replace(/, \)/g, ')')
   final = final.replace(/ qc /g, ' QC ')
   final = final.replace(/ Qc /g, ' QC ')
 
