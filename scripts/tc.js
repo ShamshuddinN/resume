@@ -234,6 +234,7 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ And /g, ' & ')
     cOutput = cOutput.replace(/ Of /g, ' of ')
     cOutput = cOutput.replace(/ Qc /g, ' QC ')
+    cOutput = cOutput.replace(/Qa\//g, 'QA/')
     cOutput = cOutput.replace(/ Csu /g, ' CSU ')
     cOutput = cOutput.replace(/Equipments/g, 'Equipment')
     cOutput = cOutput.replace(/Equipment's/g, 'Equipment')
