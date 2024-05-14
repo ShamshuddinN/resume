@@ -451,6 +451,10 @@ function REnRP(text) {
   if (final.includes('  ')) {
     final = final.replace(/ /g, ' ');
   }
+
+  if (final.includes('	')) {
+    final = final.replace(/	/g, ' ');
+  }
   
   if (final.includes('  ')) {
     final = final.replace(/  /g, ' ');
