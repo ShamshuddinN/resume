@@ -241,17 +241,15 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ Csu/g, ' CSU')
     cOutput = cOutput.replace(/ Pmc/g, ' PMC')
     cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
-    cOutput = cOutput.replace(/Qc\//g, ' QC/')
+    cOutput = cOutput.replace(/Qc\//g, 'QC/')
     cOutput = cOutput.replace(/\( /g, '(')
     cOutput = cOutput.replace(/ \)/g, ')')
     cOutput = cOutput.replace(/\/ /g, '/')
 
     
-    let sc1 = 'Qa/qc'
     let sc2 = 'Qa/ Qc'
-    let regx1 = new RegExp(sc1, 'g');
     let regx2 = new RegExp(sc2, 'g');
-    cOutput = cOutput.replace(regx1, 'QA/QC')
+    
     cOutput = cOutput.replace(regx2, 'QA/QC')
     cOutput = cOutput.replace(/Qa-qc/, 'QA/QC')
 
