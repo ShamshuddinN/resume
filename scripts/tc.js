@@ -468,8 +468,8 @@ function REnRP(text) {
     final = final.replace(/dubai/g, 'Dubai');
   }
 
-  final = final.replace(/([A-Za-z0-9])-/g, '$1 -');
-  final = final.replace(/-([A-Za-z0-9])/g, '- $1');
+  // final = final.replace(/([A-Za-z0-9])-/g, '$1 -');
+  // final = final.replace(/-([A-Za-z0-9])/g, '- $1');
   final = final.replace(/ qatar /g, ' Qatar ')
   final = final.replace(/ QATAR /g, ' Qatar ')
   final = final.replace(/ etc /g, ' etc. ')
