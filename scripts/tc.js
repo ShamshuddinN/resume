@@ -471,10 +471,7 @@ function REnRP(text) {
   
   if (final.includes('dubai')) {
     final = final.replace(/dubai/g, 'Dubai');
-  }
-  if (final.includes('�')) {
-    final = final.replace(/�/g, 'i');
-  }
+  } 
 
 
   if (final.includes('.(')) {
