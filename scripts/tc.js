@@ -219,7 +219,6 @@ function inputHandle(event) {
     
     trimmed = trimmed.replace(/([A-Za-z0-9])-/g, '$1 -');
     trimmed = trimmed.replace(/-([A-Za-z0-9])/g, '- $1');
-    trimmed = trimmed.replace(/’/g, "'")
 
     
     // final = final.replace(/([,&]|and(?=[A-Z]))/g, "$1 ");
@@ -393,6 +392,8 @@ function handleNLines() {
 
 function planeText() {
   let textIn = document.querySelector('#textInput').value;
+  textIn = textIn.replace(/\n/g, ' ')
+
   if (textIn == '') {
     return 0
   }
@@ -463,37 +464,59 @@ function REnRP(text) {
   if (final.includes('india')) {
     final = final.replace(/india/g, 'India');
   }
+
+  if (final.includes('pakistan')) {
+    final = final.replace(/pakistan/g, 'Pakistan');
+  }
   
   if (final.includes('dubai')) {
     final = final.replace(/dubai/g, 'Dubai');
   }
 
-  // final = final.replace(/([A-Za-z0-9])-/g, '$1 -');
-  // final = final.replace(/-([A-Za-z0-9])/g, '- $1');
-  final = final.replace(/ qatar /g, ' Qatar ')
-  final = final.replace(/ QATAR /g, ' Qatar ')
-  final = final.replace(/ etc /g, ' etc. ')
-  final = final.replace(/ etc/g, ' etc.')
-  final = final.replace(/ hvac/g, ' HVAC')
-  final = final.replace(/hvac /g, 'HVAC ')
-  final = final.replace(/ Hvac/g, ' HVAC')
-  final = final.replace(/Hvac /g, 'HVAC ')
-  final = final.replace(/mep /g, 'MEP ')
-  final = final.replace(/ mep/g, ' MEP')
-  final = final.replace(/ Mep/g, ' MEP')
-  final = final.replace(/Mep /g, 'MEP ')
-  final = final.replace(/equipments/g, 'equipment')
-  final = final.replace(/equipment's/g, 'equipment')
-  final = final.replace(/Equipments/g, 'equipment')
-  final = final.replace(/Equipment's/g, 'equipment')
-  final = final.replace(/P& ID/g, 'P&ID')
-  final = final.replace(/ O& M/g, ' O&M')
-  final = final.replace(/ qhse /g, ' QHSE ')
-  final = final.replace(/ Qhse /g, ' QHSE ')
-  final = final.replace(/,\)/g, '),')
-  final = final.replace(/, \)/g, ')')
-  final = final.replace(/ qc /g, ' QC ')
-  final = final.replace(/ Qc /g, ' QC ')
+  if (final.includes('.(')) {
+    final = final.replace(/.\(/g, '. (')
+  }
+  
+  if (final.includes('.)')) {
+    final = final.replace(/\.\)/g, ').')
+  }
+
+
+  final = final.replace(/\.([a-zA-Z])/g, '. $1');
+   //Error
+  final = final.replace(/ qatar /g, ' Qatar ');
+  final = final.replace(/ QATAR /g, ' Qatar ');
+  final = final.replace(/china/g, 'China');
+  final = final.replace(/ etc /g, ' etc. ');
+  final = final.replace(/ etc/g, ' etc.');
+  final = final.replace(/ hvac/g, ' HVAC');
+  final = final.replace(/hvac /g, 'HVAC ');
+  final = final.replace(/ Hvac/g, ' HVAC');
+  final = final.replace(/Hvac /g, 'HVAC ');
+  final = final.replace(/mep /g, 'MEP ');
+  final = final.replace(/ mep/g, ' MEP');
+  final = final.replace(/ Mep/g, ' MEP');
+  final = final.replace(/Mep /g, 'MEP ');
+  final = final.replace(/ i /g, ' I ');
+  final = final.replace(/ \./g, '.');
+  final = final.replace(/equipments/g, 'equipment');
+  final = final.replace(/aircoolers/g, 'air coolers');
+  final = final.replace(/Aircoolers/g, 'Air coolers');
+  final = final.replace(/equipment's/g, 'equipment');
+  final = final.replace(/Equipments/g, 'equipment');
+  final = final.replace(/Equipment's/g, 'equipment');
+  final = final.replace(/([a-zA-Z])&/g, '$1 &');
+  final = final.replace(/P & ID/g, 'P&ID');
+  final = final.replace(/O& M/g, 'O&M');
+  final = final.replace(/ qhse /g, ' QHSE ');
+  final = final.replace(/ Qhse /g, ' QHSE ');
+  final = final.replace(/,\)/g, '),');
+  final = final.replace(/, \)/g, ')');
+  final = final.replace(/\( /g, '(');
+  final = final.replace(/ \)/g, ')');
+  final = final.replace(/([a-zA-Z])\(/g, '$1 (');
+  final = final.replace(/ qc /g, ' QC ');
+  final = final.replace(/ Qc /g, ' QC ');
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
