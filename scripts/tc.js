@@ -51,6 +51,30 @@ var isAlpha = function(ch){
 }
 
 
+function BetaFunction() {
+  let betaInput = document.querySelector('#textInput').value;
+  betaInput = betaInput.replace(/\n/g, ' ')
+  let betaProcess = REnRP(betaInput)
+  betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2')
+
+  let betaOut = ''
+
+  betaProcess = betaProcess.split('.')
+
+  console.log(betaProcess)
+
+  for (let s = 0; s < betaProcess.length; s++) {
+    if (betaProcess[s] != '') {
+      betaOut += `• ${betaProcess[s].trim()}.\n`;
+    }
+  }
+
+  betaOut = betaOut.replace(/d%t/g, '.')
+  
+  document.querySelector('#textOutput').value = betaOut;
+  document.querySelector('#textOutput').disabled = false
+}
+
 function formatText() {
   let inputText = document.querySelector('#textInput').value;
   inputText = inputText.split('\n')
@@ -297,7 +321,6 @@ function SpecialCase(seperator) {
   plainVal = RefineString(plainVal)
 
   let outList = plainVal.split('$@');
-  console.log(outList)
   
   let finalVal = ''
 
@@ -518,6 +541,8 @@ function REnRP(text) {
   final = final.replace(/([a-zA-Z])\(/g, '$1 (');
   final = final.replace(/ qc /g, ' QC ');
   final = final.replace(/ Qc /g, ' QC ');
+  final = final.replace(/Multi tasking/g, 'Multi-tasking')
+  final = final.replace(/Multi Tasking/g, 'Multi-tasking')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
