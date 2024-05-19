@@ -53,25 +53,58 @@ var isAlpha = function(ch){
 
 function BetaFunction() {
   let betaInput = document.querySelector('#textInput').value;
-  betaInput = betaInput.replace(/\n/g, ' ')
-  let betaProcess = REnRP(betaInput)
-  betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2')
+  betaInput = REnRP(betaInput)
+  betaInput = betaInput.split('\n')
+  let betaProcess = ''
 
-  let betaOut = ''
-
-  betaProcess = betaProcess.split('.')
-
-  console.log(betaProcess)
-
-  for (let s = 0; s < betaProcess.length; s++) {
-    if (betaProcess[s] != '') {
-      betaOut += `• ${betaProcess[s].trim()}.\n`;
+  for (let k = 0; k < betaInput.length; k++) {
+    
+    if (betaInput[k] != '') {
+      let wordsCount = betaInput[k].split(' ')
+      if (wordsCount.length > 2) {
+        betaProcess += `${betaInput[k]}\n`
+      } 
+      else {
+        if (betaInput[k].slice(-1) == '.') {
+          betaProcess += `${betaInput[k]}\n`
+        }
+        else {
+          betaProcess += `${betaInput[k]}.\n`
+        }
+      }
     }
   }
 
-  betaOut = betaOut.replace(/d%t/g, '.')
+  let betaOut1 = ''
+
+  betaProcess = betaProcess.split('.\n')
+
+
+  for (let s = 0; s < betaProcess.length; s++) {
+    if (betaProcess[s] != '') {
+      betaOut1 += `₹$${betaProcess[s].trim()}.\n`;
+    }
+  }
+
+  betaOut1 = betaOut1.replace(/\n/g, ' ')
+  betaOut1 = betaOut1.split('₹$')
+
+  let betaOut2 = ''
+
+  for (let g = 0; g < betaOut1.length; g++) {
+    if (betaOut1[g] != '' && betaOut1[g] != '.') {
+      betaOut2 += `• ${betaOut1[g].trim()}\n`
+    }
+  }
+
+  betaOut2 = betaOut2.trim()
   
-  document.querySelector('#textOutput').value = betaOut;
+  // betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2')
+
+
+  // betaOut1 = betaOut1.replace(/d%t/g, '.')
+  
+  document.querySelector('#textOutput').value = betaOut2;
   document.querySelector('#textOutput').disabled = false
 }
 
@@ -447,7 +480,7 @@ function copyText() {
 
     for (let x = 0; x < BtnElements.length; x++) {
       if (BtnElements[x].classList[1] == 'btn-success') {
-        console.log('entered in  condition')
+  
         BtnElements[x].classList.remove('btn-success')
         BtnElements[x].classList.add('btn-light')
         if (x == 0) {
