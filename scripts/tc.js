@@ -75,6 +75,7 @@ function BetaFunction() {
     }
   }
 
+
   let betaOut1 = ''
 
   betaProcess = betaProcess.split('.\n')
@@ -105,6 +106,7 @@ function BetaFunction() {
   // betaOut1 = betaOut1.replace(/d%t/g, '.')
   
   document.querySelector('#textOutput').value = betaOut2;
+  document.querySelector('#textInput').value = '';
   document.querySelector('#textOutput').disabled = false
 }
 
