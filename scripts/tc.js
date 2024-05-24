@@ -298,6 +298,8 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Equipments/g, 'Equipment')
     cOutput = cOutput.replace(/Equipment's/g, 'Equipment')
     cOutput = cOutput.replace(/ Csu/g, ' CSU')
+    cOutput = cOutput.replace(/ Icu/g, ' ICU')
+    cOutput = cOutput.replace(/ Icu /g, ' ICU ')
     cOutput = cOutput.replace(/ Pmc/g, ' PMC')
     cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
     cOutput = cOutput.replace(/Qc\//g, 'QC/')
@@ -322,9 +324,76 @@ function inputHandle(event) {
     }
 
   }
+  
+  else if (event.shiftKey && event.key == '~') {
+    GPTCorrection()
+    document.querySelector('#textInput').value = ''
+
+  }
+  
 
 
 };
+
+
+function GPTCorrection() {
+  let inputValue = document.querySelector('#textInput').value;
+
+  inputValue = inputValue.split('\n');
+  let outValue = '';
+
+  let changeCount = 0
+  let CurrentState = 1
+
+  for (let w = 0; w < inputValue.length; w++) {
+    let incomingState = 0
+    if (inputValue[w] != '') {
+      let tempStore = inputValue[w]
+      tempStore = tempStore.replace(/^-/g, '•')
+      tempStore = tempStore.replace(/^  /g, '')
+      tempStore = tempStore.replace(/^([a-zA-Z])/g, '> $1')
+      
+      if (tempStore[0] == '•') {
+        incomingState = 0
+      }
+      else if (tempStore[0] == '-') {
+        incomingState = 1
+      }
+
+      if (CurrentState != incomingState) {
+        changeCount += 1
+      }
+
+  
+
+      if (changeCount > 1 && changeCount %2 != 0) {
+        tempStore = '\n' + tempStore
+        changeCount = 1
+      }
+
+      outValue += tempStore + '\n'
+      
+      if (incomingState) {
+        CurrentState = 1
+      } else {
+        CurrentState = 0
+      }
+      
+    }
+    
+  }
+  if (outValue.length > 5) {
+    document.querySelector('#textOutput').disabled = false;
+    document.querySelector('#textOutput').value = outValue.trim();
+  } 
+
+
+
+  // document.querySelector('#textInput').value = ''
+  // document.querySelector('#textOutput').disabled = false;
+  // document.querySelector('#textOutput').value = inputValue;
+
+}
 
 function updateCount(event) {
   let chars = event.target.value;
@@ -494,6 +563,10 @@ function copyText() {
       }
     }
   } 
+
+  if (document.querySelector('#textInput').value == '~') {
+    document.querySelector('#textInput').value = ''
+  }
 }
 
 // General Replacements: 
@@ -578,6 +651,8 @@ function REnRP(text) {
   final = final.replace(/ Qc /g, ' QC ');
   final = final.replace(/Multi tasking/g, 'Multi-tasking')
   final = final.replace(/Multi Tasking/g, 'Multi-tasking')
+  final = final.replace(/([a-zA-Z])certificate/g, '$1 certificate')
+  final = final.replace(/([a-zA-Z])Certificate/g, '$1 Certificate')
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
