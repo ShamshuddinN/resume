@@ -300,12 +300,16 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ Csu/g, ' CSU')
     cOutput = cOutput.replace(/ Icu/g, ' ICU')
     cOutput = cOutput.replace(/ Icu /g, ' ICU ')
+    cOutput = cOutput.replace(/Cctv /g, 'CCTV ')
+    cOutput = cOutput.replace(/ Cctv/g, ' CCTV')
     cOutput = cOutput.replace(/ Pmc/g, ' PMC')
     cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
     cOutput = cOutput.replace(/Qc\//g, 'QC/')
     cOutput = cOutput.replace(/\( /g, '(')
     cOutput = cOutput.replace(/ \)/g, ')')
     cOutput = cOutput.replace(/\/ /g, '/')
+    cOutput = cOutput.replace(/\)([0-9a-zA-Z])/g, ') $1')
+
 
     
     let sc2 = 'Qa/ Qc'
@@ -387,11 +391,6 @@ function GPTCorrection() {
     document.querySelector('#textOutput').value = outValue.trim();
   } 
 
-
-
-  // document.querySelector('#textInput').value = ''
-  // document.querySelector('#textOutput').disabled = false;
-  // document.querySelector('#textOutput').value = inputValue;
 
 }
 
@@ -629,6 +628,11 @@ function REnRP(text) {
   final = final.replace(/ mep/g, ' MEP');
   final = final.replace(/ Mep/g, ' MEP');
   final = final.replace(/Mep /g, 'MEP ');
+  final = final.replace(/ As /g, ' as ');
+  final = final.replace(/managementsystem/g, 'management system');
+  final = final.replace(/Managementsystem/g, 'Management system');
+  final = final.replace(/exactstatus/g, 'exact status');
+  final = final.replace(/([a-zA-Z]) And ([a-zA-Z])/g, '$1 and $2');
   final = final.replace(/ i /g, ' I ');
   final = final.replace(/ \./g, '.');
   final = final.replace(/equipments/g, 'equipment');
@@ -646,6 +650,7 @@ function REnRP(text) {
   final = final.replace(/, \)/g, ')');
   final = final.replace(/\( /g, '(');
   final = final.replace(/ \)/g, ')');
+  final = final.replace(/\)([0-9a-zA-Z])/g, ') $1')
   final = final.replace(/([a-zA-Z])\(/g, '$1 (');
   final = final.replace(/ qc /g, ' QC ');
   final = final.replace(/ Qc /g, ' QC ');
