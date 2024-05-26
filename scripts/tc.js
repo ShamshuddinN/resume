@@ -628,7 +628,8 @@ function REnRP(text) {
   final = final.replace(/ mep/g, ' MEP');
   final = final.replace(/ Mep/g, ' MEP');
   final = final.replace(/Mep /g, 'MEP ');
-  final = final.replace(/ As /g, ' as ');
+  final = final.replace(/in([A-Z])/g, 'in $1');
+  final = final.replace(/([a-zA-Z]) As ([a-zA-Z])/g, '$1 as $2');
   final = final.replace(/managementsystem/g, 'management system');
   final = final.replace(/Managementsystem/g, 'Management system');
   final = final.replace(/exactstatus/g, 'exact status');
