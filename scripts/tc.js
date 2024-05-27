@@ -290,6 +290,7 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ Mep/g, ' MEP')
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
     cOutput = cOutput.replace(/ And /g, ' & ')
+    cOutput = cOutput.replace(/‐/g, '-')
     cOutput = cOutput.replace(/ Of /g, ' of ')
     cOutput = cOutput.replace(/ Qc/g, ' QC')
     cOutput = cOutput.replace(/Qc /g, 'QC ')
@@ -579,6 +580,10 @@ function REnRP(text) {
     final = final.replace(//g, '-');
   }
   
+  if (final.includes('‐')) {
+    final = final.replace(/‐/g, '-');
+  }
+  
   if (final.includes('  ')) {
     final = final.replace(/ /g, ' ');
   }
@@ -637,6 +642,7 @@ function REnRP(text) {
   final = final.replace(/ i /g, ' I ');
   final = final.replace(/ \./g, '.');
   final = final.replace(/equipments/g, 'equipment');
+  final = final.replace(/ B\. E /g, ' B.E ');
   final = final.replace(/aircoolers/g, 'air coolers');
   final = final.replace(/Aircoolers/g, 'Air coolers');
   final = final.replace(/equipment's/g, 'equipment');
