@@ -51,6 +51,28 @@ var isAlpha = function(ch){
 }
 
 
+function emailHandle() {
+  let mailIn = document.querySelector('#textInput').value;
+  if (mailIn.includes('@')) {
+    mailIn = mailIn.toLowerCase();
+    mailIn = mailIn.replace(/ /g, '');
+    // mailIn = mailIn.replace(//g, '');
+    mailIn = mailIn.replace(/gmaii/g, 'gmail');
+    mailIn = mailIn.replace(/gamil/g, 'gmail');
+    mailIn = mailIn.replace(/gmali/g, 'gmail');
+
+
+
+    navigator.clipboard.writeText(mailIn);
+    document.getElementById('emailButton').classList.remove('btn-outline-light')
+    document.getElementById('emailButton').classList.add('btn-success')
+    document.getElementById('emailButton').innerText = 'Copied!'
+    document.querySelector('#textInput').value = '';
+
+  } 
+}
+
+
 function BetaFunction() {
   let betaInput = document.querySelector('#textInput').value;
   betaInput = REnRP(betaInput)
@@ -288,7 +310,11 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Hvac /g, 'HVAC ')
     cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
     cOutput = cOutput.replace(/ Mep/g, ' MEP')
+    cOutput = cOutput.replace(/ Hse /g, ' HSE ')
+    cOutput = cOutput.replace(/ Hse/g, ' HSE')
     cOutput = cOutput.replace(/Mep /g, 'MEP ')
+    cOutput = cOutput.replace(/ Bms /g, ' BMS ');
+    cOutput = cOutput.replace(/Bms /g, 'BMS ');
     cOutput = cOutput.replace(/ And /g, ' & ')
     cOutput = cOutput.replace(/‐/g, '-')
     cOutput = cOutput.replace(/ Of /g, ' of ')
@@ -356,7 +382,7 @@ function GPTCorrection() {
       let tempStore = inputValue[w]
       tempStore = tempStore.replace(/^-/g, '•')
       tempStore = tempStore.replace(/^  /g, '')
-      tempStore = tempStore.replace(/^([a-zA-Z])/g, '> $1')
+      tempStore = tempStore.replace(/^([a-zA-Z])/g, '\n> $1')
       
       if (tempStore[0] == '•') {
         incomingState = 0
@@ -562,6 +588,12 @@ function copyText() {
         }
       }
     }
+
+    if (document.getElementById('emailButton').classList[1] == 'btn-success') {
+      document.getElementById('emailButton').classList.remove('btn-success')
+      document.getElementById('emailButton').classList.add('btn-outline-light')
+      document.getElementById('emailButton').innerText = 'Email'
+    }
   } 
 
   if (document.querySelector('#textInput').value == '~') {
@@ -625,6 +657,7 @@ function REnRP(text) {
   final = final.replace(/china/g, 'China');
   final = final.replace(/ etc /g, ' etc. ');
   final = final.replace(/ etc/g, ' etc.');
+  final = final.replace(/([a-zA-Z])- /g, '$1 - ');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
   final = final.replace(/ Hvac/g, ' HVAC');
@@ -633,6 +666,11 @@ function REnRP(text) {
   final = final.replace(/ mep/g, ' MEP');
   final = final.replace(/ Mep/g, ' MEP');
   final = final.replace(/Mep /g, 'MEP ');
+  final = final.replace(/ wll /g, ' WLL ');
+  final = final.replace(/ llc /g, ' LLC ');
+  final = final.replace(/L\. L\. C\./g, ' LLC ');
+  final = final.replace(/W\. L\. L\./g, 'W.L.L');
+
   final = final.replace(/in([A-Z])/g, 'in $1');
   final = final.replace(/([a-zA-Z]) As ([a-zA-Z])/g, '$1 as $2');
   final = final.replace(/managementsystem/g, 'management system');
@@ -645,6 +683,8 @@ function REnRP(text) {
   final = final.replace(/ B\. E /g, ' B.E ');
   final = final.replace(/aircoolers/g, 'air coolers');
   final = final.replace(/Aircoolers/g, 'Air coolers');
+  final = final.replace(/Tamilnadu/g, 'Tamil Nadu');
+  final = final.replace(/tamilnadu/g, 'Tamil Nadu');
   final = final.replace(/equipment's/g, 'equipment');
   final = final.replace(/Equipments/g, 'equipment');
   final = final.replace(/Equipment's/g, 'equipment');
@@ -652,6 +692,11 @@ function REnRP(text) {
   final = final.replace(/P & ID/g, 'P&ID');
   final = final.replace(/O& M/g, 'O&M');
   final = final.replace(/ qhse /g, ' QHSE ');
+  final = final.replace(/ bms/g, ' BMS');
+  final = final.replace(/bms /g, 'BMS ');
+  final = final.replace(/ Bms/g, ' BMS');
+  final = final.replace(/Bms /g, 'BMS ');
+  final = final.replace(/ hse /g, ' HSE ');
   final = final.replace(/ Qhse /g, ' QHSE ');
   final = final.replace(/,\)/g, '),');
   final = final.replace(/, \)/g, ')');
