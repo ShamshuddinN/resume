@@ -12,6 +12,18 @@ function capitalizeWords(str) {
 }
 
 
+function UnusualDash(Dtext) {
+  if (Dtext.includes('‐')) {
+    Dtext = Dtext.replace(/‐/g, '-');
+  }
+  
+  if (Dtext.includes('–')) {
+    Dtext = Dtext.replace(/–/g, '-');
+  }
+
+  return Dtext;
+}
+
 function RefineString(rawStr) {
   
   if (typeof(rawStr) !== 'string') {
@@ -24,13 +36,17 @@ function RefineString(rawStr) {
   if (rawStr.length <= 1 || sapceCount === rawStr.length) {
     return 'Text Too Short or No Words found';
   } else {
+
     let refinedStr = '';
     let incomingText = '';
-      if (rawStr.includes('\n')) {
-        incomingText = rawStr.replace(/\n/g, ' ');
-      } else {
-        incomingText = rawStr;
-      }
+
+    rawStr = UnusualDash(rawStr)
+
+    if (rawStr.includes('\n')) {
+      incomingText = rawStr.replace(/\n/g, ' ');
+    } else {
+      incomingText = rawStr;
+    }
 
 
     let raw = incomingText.split(' ');
@@ -50,6 +66,9 @@ var isAlpha = function(ch){
   return /^[A-Z]$/i.test(ch);
 }
 
+function isNumeric(value) {
+  return !isNaN(value);
+}
 
 function emailHandle() {
   let mailIn = document.querySelector('#textInput').value;
@@ -64,8 +83,8 @@ function emailHandle() {
 
 
     navigator.clipboard.writeText(mailIn);
-    document.getElementById('emailButton').classList.remove('btn-outline-light')
-    document.getElementById('emailButton').classList.add('btn-success')
+    document.getElementById('emailButton').classList.remove('btn-outline-light');
+    document.getElementById('emailButton').classList.add('btn-success');
     document.getElementById('emailButton').innerText = 'Copied!'
     document.querySelector('#textInput').value = '';
 
@@ -75,14 +94,20 @@ function emailHandle() {
 
 function BetaFunction() {
   let betaInput = document.querySelector('#textInput').value;
+  if (betaInput.length < 3) {
+    return 0
+  }
+
+  betaInput = UnusualDash(betaInput)
+
   betaInput = REnRP(betaInput)
-  betaInput = betaInput.split('\n')
+  betaInput = betaInput.split('\n');
   let betaProcess = ''
 
   for (let k = 0; k < betaInput.length; k++) {
     
     if (betaInput[k] != '') {
-      let wordsCount = betaInput[k].split(' ')
+      let wordsCount = betaInput[k].split(' ');
       if (wordsCount.length > 2) {
         betaProcess += `${betaInput[k]}\n`
       } 
@@ -100,7 +125,7 @@ function BetaFunction() {
 
   let betaOut1 = ''
 
-  betaProcess = betaProcess.split('.\n')
+  betaProcess = betaProcess.split('.\n');
 
 
   for (let s = 0; s < betaProcess.length; s++) {
@@ -109,8 +134,8 @@ function BetaFunction() {
     }
   }
 
-  betaOut1 = betaOut1.replace(/\n/g, ' ')
-  betaOut1 = betaOut1.split('₹$')
+  betaOut1 = betaOut1.replace(/\n/g, ' ');
+  betaOut1 = betaOut1.split('₹$');
 
   let betaOut2 = ''
 
@@ -122,10 +147,10 @@ function BetaFunction() {
 
   betaOut2 = betaOut2.trim()
   
-  // betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2')
+  // betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2');
 
 
-  // betaOut1 = betaOut1.replace(/d%t/g, '.')
+  // betaOut1 = betaOut1.replace(/d%t/g, '.');
   
   document.querySelector('#textOutput').value = betaOut2;
   document.querySelector('#textInput').value = '';
@@ -134,7 +159,11 @@ function BetaFunction() {
 
 function formatText() {
   let inputText = document.querySelector('#textInput').value;
-  inputText = inputText.split('\n')
+  if (inputText.length <= 5) {
+    return 0
+  }
+
+  inputText = inputText.split('\n');
   
   let outputText = ''
   
@@ -152,7 +181,7 @@ function formatText() {
 
 function CertificationsFormat() {
   let inText = document.querySelector('#textInput').value
-  inText = inText.split('\n')
+  inText = inText.split('\n');
 
   let certificatesArray = []
   let caughtMail = ''
@@ -202,10 +231,10 @@ Extract Project information For Below Projects:
 `
   navigator.clipboard.writeText(PPtxt)
 
-  let ppbtn = document.getElementById('ppcopy')
+  let ppbtn = document.getElementById('ppcopy');
   ppbtn.innerText = 'pp Copied'
-  ppbtn.classList.remove('btn-light')
-  ppbtn.classList.add('btn-success')
+  ppbtn.classList.remove('btn-light');
+  ppbtn.classList.add('btn-success');
   
 }
 
@@ -214,15 +243,22 @@ function BulletPointsPropmpt() {
   let pointspr = `correct below text wherever necessary and make bullet points:`
   navigator.clipboard.writeText(pointspr)
 
-  let ptscpybtn = document.getElementById('PointsPrpt')
+  let ptscpybtn = document.getElementById('PointsPrpt');
   ptscpybtn.innerText = 'Copied!'
-  ptscpybtn.classList.remove('btn-light')
-  ptscpybtn.classList.add('btn-success')
+  ptscpybtn.classList.remove('btn-light');
+  ptscpybtn.classList.add('btn-success');
 }
 
-function inputSubmit(txtIn) {
+function inputSubmit(txtIn, passText) {
   let mystr = '1 2 3 4 5 6 7 8 9 0'
   let inpTextHere = txtIn;
+
+
+  let returnVar = 0
+  if (passText != '' && passText.length > 2) {
+    inpTextHere = passText; // still needs work
+    returnVar = 1
+  }
 
 
   if (inpTextHere === '') {
@@ -251,22 +287,31 @@ function inputSubmit(txtIn) {
         outText += '• ' + out[i].trim()
       }
     }
-    document.querySelector('#textOutput').disabled = false;
 
+    if (returnVar) {
+      return outText;
+    } else {
+      document.querySelector('#textOutput').disabled = false;
+      document.querySelector('#textOutput').value = outText;  
+    }
 
-    document.querySelector('#textOutput').value = outText;
   }
   
 }
 
 let insertCount = 0;
-
+let controlCount = 0;
+let shiftCount = 0;
 function inputHandle(event) {
   
-  let PlainString = RefineString(event.target.value);
-
-  let trimmed = PlainString.trim()
-
+  if (event.key == 'Control') {
+    controlCount += 1
+  }
+  
+  if (event.key == 'Shift') {
+    shiftCount += 1
+  }
+  
   
   if (event.key === 'Insert') {
     insertCount += 1;
@@ -275,17 +320,96 @@ function inputHandle(event) {
     insertCount = 0;
   }
 
-  
+
+  // new code
+  if (event.ctrlKey && event.key == 'q') {
+    controlCount = 0
+    shiftCount = 0
+    let PlainString = document.querySelector('#textInput').value;
+    event.target.value = ''
+
+    if (PlainString.length > 5) {
+      PlainString = UnusualDash(PlainString)
+      PlainString = PlainString.split('\n');
+
+      let formattedText = '';
+      let theHeaders = []
+      let theDescriptions = []
+      let descriptionText = ''
+
+
+      // Creating Header and Description
+      for (let x = 0; x < PlainString.length; x++) { 
+        if  (PlainString[x].length > 2 && PlainString[x].includes(':')) {
+          let tempStr = PlainString[x].trim()
+          if (isAlpha(tempStr[0]) && isUpperCase(tempStr[0])) {
+            theHeaders.push(tempStr);
+            if (descriptionText != '') {
+              theDescriptions.push(descriptionText.trim())
+              descriptionText = ''
+            }
+            
+          } else {
+            descriptionText += PlainString[x] + ' \n'
+          }
+          
+        } else if (PlainString[x].length > 2) {
+          descriptionText += PlainString[x] + ' \n' 
+        }
+      }
+      if (descriptionText.length > 2) {
+        theDescriptions.push(descriptionText.trim())
+      }
+
+
+
+
+// to be improved
+      if (theHeaders.length != 0 && theDescriptions.length != 0) {
+        if (theHeaders.length == theDescriptions.length) {
+          for (let txt = 0; txt < theHeaders.length; txt++) {
+            formattedText += '\n\n' + theHeaders[txt].trim();
+            if (theDescriptions[txt][0] == '-') {
+              formattedText += '\n' + SpecialCase(seperator = '•', passText = theDescriptions[txt].trim()); //working
+            } else if (isNumeric(theDescriptions[txt][0])) {
+              formattedText += '\n' + handleNLines(passText = theDescriptions[txt].trim()); //working
+            } else if (isAlpha(theDescriptions[txt][0]) == false) {
+              formattedText += '\n' + inputSubmit(txtIn = '', passText = RefineString(theDescriptions[txt].trim()) ); //working
+            } else if (isAlpha(theDescriptions[txt][0])) {
+              formattedText += '\n' + planeText(passText = RefineString(theDescriptions[txt].trim())); //working
+            }
+          }
+        }
+      }
+// to be improved
+
+      document.querySelector('#textOutput').disabled = false;
+      document.querySelector('#textInput').value = ''
+      document.querySelector('#textOutput').value = formattedText.trim();
+      
+
+    }
+
+
+
+  }
+  // new code
+
+
   if (insertCount === 2) {
+    let PlainString = RefineString(event.target.value);  
     document.querySelector('#textOutput').value = '';
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
-    inputSubmit(PlainString);
+    inputSubmit(txtIn = PlainString, passText = '');
+    // Work underway here
 
 // Capitalize Each Word Replacements: 
 
   } else if (event.ctrlKey && event.key === 'Enter') {
     document.querySelector('#textOutput').value = '';
+    let PlainString = RefineString(event.target.value);
+    let trimmed = PlainString.trim()  
 
     let regex11 = /\([a-zA-Z]/;
     let regex22 = /\/[a-zA-Z]/;
@@ -307,43 +431,52 @@ function inputHandle(event) {
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
 
-    cOutput = cOutput.replace(/Hvac /g, 'HVAC ')
-    cOutput = cOutput.replace(/ Hvac/g, ' HVAC')
-    cOutput = cOutput.replace(/ Mep/g, ' MEP')
-    cOutput = cOutput.replace(/ Hse /g, ' HSE ')
-    cOutput = cOutput.replace(/ Hse/g, ' HSE')
-    cOutput = cOutput.replace(/Mep /g, 'MEP ')
+    cOutput = cOutput.replace(/Hvac /g, 'HVAC ');
+    cOutput = cOutput.replace(/ Hvac/g, ' HVAC');
+    cOutput = cOutput.replace(/ Mep/g, ' MEP');
+    cOutput = cOutput.replace(/ Hse /g, ' HSE ');
+    cOutput = cOutput.replace(/ Hse/g, ' HSE');
+    cOutput = cOutput.replace(/Wordpress/g, 'WordPress');
+    cOutput = cOutput.replace(/Mep /g, 'MEP ');
+    cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
+    cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
+    cOutput = cOutput.replace(/ Ndt$/g, 'NDT ');
     cOutput = cOutput.replace(/ Bms /g, ' BMS ');
+    cOutput = cOutput.replace(/Co Ordinator/g, 'Coordinator');
     cOutput = cOutput.replace(/Bms /g, 'BMS ');
-    cOutput = cOutput.replace(/ And /g, ' & ')
-    cOutput = cOutput.replace(/‐/g, '-')
-    cOutput = cOutput.replace(/ Of /g, ' of ')
-    cOutput = cOutput.replace(/ Qc/g, ' QC')
-    cOutput = cOutput.replace(/Qc /g, 'QC ')
-    cOutput = cOutput.replace(/Qa\//g, 'QA/')
-    cOutput = cOutput.replace(/ Csu /g, ' CSU ')
-    cOutput = cOutput.replace(/Equipments/g, 'Equipment')
-    cOutput = cOutput.replace(/Equipment's/g, 'Equipment')
-    cOutput = cOutput.replace(/ Csu/g, ' CSU')
-    cOutput = cOutput.replace(/ Icu/g, ' ICU')
-    cOutput = cOutput.replace(/ Icu /g, ' ICU ')
-    cOutput = cOutput.replace(/Cctv /g, 'CCTV ')
-    cOutput = cOutput.replace(/ Cctv/g, ' CCTV')
-    cOutput = cOutput.replace(/ Pmc/g, ' PMC')
-    cOutput = cOutput.replace(/ Pmc /g, ' PMC ')
-    cOutput = cOutput.replace(/Qc\//g, 'QC/')
-    cOutput = cOutput.replace(/\( /g, '(')
-    cOutput = cOutput.replace(/ \)/g, ')')
-    cOutput = cOutput.replace(/\/ /g, '/')
-    cOutput = cOutput.replace(/\)([0-9a-zA-Z])/g, ') $1')
+    cOutput = cOutput.replace(/ And /g, ' & ');
+    cOutput = cOutput.replace(/ Of /g, ' of ');
+    cOutput = cOutput.replace(/ Qc/g, ' QC');
+    cOutput = cOutput.replace(/Qc /g, 'QC ');
+    cOutput = cOutput.replace(/Asst\.engineer/g, 'Assistant Engineer');
+    cOutput = cOutput.replace(/Asst\. Engineer/g, 'Assistant Engineer');
+    cOutput = cOutput.replace(/ Hr /g, ' HR ');
+    cOutput = cOutput.replace(/Qa\//g, 'QA/');
+    cOutput = cOutput.replace(/ Csu /g, ' CSU ');
+    cOutput = cOutput.replace(/Equipments/g, 'Equipment');
+    cOutput = cOutput.replace(/Equipment's/g, 'Equipment');
+    cOutput = cOutput.replace(/E - Commerce/g, 'E-Commerce');
+    cOutput = cOutput.replace(/ Csu/g, ' CSU');
+    cOutput = cOutput.replace(/ Icu/g, ' ICU');
+    cOutput = cOutput.replace(/ Icu /g, ' ICU ');
+    cOutput = cOutput.replace(/Cctv /g, 'CCTV ');
+    cOutput = cOutput.replace(/ Cctv/g, ' CCTV');
+    cOutput = cOutput.replace(/ Pmc/g, ' PMC');
+    cOutput = cOutput.replace(/Front - End/g, 'Front-End');
+    cOutput = cOutput.replace(/ Pmc /g, ' PMC ');
+    cOutput = cOutput.replace(/Qc\//g, 'QC/');
+    cOutput = cOutput.replace(/\( /g, '(');
+    cOutput = cOutput.replace(/ \)/g, ')');
+    cOutput = cOutput.replace(/\/ /g, '/');
+    cOutput = cOutput.replace(/\)([0-9a-zA-Z])/g, ') $1');
 
 
     
     let sc2 = 'Qa/ Qc'
     let regx2 = new RegExp(sc2, 'g');
     
-    cOutput = cOutput.replace(regx2, 'QA/QC')
-    cOutput = cOutput.replace(/Qa-qc/, 'QA/QC')
+    cOutput = cOutput.replace(regx2, 'QA/QC');
+    cOutput = cOutput.replace(/Qa-qc/, 'QA/QC');
 
     
     
@@ -363,9 +496,12 @@ function inputHandle(event) {
   }
   
 
-
 };
 
+
+function isUpperCase(char) {
+  return char === char.toUpperCase() && char !== char.toLowerCase();
+}
 
 function GPTCorrection() {
   let inputValue = document.querySelector('#textInput').value;
@@ -380,9 +516,9 @@ function GPTCorrection() {
     let incomingState = 0
     if (inputValue[w] != '') {
       let tempStore = inputValue[w]
-      tempStore = tempStore.replace(/^-/g, '•')
-      tempStore = tempStore.replace(/^  /g, '')
-      tempStore = tempStore.replace(/^([a-zA-Z])/g, '\n> $1')
+      tempStore = tempStore.replace(/^-/g, '•');
+      tempStore = tempStore.replace(/^  /g, '');
+      tempStore = tempStore.replace(/^([a-zA-Z])/g, '\n> $1');
       
       if (tempStore[0] == '•') {
         incomingState = 0
@@ -425,29 +561,42 @@ function updateCount(event) {
   let chars = event.target.value;
   document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;
   document.querySelector('#copyButton').innerText = 'Copy'
-  document.querySelector('#copyButton').classList.remove('btn-success')
-  document.querySelector('#copyButton').classList.add('btn-primary')
+  document.querySelector('#copyButton').classList.remove('btn-success');
+  document.querySelector('#copyButton').classList.add('btn-primary');
 };
 
 
-function SpecialCase(seperator) {
+function SpecialCase(seperator, passText) {
   let inputValue = document.querySelector('#textInput').value;
+
+  let returnVar = 0
+  if (passText != '' && passText.length > 3) {
+    inputValue = passText
+    returnVar = 1
+  }
+
+  if (returnVar == false && inputValue.length < 3) {
+    return 0
+  }
+
+  inputValue = UnusualDash(inputValue)
+
   
   let mysep = '\n'+inputValue[0];
 
   let plainVal = REnRP(inputValue);
 
-  mysep = mysep.replace(/\*/, '\\*')
+  mysep = mysep.replace(/\*/, '\\*');
   
 
 
   if (mysep.includes('|')) {
-    mysep = mysep.replace(/\|/, '\\|')
+    mysep = mysep.replace(/\|/, '\\|');
   }
 
   plainVal = '\n' + plainVal;
   let regx = new RegExp(mysep, 'g');
-  plainVal = plainVal.replace(regx, '$@')
+  plainVal = plainVal.replace(regx, '$@');
   plainVal = RefineString(plainVal)
 
   let outList = plainVal.split('$@');
@@ -478,20 +627,34 @@ function SpecialCase(seperator) {
   }
   
 
-  document.querySelector('#textOutput').disabled = false;
-  document.querySelector('#textOutput').value = finalVal;
-  document.querySelector('#textInput').value = ''
-  
+
+  if (returnVar) {
+    return finalVal
+  } else {
+    document.querySelector('#textOutput').disabled = false;
+    document.querySelector('#textOutput').value = finalVal;
+    document.querySelector('#textInput').value = ''  
+  }
+
 }
 
 
-function handleNLines() {
+function handleNLines(passText) {
   let textIn = document.querySelector('#textInput').value;
-  if (textIn == '') {
+
+  let returnVar = 0
+  if (passText != '' && passText.length > 2) {
+    textIn = passText
+    returnVar = 1
+  }
+
+  if (textIn.length < 3) {
     return 0
   }
+  textIn = UnusualDash(textIn)
+
   let refinedTxt = '\n' + REnRP(textIn)
-  refinedTxt = refinedTxt.split('\n')
+  refinedTxt = refinedTxt.split('\n');
   alterText = ''
 
   for (let j = 1; j < refinedTxt.length; j++) {
@@ -506,7 +669,7 @@ function handleNLines() {
   let gNChar = alterText[gSlen+1]
 
 
-  alterText = alterText.split('\n')
+  alterText = alterText.split('\n');
 
   for (let i = 0; i < alterText.length; i++) {
 
@@ -526,7 +689,7 @@ function handleNLines() {
     }
     
   }
-  plainTxt = plainTxt.split('&*#')
+  plainTxt = plainTxt.split('&*#');
   let outputTxt = ''
 
   for (let o = 1; o < plainTxt.length; o++) {
@@ -536,29 +699,48 @@ function handleNLines() {
       outputTxt += '\n' + plainTxt[o]
     }
   }
-
-  document.querySelector('#textOutput').disabled = false;
-  document.querySelector('#textOutput').value = outputTxt;
-  document.querySelector('#textInput').value = ''
   
+  if (returnVar) {
+    return outputTxt;
+  } else {
+    document.querySelector('#textOutput').disabled = false;
+    document.querySelector('#textOutput').value = outputTxt;
+    document.querySelector('#textInput').value = ''  
+  }
+
 }
 
-function planeText() {
+function planeText(passText) {
   let textIn = document.querySelector('#textInput').value;
-  textIn = textIn.replace(/\n/g, ' ')
+  let returnVar = 0;
+  if (passText != '') {
+    textIn = passText;
+    returnVar = 1
+  };
+  textIn = textIn.replace(/\n/g, ' ');
 
-  if (textIn == '') {
+  if (textIn.length < 3) {
     return 0
   }
+
+  textIn = UnusualDash(textIn);
+
  let planeTxt = REnRP(textIn)
- document.querySelector('#textOutput').disabled = false;
- document.querySelector('#textOutput').value = planeTxt;
- document.querySelector('#textInput').value = '';
+
+ if (returnVar) {
+  return planeTxt.trim()
+ } else {
+  document.querySelector('#textOutput').disabled = false;
+  document.querySelector('#textOutput').value = planeTxt;
+  document.querySelector('#textInput').value = ''; 
+ }
+
+
 }
 
 
 function copyText() {
-  // navigator.clipboard.writeText('Hello Mars!')
+  // navigator.clipboard.writeText('Hello Mars!');
   let boxVal = document.querySelector('#textOutput').value
   
   if (boxVal.length !== 0) {
@@ -566,11 +748,11 @@ function copyText() {
 
     document.querySelector('#textOutput').value = ''
     document.querySelector('#copyButton').innerText = 'Copied'
-    document.querySelector('#copyButton').classList.remove('btn-primary')
-    document.querySelector('#copyButton').classList.add('btn-success')
+    document.querySelector('#copyButton').classList.remove('btn-primary');
+    document.querySelector('#copyButton').classList.add('btn-success');
 
-    let ppClasses = document.getElementById('ppcopy')
-    let poiClasses = document.getElementById('PointsPrpt')
+    let ppClasses = document.getElementById('ppcopy');
+    let poiClasses = document.getElementById('PointsPrpt');
     document.querySelector('#textOutput').placeholder = ':)'
 
     let BtnElements = [ppClasses, poiClasses]
@@ -578,8 +760,8 @@ function copyText() {
     for (let x = 0; x < BtnElements.length; x++) {
       if (BtnElements[x].classList[1] == 'btn-success') {
   
-        BtnElements[x].classList.remove('btn-success')
-        BtnElements[x].classList.add('btn-light')
+        BtnElements[x].classList.remove('btn-success');
+        BtnElements[x].classList.add('btn-light');
         if (x == 0) {
           BtnElements[x].innerText = 'Project Prompt'
         }
@@ -590,8 +772,8 @@ function copyText() {
     }
 
     if (document.getElementById('emailButton').classList[1] == 'btn-success') {
-      document.getElementById('emailButton').classList.remove('btn-success')
-      document.getElementById('emailButton').classList.add('btn-outline-light')
+      document.getElementById('emailButton').classList.remove('btn-success');
+      document.getElementById('emailButton').classList.add('btn-outline-light');
       document.getElementById('emailButton').innerText = 'Email'
     }
   } 
@@ -601,8 +783,12 @@ function copyText() {
   }
 }
 
-// General Replacements: 
 
+
+
+
+
+// General Replacements:
 function REnRP(text) {
   let final = text;
 
@@ -610,10 +796,6 @@ function REnRP(text) {
 
   if (final.includes('')) {
     final = final.replace(//g, '-');
-  }
-  
-  if (final.includes('‐')) {
-    final = final.replace(/‐/g, '-');
   }
   
   if (final.includes('  ')) {
@@ -642,27 +824,42 @@ function REnRP(text) {
 
 
   if (final.includes('.(')) {
-    final = final.replace(/.\(/g, '. (')
+    final = final.replace(/.\(/g, '. (');
   }
   
   if (final.includes('.)')) {
-    final = final.replace(/\.\)/g, ').')
+    final = final.replace(/\.\)/g, ').');
   }
 
 
-  final = final.replace(/\.([a-zA-Z])/g, '. $1');
+  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])\.([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3$4. $5$6$7$8');
+  
    //Error
   final = final.replace(/ qatar /g, ' Qatar ');
   final = final.replace(/ QATAR /g, ' Qatar ');
+  final = final.replace(/([0-9])year/g, '$1 year');
+  final = final.replace(/([0-9])Year/g, '$1 Year');
   final = final.replace(/china/g, 'China');
   final = final.replace(/ etc /g, ' etc. ');
   final = final.replace(/ etc/g, ' etc.');
-  final = final.replace(/([a-zA-Z])- /g, '$1 - ');
+  final = final.replace(/Wordpress/g, 'WordPress');
+  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])-([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5$6$7');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
+  final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
+  final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
+  final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
+  final = final.replace(/Asst\. Engineer/g, 'Assistant Engineer');
+  final = final.replace(/Asst\.Manager/g, 'Assistant Manager');
+  final = final.replace(/Asst\.manager/g, 'Assistant Manager');
+  final = final.replace(/asst\.manager/g, 'Assistant Manager');
+  final = final.replace(/Asst\. Manager/g, 'Assistant Manager');
   final = final.replace(/ Hvac/g, ' HVAC');
+  final = final.replace(/FireProofing/g, 'Fireproofing');
   final = final.replace(/Hvac /g, 'HVAC ');
   final = final.replace(/mep /g, 'MEP ');
+  final = final.replace(/co ordinator/g, 'coordinator');
+  final = final.replace(/Co ordinator/g, 'Coordinator');
   final = final.replace(/ mep/g, ' MEP');
   final = final.replace(/ Mep/g, ' MEP');
   final = final.replace(/Mep /g, 'MEP ');
@@ -702,14 +899,15 @@ function REnRP(text) {
   final = final.replace(/, \)/g, ')');
   final = final.replace(/\( /g, '(');
   final = final.replace(/ \)/g, ')');
-  final = final.replace(/\)([0-9a-zA-Z])/g, ') $1')
+  final = final.replace(/\)([0-9a-zA-Z])/g, ') $1');
   final = final.replace(/([a-zA-Z])\(/g, '$1 (');
   final = final.replace(/ qc /g, ' QC ');
   final = final.replace(/ Qc /g, ' QC ');
-  final = final.replace(/Multi tasking/g, 'Multi-tasking')
-  final = final.replace(/Multi Tasking/g, 'Multi-tasking')
-  final = final.replace(/([a-zA-Z])certificate/g, '$1 certificate')
-  final = final.replace(/([a-zA-Z])Certificate/g, '$1 Certificate')
+  final = final.replace(/ qa\/qc /g, ' QA/QC ');
+  final = final.replace(/Multi tasking/g, 'Multi-tasking');
+  final = final.replace(/Multi Tasking/g, 'Multi-tasking');
+  final = final.replace(/([a-zA-Z])certificate/g, '$1 certificate');
+  final = final.replace(/([a-zA-Z])Certificate/g, '$1 Certificate');
 
 
   unusualTxt = ['abudhabi', 'Abudhabi', 'AbuDhabi']
@@ -717,7 +915,7 @@ function REnRP(text) {
   for (let p = 0; p < unusualTxt.length; p++) {
     if (final.includes(unusualTxt[p])) {
       let regx = new RegExp(unusualTxt[p], 'g');
-      final = final.replace(regx, 'Abu Dhabi')
+      final = final.replace(regx, 'Abu Dhabi');
     }
     
   }

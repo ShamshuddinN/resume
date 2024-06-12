@@ -18,13 +18,13 @@
   <div class="container-fluid">
     <div class="row justify-content-center  ">
       <div class="col-lg-5 col-md-8 col-sm-8 col-11 bg-light bg-opacity-50 p-4 rounded rounded-4  shadow ">
-        <textarea class="form-control" id="textInput" cols="30" oninput="updateCount(event)" onkeydown="inputHandle(event)" placeholder="Double Click 'Insert' = Bullet Points, Ctrl+Enter = Capitalize Each Word, Shift + ~ = Handle GPT text" rows="5"></textarea>
+        <textarea class="form-control" id="textInput" cols="30" oninput="updateCount(event)" onkeydown="inputHandle(event)" placeholder="Double Click 'Insert' = Bullet Points, Ctrl+Enter = Capitalize Each Word, Shift + ~ = Handle GPT text, Ctrl + q = Handle Multiple Descriptions" rows="5"></textarea>
         <div class="row">
           <div class="col">
-            <button onclick="SpecialCase('-')" class="btn btn-dark mt-2">Sc -</button>
-            <button onclick="SpecialCase('•')" class="btn btn-dark mt-2">Sc •</button>
-            <button onclick="handleNLines()" class="btn btn-dark mt-2">Num Ln</button> 
-            <button onclick="planeText()" class="btn btn-dark mt-2">PT</button>
+            <button onclick="SpecialCase(seperator = '-', passText = '')" class="btn btn-dark mt-2">Sc -</button>
+            <button onclick="SpecialCase(seperator = '•', passText = '')" class="btn btn-dark mt-2">Sc •</button>
+            <button onclick="handleNLines(passText = '')" class="btn btn-dark mt-2">Num Ln</button> 
+            <button onclick="planeText(passText= '')" class="btn btn-dark mt-2">PT</button>
             <button onclick="CertificationsFormat()" class="btn btn-dark mt-2">Cert T</button>
             <button onclick="BetaFunction()" class="btn btn-warning mt-2">Beta</button>
           </div>
@@ -39,7 +39,7 @@
             <p class="text-white align-text-bottom fw-medium mb-0" >Output</p>
           </div>
           <div class="col text-end">
-            <button id="copyButton" class="btn btn-primary mb-1" onclick="copyText()" >Copy</button>
+            <button id="copyButton" class="btn btn-primary mb-1" onclick="copyText()" >Copy text</button>
           </div>
         </div>
         <textarea class="form-control" id="textOutput" cols="30" rows="10"></textarea>
