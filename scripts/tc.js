@@ -441,6 +441,8 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
     cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
     cOutput = cOutput.replace(/ Ndt$/g, 'NDT ');
+    cOutput = cOutput.replace(/ nebosh/g, ' NEBOSH');
+    cOutput = cOutput.replace(/nebosh /g, 'NEBOSH ');
     cOutput = cOutput.replace(/ Bms /g, ' BMS ');
     cOutput = cOutput.replace(/Co Ordinator/g, 'Coordinator');
     cOutput = cOutput.replace(/Bms /g, 'BMS ');
@@ -505,6 +507,7 @@ function isUpperCase(char) {
 
 function GPTCorrection() {
   let inputValue = document.querySelector('#textInput').value;
+  inputValue = inputValue.replace(/### /g, '')
 
   inputValue = inputValue.split('\n');
   let outValue = '';
@@ -518,8 +521,13 @@ function GPTCorrection() {
       let tempStore = inputValue[w]
       tempStore = tempStore.replace(/^-/g, '•');
       tempStore = tempStore.replace(/^  /g, '');
-      tempStore = tempStore.replace(/^([a-zA-Z])/g, '\n> $1');
-      
+      const startAlpha = /^([a-zA-Z])/;
+      const endAlpha = /([a-zA-Z])$/;
+
+      if (startAlpha.test(tempStore) && endAlpha.test(tempStore)) {
+        tempStore = '\n' + tempStore + ':'
+      }
+
       if (tempStore[0] == '•') {
         incomingState = 0
       }
@@ -797,7 +805,18 @@ function REnRP(text) {
   if (final.includes('')) {
     final = final.replace(//g, '-');
   }
+
+  //Unstable Code
+  if (final.includes('')) {
+    final = final.replace(//g, 'ff');
+  }
   
+  if (final.includes('')) {
+    final = final.replace(//g, 'ffi');
+  }
+  //Unstable Code
+
+
   if (final.includes('  ')) {
     final = final.replace(/ /g, ' ');
   }
@@ -846,6 +865,8 @@ function REnRP(text) {
   final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])-([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5$6$7');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
+  final = final.replace(/ nebosh/g, ' NEBOSH');
+  final = final.replace(/nebosh /g, 'NEBOSH ');
   final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
   final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
   final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
