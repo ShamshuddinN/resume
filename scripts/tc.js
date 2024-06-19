@@ -441,8 +441,9 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
     cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
     cOutput = cOutput.replace(/ Ndt$/g, 'NDT ');
-    cOutput = cOutput.replace(/ nebosh/g, ' NEBOSH');
+    cOutput = cOutput.replace(/ Nebosh/g, ' NEBOSH');
     cOutput = cOutput.replace(/nebosh /g, 'NEBOSH ');
+    cOutput = cOutput.replace(/Nebosh /g, 'NEBOSH ');
     cOutput = cOutput.replace(/ Bms /g, ' BMS ');
     cOutput = cOutput.replace(/Co Ordinator/g, 'Coordinator');
     cOutput = cOutput.replace(/Bms /g, 'BMS ');
@@ -594,7 +595,13 @@ function SpecialCase(seperator, passText) {
 
   let plainVal = REnRP(inputValue);
 
-  mysep = mysep.replace(/\*/, '\\*');
+  
+
+  if (mysep.includes('.')) {
+    mysep = mysep.replace(/\./, '\\.');
+  } else if (mysep.includes('*')) {
+    mysep = mysep.replace(/\*/, '\\*');
+  };
   
 
 
@@ -865,8 +872,9 @@ function REnRP(text) {
   final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])-([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5$6$7');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
-  final = final.replace(/ nebosh/g, ' NEBOSH');
+  final = final.replace(/ Nebosh/g, ' NEBOSH');
   final = final.replace(/nebosh /g, 'NEBOSH ');
+  final = final.replace(/Nebosh /g, 'NEBOSH ');
   final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
   final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
   final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
