@@ -440,7 +440,7 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Mep /g, 'MEP ');
     cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
     cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
-    cOutput = cOutput.replace(/ Ndt$/g, 'NDT ');
+    cOutput = cOutput.replace(/ Ndt$/g, ' NDT');
     cOutput = cOutput.replace(/ Nebosh/g, ' NEBOSH');
     cOutput = cOutput.replace(/nebosh /g, 'NEBOSH ');
     cOutput = cOutput.replace(/Nebosh /g, 'NEBOSH ');
