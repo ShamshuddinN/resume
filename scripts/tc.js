@@ -807,7 +807,12 @@ function copyText() {
 function REnRP(text) {
   let final = text;
 
-  final = final.replace(/([,&]|and(?=[A-Z]))/g, "$1 ");
+  final = final.replace(/[,&](a-zA-Z)/g, ', $1');
+
+  final = final.replace(/and([A-Z])/g, 'and $1');
+  final = final.replace(/([a-z])And([A-Z])/g, '$1 And $2');
+  
+
 
   if (final.includes('')) {
     final = final.replace(//g, '-');
@@ -904,7 +909,8 @@ function REnRP(text) {
   final = final.replace(/exactstatus/g, 'exact status');
   final = final.replace(/([a-zA-Z]) And ([a-zA-Z])/g, '$1 and $2');
   final = final.replace(/ i /g, ' I ');
-  final = final.replace(/ \./g, '.');
+  final = final.replace(/([a-zA-Z]) \.([a-zA-Z])/g, '$1. $2');
+  final = final.replace(/([a-zA-Z])\.([a-zA-Z])/g, '$1 . $2');
   final = final.replace(/equipments/g, 'equipment');
   final = final.replace(/ B\. E /g, ' B.E ');
   final = final.replace(/aircoolers/g, 'air coolers');
