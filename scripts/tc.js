@@ -145,6 +145,8 @@ function BetaFunction() {
     }
   }
 
+  betaOut2 = betaOut2.replace(/  /g, ' ')
+
   betaOut2 = betaOut2.trim()
   
   // betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2');
@@ -807,7 +809,12 @@ function copyText() {
 function REnRP(text) {
   let final = text;
 
+  //Comma replacements
   final = final.replace(/[,&](a-zA-Z)/g, ', $1');
+  final = final.replace(/([a-zA-Z])([a-zA-Z]) ,([a-zA-Z])([a-zA-Z])/g, '$1$2, $3$4')
+  final = final.replace(/([a-zA-Z]) ,/g, '$1,')
+  final = final.replace(/([a-zA-Z]),([a-zA-Z])/g, '$1, $2')
+  //
 
   final = final.replace(/and([A-Z])/g, 'and $1');
   final = final.replace(/([a-z])And([A-Z])/g, '$1 And $2');
@@ -875,11 +882,16 @@ function REnRP(text) {
   final = final.replace(/ etc/g, ' etc.');
   final = final.replace(/Wordpress/g, 'WordPress');
   final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])-([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5$6$7');
+  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z]) -([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5');
+  final = final.replace(/cross \- functional/g, 'cross-functional');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
   final = final.replace(/ Nebosh/g, ' NEBOSH');
   final = final.replace(/nebosh /g, 'NEBOSH ');
   final = final.replace(/Nebosh /g, 'NEBOSH ');
+  final = final.replace(/ adnoc /g, ' ADNOC ');
+  final = final.replace(/ Adnoc /g, ' ADNOC ');
+  final = final.replace(/Adnoc /g, ' ADNOC ');
   final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
   final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
   final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
