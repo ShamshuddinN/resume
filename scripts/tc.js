@@ -424,8 +424,6 @@ function inputHandle(event) {
     }
     
     
-    trimmed = trimmed.replace(/([A-Za-z0-9])-/g, '$1 -');
-    trimmed = trimmed.replace(/-([A-Za-z0-9])/g, '- $1');
 
     
     // final = final.replace(/([,&]|and(?=[A-Z]))/g, "$1 ");
@@ -433,6 +431,21 @@ function inputHandle(event) {
     event.target.value = '';
     document.querySelector('#characterCount').innerText = `Character Count: 0`;
 
+    cOutput = cOutput.replace(/Autocad/g, 'AutoCAD');
+    cOutput = cOutput.replace(/autocad/g, 'AutoCAD');
+
+    cOutput = cOutput.replace(/ 3d /g, ' 3D ');
+    cOutput = cOutput.replace(/^3d /g, '3D ');
+    cOutput = cOutput.replace(/ 3d$/g, ' 3D');
+
+    cOutput = cOutput.replace(/^Hr /g, 'HR ');
+    cOutput = cOutput.replace(/ Hr$/g, ' HR');
+    cOutput = cOutput.replace(/ Hr /g, ' HR ');
+
+    cOutput = cOutput.replace(/ Cum /g, ' cum ');
+    cOutput = cOutput.replace(/^Cum /g, 'cum ');
+    cOutput = cOutput.replace(/ Cum$/g, ' cum');
+    
     cOutput = cOutput.replace(/Hvac /g, 'HVAC ');
     cOutput = cOutput.replace(/ Hvac/g, ' HVAC');
     cOutput = cOutput.replace(/ Mep/g, ' MEP');
@@ -443,7 +456,14 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
     cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
     cOutput = cOutput.replace(/ Ndt$/g, ' NDT');
+    cOutput = cOutput.replace(/^Hse /g, 'HSE ');
+    cOutput = cOutput.replace(/ Hse /g, ' HSE ');
+    cOutput = cOutput.replace(/ Hse$/g, ' HSE');
+    cOutput = cOutput.replace(/([a-zA-Z]) \.$/g, '$1.');
+    cOutput = cOutput.replace(/([a-zA-Z]) \.\n/g, '$1.\n');
+  
     cOutput = cOutput.replace(/ Nebosh/g, ' NEBOSH');
+    cOutput = cOutput.replace(/Co\-ordi/g, 'Coordi');
     cOutput = cOutput.replace(/nebosh /g, 'NEBOSH ');
     cOutput = cOutput.replace(/Nebosh /g, 'NEBOSH ');
     cOutput = cOutput.replace(/ Bms /g, ' BMS ');
@@ -451,11 +471,17 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Bms /g, 'BMS ');
     cOutput = cOutput.replace(/ And /g, ' & ');
     cOutput = cOutput.replace(/ Of /g, ' of ');
-    cOutput = cOutput.replace(/ Qc/g, ' QC');
-    cOutput = cOutput.replace(/Qc /g, 'QC ');
+    cOutput = cOutput.replace(/ Qc$/g, ' QC');
+    cOutput = cOutput.replace(/^Qc /g, 'QC ');
+    cOutput = cOutput.replace(/ Qc /g, ' QC ');
+    cOutput = cOutput.replace(/\nQc /g, '\nQC ');
+    cOutput = cOutput.replace(/ Qa /g, ' QA ');
+    cOutput = cOutput.replace(/^Qa /g, 'QA ');
+
+
     cOutput = cOutput.replace(/Asst\.engineer/g, 'Assistant Engineer');
     cOutput = cOutput.replace(/Asst\. Engineer/g, 'Assistant Engineer');
-    cOutput = cOutput.replace(/ Hr /g, ' HR ');
+    
     cOutput = cOutput.replace(/Qa\//g, 'QA/');
     cOutput = cOutput.replace(/ Csu /g, ' CSU ');
     cOutput = cOutput.replace(/Equipments/g, 'Equipment');
@@ -874,15 +900,27 @@ function REnRP(text) {
   
    //Error
   final = final.replace(/ qatar /g, ' Qatar ');
+  final = final.replace(/Autocad/g, 'AutoCAD');
+  final = final.replace(/autocad/g, 'AutoCAD');
+
+  final = final.replace(/ 3d /g, ' 3D ');
+  final = final.replace(/^3d /g, '3D ');
+  final = final.replace(/ 3d$/g, ' 3D');
+
+  final = final.replace(/ Cum /g, ' cum ');
+  final = final.replace(/^Cum /g, 'cum ');
+  final = final.replace(/ Cum$/g, ' cum');
+
+
   final = final.replace(/ QATAR /g, ' Qatar ');
   final = final.replace(/([0-9])year/g, '$1 year');
   final = final.replace(/([0-9])Year/g, '$1 Year');
-  final = final.replace(/china/g, 'China');
+  final = final.replace(/ china /g, ' China ');
+  final = final.replace(/^china /g, 'China ');
+  final = final.replace(/ china$/g, ' China');
   final = final.replace(/ etc /g, ' etc. ');
-  final = final.replace(/ etc/g, ' etc.');
+  final = final.replace(/ etc$/g, ' etc.');
   final = final.replace(/Wordpress/g, 'WordPress');
-  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])-([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5$6$7');
-  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z]) -([a-zA-Z])([a-zA-Z])/g, '$1$2$3 - $4$5');
   final = final.replace(/cross \- functional/g, 'cross-functional');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
@@ -892,6 +930,9 @@ function REnRP(text) {
   final = final.replace(/ adnoc /g, ' ADNOC ');
   final = final.replace(/ Adnoc /g, ' ADNOC ');
   final = final.replace(/Adnoc /g, ' ADNOC ');
+  final = final.replace(/Co\-ordi/g, 'Coordi');
+  final = final.replace(/Co\- ordi/g, 'Coordi');
+  final = final.replace(/CO\-ORDI/g, 'COORDI');
   final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
   final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
   final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
@@ -906,9 +947,26 @@ function REnRP(text) {
   final = final.replace(/mep /g, 'MEP ');
   final = final.replace(/co ordinator/g, 'coordinator');
   final = final.replace(/Co ordinator/g, 'Coordinator');
-  final = final.replace(/ mep/g, ' MEP');
-  final = final.replace(/ Mep/g, ' MEP');
-  final = final.replace(/Mep /g, 'MEP ');
+  final = final.replace(/ mep\n/g, ' MEP\n');
+  final = final.replace(/ Mep$/g, ' MEP');
+  final = final.replace(/ Mep\n/g, ' MEP\n');
+  final = final.replace(/^Mep /g, 'MEP ');
+  final = final.replace(/\nMep /g, 'MEP ');
+  final = final.replace(/^Hse /g, 'HSE ');
+  final = final.replace(/\nHse /g, '\nHSE ');
+  final = final.replace(/ Hse /g, ' HSE ');
+  final = final.replace(/ Hse$/g, ' HSE');
+  final = final.replace(/ Hse\n/g, ' HSE\n');
+
+  final = final.replace(/([a-zA-Z]) \.$/g, '$1.');
+  final = final.replace(/([a-zA-Z]) \.\n/g, '$1.\n');
+
+
+  final = final.replace(/^hse /g, 'HSE ');
+  final = final.replace(/\nhse /g, '\nHSE ');
+  final = final.replace(/ hse /g, ' HSE ');
+  final = final.replace(/ hse$/g, ' HSE');
+  final = final.replace(/ hse\n/g, ' HSE\n');
   final = final.replace(/ wll /g, ' WLL ');
   final = final.replace(/ llc /g, ' LLC ');
   final = final.replace(/L\. L\. C\./g, ' LLC ');
@@ -922,7 +980,6 @@ function REnRP(text) {
   final = final.replace(/([a-zA-Z]) And ([a-zA-Z])/g, '$1 and $2');
   final = final.replace(/ i /g, ' I ');
   final = final.replace(/([a-zA-Z]) \.([a-zA-Z])/g, '$1. $2');
-  final = final.replace(/([a-zA-Z])\.([a-zA-Z])/g, '$1 . $2');
   final = final.replace(/equipments/g, 'equipment');
   final = final.replace(/ B\. E /g, ' B.E ');
   final = final.replace(/aircoolers/g, 'air coolers');
@@ -932,7 +989,9 @@ function REnRP(text) {
   final = final.replace(/equipment's/g, 'equipment');
   final = final.replace(/Equipments/g, 'equipment');
   final = final.replace(/Equipment's/g, 'equipment');
-  final = final.replace(/([a-zA-Z])&/g, '$1 &');
+  final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])&([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 & $4$5$6');
+  final = final.replace(/([a-z])([a-z])&/g, '$1$2 &')
+  final = final.replace(/([a-z])([a-z])&([a-z])([a-z])/g, '$1$2 & $3$4')
   final = final.replace(/P & ID/g, 'P&ID');
   final = final.replace(/O& M/g, 'O&M');
   final = final.replace(/ qhse /g, ' QHSE ');
@@ -947,9 +1006,15 @@ function REnRP(text) {
   final = final.replace(/\( /g, '(');
   final = final.replace(/ \)/g, ')');
   final = final.replace(/\)([0-9a-zA-Z])/g, ') $1');
-  final = final.replace(/([a-zA-Z])\(/g, '$1 (');
+  final = final.replace(/([a-zA-Z0-9])\(/g, '$1 (');
   final = final.replace(/ qc /g, ' QC ');
+  final = final.replace(/^qc /g, 'QC ');
+  final = final.replace(/^Qc /g, 'QC ');
+  final = final.replace(/ qa /g, ' QA ');
   final = final.replace(/ Qc /g, ' QC ');
+  final = final.replace(/ Qa /g, ' QA ');
+  final = final.replace(/^Qa /g, 'QA ');
+  final = final.replace(/^qa /g, 'QA ');
   final = final.replace(/ qa\/qc /g, ' QA/QC ');
   final = final.replace(/Multi tasking/g, 'Multi-tasking');
   final = final.replace(/Multi Tasking/g, 'Multi-tasking');
