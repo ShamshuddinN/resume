@@ -183,6 +183,11 @@ function formatText() {
 
 function CertificationsFormat() {
   let inText = document.querySelector('#textInput').value
+  
+  if (inText.length <= 5) {
+    return 0
+  }
+
   inText = inText.split('\n');
 
   let certificatesArray = []
@@ -455,6 +460,19 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/Mep /g, 'MEP ');
     cOutput = cOutput.replace(/^Ndt /g, 'NDT ');
     cOutput = cOutput.replace(/ Ndt /g, ' NDT ');
+
+
+    cOutput = cOutput.replace(/ Asst\. /g, ' Assistant ');
+    cOutput = cOutput.replace(/^Asst\. /g, 'Assistant ');
+    cOutput = cOutput.replace(/^Asst /g, 'Assistant ');
+    cOutput = cOutput.replace(/ Asst /g, ' Assistant ');
+
+    cOutput = cOutput.replace(/ Mgmt\. /g, ' Management ');
+    cOutput = cOutput.replace(/^Mgmt\. /g, 'Management ');
+    cOutput = cOutput.replace(/^Mgmt /g, 'Management ');
+    cOutput = cOutput.replace(/ Mgmt /g, ' Management ');
+
+
     cOutput = cOutput.replace(/ Ndt$/g, ' NDT');
     cOutput = cOutput.replace(/^Hse /g, 'HSE ');
     cOutput = cOutput.replace(/ Hse /g, ' HSE ');
@@ -924,6 +942,19 @@ function REnRP(text) {
   final = final.replace(/cross \- functional/g, 'cross-functional');
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
+
+
+  final = final.replace(/ mgmt\. /g, ' Management ');
+  final = final.replace(/ Mgmt\. /g, ' Management ');
+  final = final.replace(/ Mgmt /g, ' Management ');
+  final = final.replace(/^Mgmt /g, 'Management ');
+  final = final.replace(/^Mgmt\. /g, 'Management ');
+  final = final.replace(/ Asst\. /g, ' Assistant ');
+  final = final.replace(/ Asst /g, ' Assistant ');
+  final = final.replace(/^Asst\. /g, 'Assistant ');
+  final = final.replace(/^Asst /g, 'Assistant ');
+  
+  
   final = final.replace(/ Nebosh/g, ' NEBOSH');
   final = final.replace(/nebosh /g, 'NEBOSH ');
   final = final.replace(/Nebosh /g, 'NEBOSH ');
