@@ -375,7 +375,7 @@ function inputHandle(event) {
       if (theHeaders.length != 0 && theDescriptions.length != 0) {
         if (theHeaders.length == theDescriptions.length) {
           for (let txt = 0; txt < theHeaders.length; txt++) {
-            formattedText += '\n\n' + theHeaders[txt].trim();
+            formattedText += '\n\n' + planeText(passText = theHeaders[txt].trim());
             if (theDescriptions[txt][0] == '-') {
               formattedText += '\n' + SpecialCase(seperator = '•', passText = theDescriptions[txt].trim()); //working
             } else if (isNumeric(theDescriptions[txt][0])) {
