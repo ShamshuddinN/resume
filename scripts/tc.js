@@ -451,6 +451,8 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/^Cum /g, 'cum ');
     cOutput = cOutput.replace(/ Cum$/g, ' cum');
     
+    cOutput = cOutput.replace(/－/g, '-');
+
     cOutput = cOutput.replace(/Hvac /g, 'HVAC ');
     cOutput = cOutput.replace(/ Hvac/g, ' HVAC');
     cOutput = cOutput.replace(/ Mep/g, ' MEP');
@@ -886,6 +888,10 @@ function REnRP(text) {
 
   if (final.includes('	')) {
     final = final.replace(/	/g, ' ');
+  }
+  
+  if (final.includes('－')) {
+    final = final.replace(/－/g, '-');
   }
   
   if (final.includes('  ')) {
