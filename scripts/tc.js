@@ -930,6 +930,7 @@ function REnRP(text) {
   final = final.replace(/ Cum$/g, ' cum');
 
 
+
   final = final.replace(/ QATAR /g, ' Qatar ');
   final = final.replace(/([0-9])year/g, '$1 year');
   final = final.replace(/([0-9])Year/g, '$1 Year');
@@ -961,9 +962,12 @@ function REnRP(text) {
   final = final.replace(/ adnoc /g, ' ADNOC ');
   final = final.replace(/ Adnoc /g, ' ADNOC ');
   final = final.replace(/Adnoc /g, ' ADNOC ');
+  
   final = final.replace(/Co\-ordi/g, 'Coordi');
+  final = final.replace(/co\-ordi/g, 'Coordi');
   final = final.replace(/Co\- ordi/g, 'Coordi');
   final = final.replace(/CO\-ORDI/g, 'COORDI');
+
   final = final.replace(/Asst\.Engineer/g, 'Assistant Engineer');
   final = final.replace(/Asst\.engineer/g, 'Assistant Engineer');
   final = final.replace(/asst\.engineer/g, 'Assistant Engineer');
