@@ -306,7 +306,7 @@ function inputSubmit(txtIn, passText) {
   
 }
 
-let insertCount = 0;
+
 let controlCount = 0;
 let shiftCount = 0;
 function inputHandle(event) {
@@ -320,12 +320,6 @@ function inputHandle(event) {
   }
   
   
-  if (event.key === 'Insert') {
-    insertCount += 1;
-    
-  } else {
-    insertCount = 0;
-  }
 
 
   // new code
@@ -402,8 +396,10 @@ function inputHandle(event) {
   }
   // new code
 
+  console.log(event.key)
 
-  if (insertCount === 2) {
+
+  if (event.ctrlKey && event.key === '/') { //event.ctrlKey && event.key === 'Enter'
     let PlainString = RefineString(event.target.value);  
     document.querySelector('#textOutput').value = '';
     event.target.value = '';
