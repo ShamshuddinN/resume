@@ -198,7 +198,9 @@ function CertificationsFormat() {
       caughtMail += inText[g].trim()
     } 
     else if (inText[g].length > 2 && inText[g].length <= 100) {
-      certificatesArray.push(REnRP(inText[g].trim()))
+      let certificate_text = REnRP(inText[g].trim())
+      certificate_text = certificate_text.replace(/\.$/g, '')
+      certificatesArray.push(certificate_text)
     }
     else if (inText[g].length > 2) {
       omitted.push(REnRP(inText[g].trim()))
@@ -376,6 +378,8 @@ function inputHandle(event) {
               formattedText += '\n' + handleNLines(passText = theDescriptions[txt].trim()); //working
             } else if (isAlpha(theDescriptions[txt][0]) == false) {
               formattedText += '\n' + inputSubmit(txtIn = '', passText = RefineString(theDescriptions[txt].trim()) ); //working
+            } else if (theDescriptions[txt].slice(0, 2) == 'o ') {
+              formattedText += '\n' + SpecialCase(seperator = '•', passText = theDescriptions[txt].trim()); //testing
             } else if (isAlpha(theDescriptions[txt][0])) {
               formattedText += '\n' + planeText(passText = RefineString(theDescriptions[txt].trim())); //working
             }
@@ -396,7 +400,6 @@ function inputHandle(event) {
   }
   // new code
 
-  console.log(event.key)
 
 
   if (event.ctrlKey && event.key === '/') { //event.ctrlKey && event.key === 'Enter'
@@ -438,6 +441,11 @@ function inputHandle(event) {
     cOutput = cOutput.replace(/ 3d /g, ' 3D ');
     cOutput = cOutput.replace(/^3d /g, '3D ');
     cOutput = cOutput.replace(/ 3d$/g, ' 3D');
+
+    cOutput = cOutput.replace(/^([mM])is /g, 'MIS ');
+    cOutput = cOutput.replace(/ ([mM])is /g, ' MIS ');
+    cOutput = cOutput.replace(/ ([mM])is$/g, ' MIS');
+    cOutput = cOutput.replace(/ ([mM])is\.$/g, ' MIS.');
 
     cOutput = cOutput.replace(/^Hr /g, 'HR ');
     cOutput = cOutput.replace(/ Hr$/g, ' HR');
@@ -946,6 +954,10 @@ function REnRP(text) {
   final = final.replace(/ hvac/g, ' HVAC');
   final = final.replace(/hvac /g, 'HVAC ');
 
+  final = final.replace(/ ([mM])is /g, ' MIS ');
+  final = final.replace(/^([mM])is /g, 'MIS ');
+
+
 
   final = final.replace(/ mgmt\. /g, ' Management ');
   final = final.replace(/ Mgmt\. /g, ' Management ');
@@ -1024,7 +1036,7 @@ function REnRP(text) {
   final = final.replace(/Tamilnadu/g, 'Tamil Nadu');
   final = final.replace(/tamilnadu/g, 'Tamil Nadu');
   final = final.replace(/equipment's/g, 'equipment');
-  final = final.replace(/Equipments/g, 'equipment');
+  final = final.replace(/Equipments/g, 'Equipment');
   final = final.replace(/Equipment's/g, 'equipment');
   final = final.replace(/([a-zA-Z])([a-zA-Z])([a-zA-Z])&([a-zA-Z])([a-zA-Z])([a-zA-Z])/g, '$1$2$3 & $4$5$6');
   final = final.replace(/([a-z])([a-z])&/g, '$1$2 &')
