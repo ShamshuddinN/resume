@@ -571,14 +571,19 @@ function GPTCorrection() {
   for (let w = 0; w < inputValue.length; w++) {
     let incomingState = 0
     if (inputValue[w] != '') {
-      let tempStore = inputValue[w]
+      let tempStore = inputValue[w].trim();
       tempStore = tempStore.replace(/^-/g, '•');
       tempStore = tempStore.replace(/^  /g, '');
       const startAlpha = /^([a-zA-Z])/;
       const endAlpha = /([a-zA-Z])$/;
+      const endsWithColon = /\:$/;
 
       if (startAlpha.test(tempStore) && endAlpha.test(tempStore)) {
-        tempStore = '\n' + tempStore + ':'
+        tempStore = '\n' + tempStore + ':';
+      }
+
+      if (endsWithColon.test(tempStore)) {
+        tempStore = '\n' + tempStore;
       }
 
       if (tempStore[0] == '•') {
