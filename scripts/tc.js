@@ -626,7 +626,7 @@ function GPTCorrection() {
 function updateCount(event) {
   let chars = event.target.value;
   document.querySelector('#characterCount').innerText = `Character Count: ${chars.length}`;
-  document.querySelector('#copyButton').innerText = 'Copy'
+  document.querySelector('#copyButton').innerText = 'Copy Text'
   document.querySelector('#copyButton').classList.remove('btn-success');
   document.querySelector('#copyButton').classList.add('btn-primary');
 };
