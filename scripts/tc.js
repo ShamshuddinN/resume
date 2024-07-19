@@ -1104,3 +1104,57 @@ function REnRP(text) {
 
   return wspace.trim();
 }
+
+
+function SearchDIs() {
+  let searchTerm = document.querySelector('#textInput').value;
+  searchTerm = searchTerm.trim().toLowerCase()
+  let DepartmentsText = `account audit taxation company secreatory administration advertising media planning pr architecture interior design banking - client mgmt portfolio mgmt banking- investment corporate digital beauty salon skin care buying purchase procurement vendor management cabin crew flight attendant steward air hostess cashier teller billing and 
+payments chefs f&b housekeeping front desk contract management estimation tendering quantity surveying corporate planning consulting strategy m&a customer service data entry operations back office processing dba datawarehousing (it software) doctor nurse paramedics hospital technician medical research drilling engineering equipment operations - machine crane forklift equity derivatives commodities investor relations erp crm (it sofware) finance treasury finance audit accounting fire & safety department flight operations (pilots, technical staff, ground staff) freasher graduates management trainee intern no experience geotechnical geologists petrophysicists graphic 
+design web design art visualiser guards security services hair style nails art helpdesk customer services telecalling hr human relations industry relations hse (health safety environment) information technology & telecom inspection & corrosion installation maintenance operations repair insurance underwriting surveying actuary it hardware support it hardware repair & maintenance it software architect operations journalism content writing editing correspondent laboratory language translation lawyers legal advisors logistics supply chains maintenance marine services (marine officer marine engineer ship chandler driver) marketing brand marketing marketing research digital marketing mep (mechanical electrical plumbing) merchandising & planning category management operations other planning engineering strategy forecasting power, water & utilities 
+product development product management production manufacturing project management quality testing qa qc inspector r&d research and development refinery maintenance risk management risk analysis fraud investigation sales - key account management sales business development pricing secreatory front office personal assistant (pa) shop drawing drafting draughtsman site engineering projects software development application development (it software) store operations (for retail industry) surveying (civil) system administration network administration security (it software) teaching education telecom engineering communication engineering ticketing reservations top management senior management training learning transport driving tv anchors reporters film production vj rj visual merchandizing`;
+  let IndustriesText = `maintenance repair advertising events media agriculture forestry architecture interior designing aviation banking catering chemical industries commerce construction distribution education engineering entertainment theme parks tourism entry-level workers finance accounting auditing fintech fmcg healthcare hospitals hospitality 
+hotels human resources recruitment industrials investment and developers it technology telecom legal law firm luxury goods and jewellery manufacturing marketing and advertisement mechanical & electrical engineering mep metro train mining oil & gas others perfumery cosmetics power professional business services real estate & builders shipping transportation utilities wholesale and retail trade`;
+  let departments = ['Account / Audit / Taxation / Company Secreatory', 'Administration', 'Advertising  / Media Planning / PR', 'Architecture / Interior Design', 'Banking - Client Mgmt / Portfolio Mgmt', 'Banking- Investment/Corporate/Digital', 'Beauty / Salon / Skin Care', 'Buying / Purchase / Procurement / Vendor Management', 'Cabin Crew / Flight Attendant / Steward / Air Hostess', 'Cashier / Teller  / Billing and Payments', 'Chefs / F&B / Housekeeping / Front Desk', 'Contract Management / Estimation / Tendering / Quantity Surveying', 'Corporate Planning / Consulting / Strategy / M&A', 'Customer Service', 'Data Entry / Operations / Back Office Processing', 'DBA / Datawarehousing (IT Software)', 'Doctor / Nurse / Paramedics /  Hospital Technician / Medical Research', 'Drilling', 'Engineering', 'Equipment Operations - Machine / Crane / Forklift', 'Equity/ Derivatives/ Commodities/Investor Relations', 'ERP / CRM (IT Sofware)', 'Finance / Treasury',
+    'Finance/ Audit/ Accounting', 'Fire & Safety  Department', 'Flight Operations (Pilots, Technical Staff, Ground Staff)', 'Freasher Graduates / Management Trainee / Intern / No Experience', 'Geotechnical / Geologists / Petrophysicists', 'Graphic Design / Web Design / Art / Visualiser', 'Guards / Security Services', 'Hair Style / Nails / Art', 'Helpdesk / Customer Services / Telecalling', 'HR / Human Relations / Industry Relations', 'HSE (Health / Safety / Environment)', 'Information Technology & Telecom', 'Inspection & Corrosion', 'Installation / Maintenance / Operations / Repair', 'Insurance / Underwriting / Surveying / Actuary', 'IT Hardware Support / IT Hardware Repair & Maintenance', 'IT Software/Architect/Operations', 'Journalism / Content writing / Editing / Correspondent', 'Laboratory', 'Language Translation', 'Lawyers / Legal Advisors', 'Logistics / Supply Chains',
+     'Maintenance', 'Marine Services (Marine Officer / Marine Engineer / Ship Chandler / Driver)', 'Marketing / Brand Marketing / Marketing Research / Digital Marketing', 'MEP (Mechanical / Electrical / Plumbing)', 'Merchandising & Planning / Category Management', 'Operations', 'Other', 'Planning Engineering / Strategy / Forecasting', 'Power, Water & Utilities', 'Product Development / Product Management', 'Production / Manufacturing', 'Project Management', 'Quality / Testing / QA / QC / Inspector', 'R&D / Research and Development', 'Refinery Maintenance', 'Risk Management / Risk Analysis / Fraud Investigation', 'Sales - Key Account Management', 'Sales / Business Development / Pricing', 'Secreatory / Front Office / Personal Assistant (PA)',
+      'Shop Drawing / Drafting / Draughtsman', 'Site Engineering / Projects', 'Software Development / Application Development (IT Software)', 'Store operations (For Retail Industry)', 'Surveying (Civil)', 'System Administration / Network Administration / Security (IT Software)', 'Teaching / Education', 'Telecom Engineering / Communication Engineering', 'Ticketing / Reservations', 'Top  Management / Senior  Management', 'Training / Learning', 'Transport / Driving', 'TV Anchors / Reporters / Film Production / VJ / RJ', 'Visual Merchandizing'];
+  let industries = ['Maintenance/Repair', 'Advertising / Events / Media', 'Agriculture / Forestry', 'Architecture / Interior Designing', 'Aviation', 'Banking', 'Catering', 'Chemical industries', 'Commerce', 'Construction', 'Distribution', 'Education', 'Engineering', 'Entertainment / Theme Parks / Tourism', 'Entry-Level Workers',
+    'Finance / Accounting / Auditing', 'FinTech', 'FMCG', 'Healthcare / Hospitals', 'Hospitality / Hotels', 'Human Resources / Recruitment', 'Industrials', 'Investment And Developers', 'IT / Technology / Telecom', 'Legal / Law Firm', 'Luxury Goods and Jewellery',
+     'Manufacturing', 'Marketing and Advertisement', 'Mechanical & Electrical Engineering', 'MEP', 'Metro / Train', 'Mining', 'Oil & Gas', 'Others', 'Perfumery / Cosmetics', 'Power', 'Professional / Business Services', 'Real Estate & Builders', 'Shipping', 'Transportation', 'Utilities', 'Wholesale and Retail trade'];
+
+     let Dresults = 'Departments:\n';
+     let Iresults = 'Industries:\n';
+     if (DepartmentsText.includes(searchTerm)) {
+      
+      for (let u = 0; u < departments.length; u++) {
+        if (departments[u].toLowerCase().includes(searchTerm)) {
+          Dresults += '• ' + departments[u] + '\n'
+        }
+      }
+      Dresults += '\n';
+     } else {
+      Dresults = 'Departments: NA\n'
+     }
+
+     if (IndustriesText.includes(searchTerm)) {
+      for (let tr = 0; tr < industries.length; tr++) {
+        if (industries[tr].toLowerCase().includes(searchTerm)) {
+          Iresults += '• ' + industries[tr] + '\n'
+        }
+      }
+      
+     } else{
+      Iresults = 'Industry: NA'
+     }
+
+     let finalResult = Dresults + Iresults
+     finalResult = finalResult.trim()
+     sendOutput(finalResult)
+}
+
+function sendOutput(outputText) {
+  document.querySelector('#textInput').value = '';
+  document.querySelector('#textOutput').value = outputText;  
+  document.querySelector('#textOutput').disabled = false  
+}
