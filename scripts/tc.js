@@ -148,15 +148,8 @@ function BetaFunction() {
   betaOut2 = betaOut2.replace(/  /g, ' ')
 
   betaOut2 = betaOut2.trim()
-  
-  // betaProcess = betaProcess.replace(/([0-9])\.([0-9])/g, '$1d%t$2');
 
-
-  // betaOut1 = betaOut1.replace(/d%t/g, '.');
-  
-  document.querySelector('#textOutput').value = betaOut2;
-  document.querySelector('#textInput').value = '';
-  document.querySelector('#textOutput').disabled = false
+  sendOutput(betaOut2);
 }
 
 function formatText() {
@@ -175,9 +168,7 @@ function formatText() {
     }
   }
 
-  document.querySelector('#textOutput').value = outputText;
-  document.querySelector('#textInput').value = '';
-
+  sendOutput(outputText)
 }
 
 
@@ -210,9 +201,7 @@ function CertificationsFormat() {
     let finalOutput = ''
     finalOutput += `certifications = ${arrAsString}` + '\n' + `mail = '${caughtMail}'\n`;
 
-    document.querySelector('#textOutput').value = finalOutput;
-    document.querySelector('#textOutput').disabled = false
-    document.querySelector('#textInput').value = '';
+    sendOutput(finalOutput)
   }
   
 }
@@ -271,17 +260,13 @@ function inputSubmit(txtIn, passText) {
 
 
   if (inpTextHere === '') {
-    document.querySelector('#textOutput').value = '';
-    document.querySelector('#textOutput').placeholder = 'Please Enter Text in Input Text Box with a Line seperator.';
-    document.querySelector('#textOutput').disabled = true;
+    sayPlaceholder("Please Enter Text in Input Text Box with a Line seperator.")
 
   } else if (isAlpha(inpTextHere[0]) ||inpTextHere[0] === ' ') {
-    document.querySelector('#textOutput').placeholder = 'Error: No Line Seperator Found!';
-    document.querySelector('#textOutput').disabled = true;
+    sayPlaceholder("Error: No Line Seperator Found!")
 
   } else if (mystr.includes(inpTextHere[0])) {
-    document.querySelector('#textOutput').placeholder = 'Error: For Numbered Line Seperators Use "Num Ln" button.';
-    document.querySelector('#textOutput').disabled = true;
+    sayPlaceholder('Error: For Numbered Line Seperators Use "Num Ln" button.')
 
   } else {
     let sep = inpTextHere[0];
@@ -300,8 +285,7 @@ function inputSubmit(txtIn, passText) {
     if (returnVar) {
       return outText;
     } else {
-      document.querySelector('#textOutput').disabled = false;
-      document.querySelector('#textOutput').value = outText;  
+      sendOutput(outText)
     }
 
   }
@@ -388,14 +372,8 @@ function inputHandle(event) {
       }
 // to be improved
 
-      document.querySelector('#textOutput').disabled = false;
-      document.querySelector('#textInput').value = ''
-      document.querySelector('#textOutput').value = formattedText.trim();
-      
-
+      sendOutput(formattedText.trim())
     }
-
-
 
   }
   // new code
@@ -536,7 +514,7 @@ function inputHandle(event) {
     
     
     if (cOutput === 'Text Too Short Or No Words Found') {
-      document.querySelector('#textOutput').value = 'Text Too Short Or No Words Found';
+      sayPlaceholder("Text Too Short Or No Words Found!");
     } else {
       document.querySelector('#textOutput').disabled = false;
       document.querySelector('#textOutput').value = cOutput;
@@ -703,9 +681,9 @@ function SpecialCase(seperator, passText) {
   if (returnVar) {
     return finalVal
   } else {
-    document.querySelector('#textOutput').disabled = false;
-    document.querySelector('#textOutput').value = finalVal;
-    document.querySelector('#textInput').value = ''  
+
+    sendOutput(finalVal)
+  
   }
 
 }
@@ -775,9 +753,7 @@ function handleNLines(passText) {
   if (returnVar) {
     return outputTxt;
   } else {
-    document.querySelector('#textOutput').disabled = false;
-    document.querySelector('#textOutput').value = outputTxt;
-    document.querySelector('#textInput').value = ''  
+    sendOutput(outputTxt);  
   }
 
 }
@@ -802,9 +778,7 @@ function planeText(passText) {
  if (returnVar) {
   return planeTxt.trim()
  } else {
-  document.querySelector('#textOutput').disabled = false;
-  document.querySelector('#textOutput').value = planeTxt;
-  document.querySelector('#textInput').value = ''; 
+  sendOutput(planeTxt) 
  }
 
 
@@ -825,7 +799,7 @@ function copyText() {
 
     let ppClasses = document.getElementById('ppcopy');
     let poiClasses = document.getElementById('PointsPrpt');
-    document.querySelector('#textOutput').placeholder = ':)'
+    sayPlaceholder(':)');
 
     let BtnElements = [ppClasses, poiClasses]
 
@@ -1109,6 +1083,12 @@ function REnRP(text) {
 function SearchDIs() {
   let searchTerm = document.querySelector('#textInput').value;
   searchTerm = searchTerm.trim().toLowerCase()
+  if (searchTerm.length < 2) {
+    sayPlaceholder("Query Must be more than 2 characters long")
+    return 0
+  }
+
+  searchTerm = searchTerm.trim().toLowerCase()
   let DepartmentsText = `account audit taxation company secreatory administration advertising media planning pr architecture interior design banking - client mgmt portfolio mgmt banking- investment corporate digital beauty salon skin care buying purchase procurement vendor management cabin crew flight attendant steward air hostess cashier teller billing and 
 payments chefs f&b housekeeping front desk contract management estimation tendering quantity surveying corporate planning consulting strategy m&a customer service data entry operations back office processing dba datawarehousing (it software) doctor nurse paramedics hospital technician medical research drilling engineering equipment operations - machine crane forklift equity derivatives commodities investor relations erp crm (it sofware) finance treasury finance audit accounting fire & safety department flight operations (pilots, technical staff, ground staff) freasher graduates management trainee intern no experience geotechnical geologists petrophysicists graphic 
 design web design art visualiser guards security services hair style nails art helpdesk customer services telecalling hr human relations industry relations hse (health safety environment) information technology & telecom inspection & corrosion installation maintenance operations repair insurance underwriting surveying actuary it hardware support it hardware repair & maintenance it software architect operations journalism content writing editing correspondent laboratory language translation lawyers legal advisors logistics supply chains maintenance marine services (marine officer marine engineer ship chandler driver) marketing brand marketing marketing research digital marketing mep (mechanical electrical plumbing) merchandising & planning category management operations other planning engineering strategy forecasting power, water & utilities 
@@ -1134,7 +1114,7 @@ hotels human resources recruitment industrials investment and developers it tech
       }
       Dresults += '\n';
      } else {
-      Dresults = 'Departments: NA\n'
+      Dresults = 'Departments: NA\n\n'
      }
 
      if (IndustriesText.includes(searchTerm)) {
@@ -1156,5 +1136,10 @@ hotels human resources recruitment industrials investment and developers it tech
 function sendOutput(outputText) {
   document.querySelector('#textInput').value = '';
   document.querySelector('#textOutput').value = outputText;  
-  document.querySelector('#textOutput').disabled = false  
+  document.querySelector('#textOutput').disabled = false;
+}
+
+function sayPlaceholder(textToSay) {
+  document.querySelector('#textOutput').placeholder = textToSay;
+  document.querySelector('#textOutput').disabled = true;
 }
