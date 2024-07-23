@@ -602,6 +602,8 @@ function GPTCorrection() {
     }
     
   }
+
+  outValue = outValue.replace(/\n\n/g, '\n');
   if (outValue.length > 5) {
     document.querySelector('#textOutput').disabled = false;
     document.querySelector('#textOutput').value = outValue.trim();
