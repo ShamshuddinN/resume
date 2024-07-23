@@ -522,7 +522,7 @@ function inputHandle(event) {
 
   }
   
-  else if (event.shiftKey && event.key == '~') {
+  else if (event.ctrlKey && event.key == '.') {
     GPTCorrection()
     document.querySelector('#textInput').value = ''
 
@@ -539,6 +539,9 @@ function isUpperCase(char) {
 function GPTCorrection() {
   let inputValue = document.querySelector('#textInput').value;
   inputValue = inputValue.replace(/### /g, '')
+  inputValue = inputValue.replace(/\*\*\*/g, '')
+  inputValue = inputValue.replace(/\*\*/g, '')
+
 
   inputValue = inputValue.split('\n');
   let outValue = '';
@@ -546,21 +549,27 @@ function GPTCorrection() {
   let changeCount = 0
   let CurrentState = 1
 
+  const startAlpha = /^([a-zA-Z])/;
+  const endAlpha = /([a-zA-Z])$/;
+  const endsWithColon = /\:$/;
+
+
   for (let w = 0; w < inputValue.length; w++) {
     let incomingState = 0
     if (inputValue[w] != '') {
-      let tempStore = inputValue[w].trim();
+      let tempStore = inputValue[w];
       tempStore = tempStore.replace(/^-/g, '•');
+      tempStore = tempStore.replace(/  \-/g, '-');
       tempStore = tempStore.replace(/^  /g, '');
-      const startAlpha = /^([a-zA-Z])/;
-      const endAlpha = /([a-zA-Z])$/;
-      const endsWithColon = /\:$/;
+
 
       if (startAlpha.test(tempStore) && endAlpha.test(tempStore)) {
+
         tempStore = '\n' + tempStore + ':';
       }
 
       if (endsWithColon.test(tempStore)) {
+
         tempStore = '\n' + tempStore;
       }
 
@@ -636,7 +645,9 @@ function SpecialCase(seperator, passText) {
     mysep = mysep.replace(/\./, '\\.');
   } else if (mysep.includes('*')) {
     mysep = mysep.replace(/\*/, '\\*');
-  };
+  } else if (mysep.includes('+')) {
+    mysep = mysep.replace(/\+/g, '\\+')
+  }
   
 
 
@@ -824,9 +835,6 @@ function copyText() {
     }
   } 
 
-  if (document.querySelector('#textInput').value == '~') {
-    document.querySelector('#textInput').value = ''
-  }
 }
 
 
