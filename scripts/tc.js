@@ -319,6 +319,11 @@ function inputHandle(event) {
       PlainString = UnusualDash(PlainString)
       PlainString = PlainString.split('\n');
 
+      if (!PlainString[0].includes(':')) {
+        PlainString = ["ExampleVNH:\n", ...PlainString]
+      }
+      
+
       let formattedText = '';
       let theHeaders = []
       let theDescriptions = []
@@ -370,8 +375,10 @@ function inputHandle(event) {
           }
         }
       }
+
 // to be improved
 
+      formattedText = formattedText.replace('ExampleVNH:\n', '')
       sendOutput(formattedText.trim())
     }
 
