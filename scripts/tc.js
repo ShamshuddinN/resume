@@ -1150,6 +1150,41 @@ hotels human resources recruitment industrials investment and developers it tech
      sendOutput(finalResult)
 }
 
+const PDT = (FN) => {
+  let inputText = getInputtxt()
+  
+  if (inputText == 0) {
+    sayPlaceholder("Input is too short.")
+    return 0
+  }
+
+  if (FN == 5) {
+    navigator.clipboard.writeText(`Worked as ${inputText.trim()}.`)
+    sayPlaceholder('WA is Success!')
+  } else if (FN == 6) {
+    if (inputText.toLowerCase().includes('project')) {
+      navigator.clipboard.writeText(`Worked on ${planeText(inputText)}.`)
+    } else {
+      navigator.clipboard.writeText(`Worked on ${planeText(inputText)} Project.`)
+    }
+    sayPlaceholder('WOP is Success!')
+  }
+
+
+  return 0
+}
+
+
+const getInputtxt = () => {
+  if (!document.querySelector('#textInput').value) {
+    return 0
+  } else if (document.querySelector('#textInput').value.length <= 2) {
+    return 0
+  }
+
+  return document.querySelector('#textInput').value
+}
+
 function sendOutput(outputText) {
   document.querySelector('#textInput').value = '';
   document.querySelector('#textOutput').value = outputText;  
