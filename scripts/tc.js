@@ -1161,6 +1161,7 @@ const PDT = (FN) => {
   if (FN == 5) {
     navigator.clipboard.writeText(`Worked as ${inputText.trim()}.`)
     sayPlaceholder('WA is Success!')
+    clearInput()
   } else if (FN == 6) {
     if (inputText.toLowerCase().includes('project')) {
       navigator.clipboard.writeText(`Worked on ${planeText(inputText)}.`)
@@ -1168,6 +1169,7 @@ const PDT = (FN) => {
       navigator.clipboard.writeText(`Worked on ${planeText(inputText)} Project.`)
     }
     sayPlaceholder('WOP is Success!')
+    clearInput()
   }
 
 
@@ -1189,6 +1191,10 @@ function sendOutput(outputText) {
   document.querySelector('#textInput').value = '';
   document.querySelector('#textOutput').value = outputText;  
   document.querySelector('#textOutput').disabled = false;
+}
+
+const clearInput = () => {
+  document.querySelector('#textInput').value = '';
 }
 
 function sayPlaceholder(textToSay) {
